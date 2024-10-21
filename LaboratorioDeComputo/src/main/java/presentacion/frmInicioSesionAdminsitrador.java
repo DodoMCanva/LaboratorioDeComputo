@@ -26,21 +26,68 @@ public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jplInicioSesionAdm = new javax.swing.JPanel();
+        lblTitulo = new javax.swing.JLabel();
+        txtUsuario = new javax.swing.JTextField();
+        lblUsuario = new javax.swing.JLabel();
+        lblContraseña = new javax.swing.JLabel();
+        txtContraseña = new javax.swing.JPasswordField();
+        btnIniciarSesion = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio Sesión Administrador");
+        setBackground(new java.awt.Color(204, 204, 204));
+        setPreferredSize(new java.awt.Dimension(600, 430));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jplInicioSesionAdm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        lblTitulo.setText("INICIO SESIÓN ADMINISTADOR");
+        jplInicioSesionAdm.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 340, 30));
+        jplInicioSesionAdm.add(txtUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 200, 260, 30));
+
+        lblUsuario.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblUsuario.setText("Usuario");
+        jplInicioSesionAdm.add(lblUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
+
+        lblContraseña.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblContraseña.setText("Contraseña");
+        jplInicioSesionAdm.add(lblContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 240, -1, -1));
+
+        txtContraseña.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtContraseñaActionPerformed(evt);
+            }
+        });
+        jplInicioSesionAdm.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 260, 30));
+
+        btnIniciarSesion.setBackground(new java.awt.Color(51, 153, 255));
+        btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
+        btnIniciarSesion.setText("Ingresar");
+        btnIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIniciarSesionActionPerformed(evt);
+            }
+        });
+        jplInicioSesionAdm.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 90, -1));
+
+        getContentPane().add(jplInicioSesionAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 430));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtContraseñaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtContraseñaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtContraseñaActionPerformed
+
+    private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
+        frmMenuAdministrador ir = new frmMenuAdministrador();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +125,12 @@ public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnIniciarSesion;
+    private javax.swing.JPanel jplInicioSesionAdm;
+    private javax.swing.JLabel lblContraseña;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JLabel lblUsuario;
+    private javax.swing.JPasswordField txtContraseña;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
