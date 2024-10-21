@@ -64,8 +64,8 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 120, 30));
 
-        lblLogo.setText("jLabel3");
-        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
+        lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotipoazul.png"))); // NOI18N
+        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 200, 80));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
