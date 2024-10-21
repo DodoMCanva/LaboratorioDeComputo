@@ -37,9 +37,9 @@ public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Sesión Administrador");
         setBackground(new java.awt.Color(204, 204, 204));
-        setPreferredSize(new java.awt.Dimension(600, 430));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jplInicioSesionAdm.setBackground(new java.awt.Color(236, 236, 236));
         jplInicioSesionAdm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -62,7 +62,7 @@ public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
         });
         jplInicioSesionAdm.add(txtContraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 270, 260, 30));
 
-        btnIniciarSesion.setBackground(new java.awt.Color(51, 153, 255));
+        btnIniciarSesion.setBackground(new java.awt.Color(102, 204, 255));
         btnIniciarSesion.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnIniciarSesion.setForeground(new java.awt.Color(255, 255, 255));
         btnIniciarSesion.setText("Ingresar");
