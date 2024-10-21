@@ -27,7 +27,6 @@ public class frmConfirmacion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        lblLOGO = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
 
@@ -35,9 +34,6 @@ public class frmConfirmacion extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(102, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        lblLOGO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotipoazul.png"))); // NOI18N
-        jPanel1.add(lblLOGO, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, 90));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setText("Computadora seleccionada:");
@@ -99,6 +95,5 @@ public class frmConfirmacion extends javax.swing.JFrame {
     private javax.swing.JButton btnVolver;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblLOGO;
     // End of variables declaration//GEN-END:variables
 }

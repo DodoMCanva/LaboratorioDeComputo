@@ -29,19 +29,16 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        LblLogoITSON = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(102, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        LblLogoITSON.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotipoazul.png"))); // NOI18N
-        jPanel1.add(LblLogoITSON, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 50, 190, 70));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel1.setText("BIENVENIDO");
@@ -66,6 +63,9 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 120, 30));
+
+        lblLogo.setText("jLabel3");
+        jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 60, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,11 +95,11 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LblLogoITSON;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblLogo;
     private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }
