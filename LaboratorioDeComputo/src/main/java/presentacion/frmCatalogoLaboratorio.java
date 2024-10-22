@@ -93,7 +93,7 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
         lblNumPagina.setText("numPagina");
         jplCatalogoLaboratorio.add(lblNumPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 460, -1, 25));
 
-        getContentPane().add(jplCatalogoLaboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 510));
+        getContentPane().add(jplCatalogoLaboratorio, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 500));
 
         pack();
         setLocationRelativeTo(null);
