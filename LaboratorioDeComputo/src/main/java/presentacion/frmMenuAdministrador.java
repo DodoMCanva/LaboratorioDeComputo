@@ -1,4 +1,3 @@
-
 package presentacion;
 
 /**
@@ -89,7 +88,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLabComputoActionPerformed
 
     private void btnEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiantesActionPerformed
-      frmCatalogoEstudiantes ir = new frmCatalogoEstudiantes();
+        frmCatalogoEstudiantes ir = new frmCatalogoEstudiantes();
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnEstudiantesActionPerformed
