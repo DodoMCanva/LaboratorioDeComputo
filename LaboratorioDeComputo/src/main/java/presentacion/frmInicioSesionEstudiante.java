@@ -15,7 +15,7 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
      */
     public frmInicioSesionEstudiante() {
         initComponents(); 
-        setSize(800, 600); // Establecemos el tamaño de la ventana
+        setSize(603, 430); // Establecemos el tamaño de la ventana
         setLocationRelativeTo(null);
     }
 
