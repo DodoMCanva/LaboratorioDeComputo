@@ -88,6 +88,11 @@ public class frmCatalogoOrdenadores extends javax.swing.JFrame {
 
         btnAgregarOrd.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnAgregarOrd.setText("Agregar");
+        btnAgregarOrd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarOrdActionPerformed(evt);
+            }
+        });
         jplCatalogoOrdenadores.add(btnAgregarOrd, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 110, 30));
 
         btnAtras.setBackground(new java.awt.Color(153, 153, 153));
@@ -114,6 +119,12 @@ public class frmCatalogoOrdenadores extends javax.swing.JFrame {
         volver.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnAgregarOrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarOrdActionPerformed
+       frmAgregarOrdenador ir = new frmAgregarOrdenador();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAgregarOrdActionPerformed
 //
 //    /**
 //     * @param args the command line arguments

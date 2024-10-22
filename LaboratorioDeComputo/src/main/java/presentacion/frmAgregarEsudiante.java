@@ -40,6 +40,7 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         cbxCarrera = new javax.swing.JComboBox<>();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agregar Inf. Estudiante");
@@ -103,16 +104,43 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
-        jplInfEstudiante.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 380, 120, 30));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
+        jplInfEstudiante.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 120, 30));
 
         cbxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "​Licenciatura en Administración", "Ingeniería en Mecatrónica", "Ingeniería en Software", "​​Licenciatura en Psicología", "​​Ingeniería Civil", "Licenciatura en Gastronomía", "Licenciatura en Enfermería​", "Licenciatura en Diseño Gráfico", "Licenciatura en Arquitectura" }));
         jplInfEstudiante.add(cbxCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 240, 30));
+
+        btnVolver.setBackground(new java.awt.Color(153, 153, 153));
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jplInfEstudiante.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         getContentPane().add(jplInfEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 550));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        frmCatalogoEstudiantes ir = new frmCatalogoEstudiantes();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        frmCatalogoEstudiantes volver = new frmCatalogoEstudiantes();
+        volver.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -151,6 +179,7 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxCarrera;
     private javax.swing.JPanel jplInfEstudiante;
     private javax.swing.JLabel lblApMaterno;

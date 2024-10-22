@@ -1,4 +1,3 @@
-
 package presentacion;
 
 /**
@@ -38,6 +37,7 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         lblNombre = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
         txtContrasena = new javax.swing.JTextField();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agrefar Inf. Laboratorios");
@@ -79,6 +79,11 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         jplInfLaboratorios.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 360, 120, 30));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -100,11 +105,33 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         txtContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jplInfLaboratorios.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 240, 30));
 
+        btnVolver.setBackground(new java.awt.Color(153, 153, 153));
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jplInfLaboratorios.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
         getContentPane().add(jplInfLaboratorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 450));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        frmCatalogoLaboratorio ir = new frmCatalogoLaboratorio();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        frmCatalogoLaboratorio volver = new frmCatalogoLaboratorio();
+        volver.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -143,6 +170,7 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxCampus;
     private javax.swing.JPanel jplInfLaboratorios;
     private javax.swing.JLabel lblCampus;

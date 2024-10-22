@@ -48,6 +48,11 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         btbReportes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btbReportes.setText("Reportes");
         btbReportes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btbReportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btbReportesActionPerformed(evt);
+            }
+        });
         jplMenuAdm.add(btbReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 200, 50));
 
         btnEstudiantes.setBackground(new java.awt.Color(102, 204, 255));
@@ -109,6 +114,12 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBloqueosActionPerformed
+
+    private void btbReportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btbReportesActionPerformed
+        frmMenuReportes ir = new frmMenuReportes();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btbReportesActionPerformed
 
     /**
      * @param args the command line arguments

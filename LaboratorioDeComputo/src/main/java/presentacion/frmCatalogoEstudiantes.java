@@ -1,4 +1,3 @@
-
 package presentacion;
 
 /**
@@ -46,6 +45,11 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
         btnVolver.setBackground(new java.awt.Color(153, 153, 153));
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
         jplCatalogoEstudiantes.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         tblEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
@@ -84,6 +88,11 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
 
         btnAgregarEst.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnAgregarEst.setText("Agregar");
+        btnAgregarEst.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarEstActionPerformed(evt);
+            }
+        });
         jplCatalogoEstudiantes.add(btnAgregarEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 110, 30));
 
         btnAtras.setBackground(new java.awt.Color(153, 153, 153));
@@ -104,6 +113,18 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        frmMenuAdministrador volver = new frmMenuAdministrador();
+        volver.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnAgregarEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarEstActionPerformed
+        frmAgregarEsudiante ir = new frmAgregarEsudiante();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAgregarEstActionPerformed
 
 //    /**
 //     * @param args the command line arguments

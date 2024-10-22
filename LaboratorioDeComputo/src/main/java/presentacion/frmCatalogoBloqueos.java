@@ -45,6 +45,11 @@ public class frmCatalogoBloqueos extends javax.swing.JFrame {
         btnVolver.setBackground(new java.awt.Color(153, 153, 153));
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
         btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
         jplCatalogoBloqueos.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         tblBloqueos.setModel(new javax.swing.table.DefaultTableModel(
@@ -115,6 +120,12 @@ public class frmCatalogoBloqueos extends javax.swing.JFrame {
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnBloquearActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+      frmMenuAdministrador ir = new frmMenuAdministrador();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
 //    /**
 //     * @param args the command line arguments

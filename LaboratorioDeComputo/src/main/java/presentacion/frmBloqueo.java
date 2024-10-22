@@ -34,6 +34,7 @@ public class frmBloqueo extends javax.swing.JFrame {
         scpMotivo = new javax.swing.JScrollPane();
         txaMotivo = new javax.swing.JTextArea();
         cbxEstudiantes = new javax.swing.JComboBox<>();
+        btnVolver = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Bloqueo de Estudiante");
@@ -54,6 +55,11 @@ public class frmBloqueo extends javax.swing.JFrame {
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnGuardar.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardar.setText("Guardar");
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
         jplBloquear.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 290, 120, 30));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -71,11 +77,33 @@ public class frmBloqueo extends javax.swing.JFrame {
         cbxEstudiantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jplBloquear.add(cbxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 240, 30));
 
+        btnVolver.setBackground(new java.awt.Color(153, 153, 153));
+        btnVolver.setForeground(new java.awt.Color(255, 255, 255));
+        btnVolver.setText("Volver");
+        btnVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnVolverActionPerformed(evt);
+            }
+        });
+        jplBloquear.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
         getContentPane().add(jplBloquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 450));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        frmCatalogoBloqueos volver = new frmCatalogoBloqueos();
+        volver.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+       frmCatalogoBloqueos ir = new frmCatalogoBloqueos();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnGuardarActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -114,6 +142,7 @@ public class frmBloqueo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxEstudiantes;
     private javax.swing.JPanel jplBloquear;
     private javax.swing.JLabel lblEstudiante;

@@ -1,4 +1,3 @@
-
 package presentacion;
 
 /**
@@ -88,6 +87,11 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
 
         btnAgregarLab.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         btnAgregarLab.setText("Agregar");
+        btnAgregarLab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarLabActionPerformed(evt);
+            }
+        });
         jplCatalogoLaboratorio.add(btnAgregarLab, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 110, 30));
 
         btnAtras.setBackground(new java.awt.Color(153, 153, 153));
@@ -110,10 +114,16 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-       frmMenuAdministrador volver = new frmMenuAdministrador();
+        frmMenuAdministrador volver = new frmMenuAdministrador();
         volver.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void btnAgregarLabActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLabActionPerformed
+        frmAgregarLaboratorio ir = new frmAgregarLaboratorio();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnAgregarLabActionPerformed
 //
 //    /**
 //     * @param args the command line arguments
