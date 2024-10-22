@@ -33,6 +33,7 @@ public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
         lblContraseña = new javax.swing.JLabel();
         txtContraseña = new javax.swing.JPasswordField();
         btnIniciarSesion = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio Sesión Administrador");
@@ -72,6 +73,9 @@ public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
             }
         });
         jplInicioSesionAdm.add(btnIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 330, 90, -1));
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotipooogri.png"))); // NOI18N
+        jplInicioSesionAdm.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 290, 100));
 
         getContentPane().add(jplInicioSesionAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 430));
 
@@ -126,6 +130,7 @@ public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnIniciarSesion;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jplInicioSesionAdm;
     private javax.swing.JLabel lblContraseña;
     private javax.swing.JLabel lblTitulo;
