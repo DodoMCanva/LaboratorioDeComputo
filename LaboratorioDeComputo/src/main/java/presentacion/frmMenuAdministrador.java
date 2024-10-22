@@ -88,7 +88,9 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnLabComputoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLabComputoActionPerformed
-        // TODO add your handling code here:
+        frmCatalogoLaboratorio ir = new frmCatalogoLaboratorio();
+        ir.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnLabComputoActionPerformed
 
     private void btnEstudiantesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstudiantesActionPerformed
