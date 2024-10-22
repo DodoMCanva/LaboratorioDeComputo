@@ -69,7 +69,7 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
         jplInfEstudiante.add(lblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 100, 30));
 
         lblEstado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblEstado.setText("Estado:");
+        lblEstado.setText("Estatus:");
         jplInfEstudiante.add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 70, 30));
 
         lblCarrera.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N

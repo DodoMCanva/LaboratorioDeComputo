@@ -53,10 +53,20 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Nombre", "Carrera", "Contraseña", "Estado", "Editar", "Eliminar"
+                "ID", "Nombre", "Carrera", "Contraseña", "Estatus", "Editar", "Eliminar"
             }
         ));
         jScrollPane1.setViewportView(tblEstudiantes);
