@@ -67,41 +67,81 @@ public class frmSeleccionPC extends javax.swing.JFrame {
         btnPC8.setBackground(new java.awt.Color(0, 153, 255));
         btnPC8.setForeground(new java.awt.Color(255, 255, 255));
         btnPC8.setText("Seleccionar");
+        btnPC8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPC8ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPC8, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, -1, -1));
 
         btnPC1.setBackground(new java.awt.Color(0, 153, 255));
         btnPC1.setForeground(new java.awt.Color(255, 255, 255));
         btnPC1.setText("Seleccionar");
+        btnPC1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPC1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPC1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         btnPC2.setBackground(new java.awt.Color(0, 153, 255));
         btnPC2.setForeground(new java.awt.Color(255, 255, 255));
         btnPC2.setText("Seleccionar");
+        btnPC2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPC2ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPC2, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 210, -1, -1));
 
         btnPC3.setBackground(new java.awt.Color(0, 153, 255));
         btnPC3.setForeground(new java.awt.Color(255, 255, 255));
         btnPC3.setText("Seleccionar");
+        btnPC3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPC3ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPC3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 210, -1, -1));
 
         btnPC4.setBackground(new java.awt.Color(0, 153, 255));
         btnPC4.setForeground(new java.awt.Color(255, 255, 255));
         btnPC4.setText("Seleccionar");
+        btnPC4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPC4ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPC4, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 210, -1, -1));
 
         btnPC5.setBackground(new java.awt.Color(0, 153, 255));
         btnPC5.setForeground(new java.awt.Color(255, 255, 255));
         btnPC5.setText("Seleccionar");
+        btnPC5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPC5ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPC5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 370, -1, -1));
 
         btnPC6.setBackground(new java.awt.Color(0, 153, 255));
         btnPC6.setForeground(new java.awt.Color(255, 255, 255));
         btnPC6.setText("Seleccionar");
+        btnPC6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPC6ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPC6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 370, -1, -1));
 
         btnPC7.setBackground(new java.awt.Color(0, 153, 255));
         btnPC7.setForeground(new java.awt.Color(255, 255, 255));
         btnPC7.setText("Seleccionar");
+        btnPC7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPC7ActionPerformed(evt);
+            }
+        });
         jPanel1.add(btnPC7, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 370, -1, -1));
 
         btnSalir.setBackground(new java.awt.Color(255, 51, 51));
@@ -193,8 +233,58 @@ public class frmSeleccionPC extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        // TODO add your handling code here:
+        frmInicioSesionEstudiante ini=new frmInicioSesionEstudiante();
+        ini.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
+
+    private void btnPC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPC1ActionPerformed
+       frmConfirmacion con= new frmConfirmacion();
+       con.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnPC1ActionPerformed
+
+    private void btnPC2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPC2ActionPerformed
+         frmConfirmacion con= new frmConfirmacion();
+       con.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnPC2ActionPerformed
+
+    private void btnPC3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPC3ActionPerformed
+         frmConfirmacion con= new frmConfirmacion();
+       con.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnPC3ActionPerformed
+
+    private void btnPC4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPC4ActionPerformed
+           frmConfirmacion con= new frmConfirmacion();
+       con.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnPC4ActionPerformed
+
+    private void btnPC5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPC5ActionPerformed
+          frmConfirmacion con= new frmConfirmacion();
+       con.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnPC5ActionPerformed
+
+    private void btnPC6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPC6ActionPerformed
+          frmConfirmacion con= new frmConfirmacion();
+       con.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnPC6ActionPerformed
+
+    private void btnPC7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPC7ActionPerformed
+         frmConfirmacion con= new frmConfirmacion();
+       con.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnPC7ActionPerformed
+
+    private void btnPC8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPC8ActionPerformed
+       frmConfirmacion con= new frmConfirmacion();
+       con.setVisible(true);
+       this.dispose();
+    }//GEN-LAST:event_btnPC8ActionPerformed
 
     /**
      * @param args the command line arguments
