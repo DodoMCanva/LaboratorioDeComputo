@@ -108,7 +108,9 @@ public class frmSoftwareVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        // TODO add your handling code here:
+      frmConfirmacion con=new frmConfirmacion();
+      con.setVisible(true);
+      this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void txtBuscarSwrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarSwrActionPerformed

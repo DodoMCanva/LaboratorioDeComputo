@@ -29,6 +29,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         btnLabComputo = new javax.swing.JButton();
         btnBloqueos = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menú Adminstrador");
@@ -91,6 +92,16 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotipooogri.png"))); // NOI18N
         jplMenuAdm.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 310, 120));
 
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("Cerrar Sesión");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jplMenuAdm.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 110, 30));
+
         getContentPane().add(jplMenuAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 450));
 
         pack();
@@ -120,6 +131,12 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btbReportesActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    frmInicioSesionAdminsitrador ad=new frmInicioSesionAdminsitrador();
+    ad.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -161,6 +178,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btnBloqueos;
     private javax.swing.JButton btnEstudiantes;
     private javax.swing.JButton btnLabComputo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jplMenuAdm;
     private javax.swing.JLabel lblTitulo;
