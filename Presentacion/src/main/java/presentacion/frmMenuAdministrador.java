@@ -22,7 +22,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jplMenuAdm = new javax.swing.JPanel();
+        pnlMenuAdm = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         btbReportes = new javax.swing.JButton();
         btnEstudiantes = new javax.swing.JButton();
@@ -36,14 +36,14 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(630, 490));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jplMenuAdm.setBackground(new java.awt.Color(236, 236, 236));
-        jplMenuAdm.setToolTipText("");
-        jplMenuAdm.setName(""); // NOI18N
-        jplMenuAdm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlMenuAdm.setBackground(new java.awt.Color(236, 236, 236));
+        pnlMenuAdm.setToolTipText("");
+        pnlMenuAdm.setName(""); // NOI18N
+        pnlMenuAdm.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lblTitulo.setText("Seleccione que desea administrar");
-        jplMenuAdm.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 350, -1));
+        pnlMenuAdm.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 120, 350, -1));
 
         btbReportes.setBackground(new java.awt.Color(102, 204, 255));
         btbReportes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -54,7 +54,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 btbReportesActionPerformed(evt);
             }
         });
-        jplMenuAdm.add(btbReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 200, 50));
+        pnlMenuAdm.add(btbReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 350, 200, 50));
 
         btnEstudiantes.setBackground(new java.awt.Color(102, 204, 255));
         btnEstudiantes.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -65,7 +65,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 btnEstudiantesActionPerformed(evt);
             }
         });
-        jplMenuAdm.add(btnEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 200, 50));
+        pnlMenuAdm.add(btnEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 200, 50));
 
         btnLabComputo.setBackground(new java.awt.Color(102, 204, 255));
         btnLabComputo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -76,7 +76,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 btnLabComputoActionPerformed(evt);
             }
         });
-        jplMenuAdm.add(btnLabComputo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 200, 50));
+        pnlMenuAdm.add(btnLabComputo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 200, 50));
 
         btnBloqueos.setBackground(new java.awt.Color(102, 204, 255));
         btnBloqueos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -87,10 +87,10 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 btnBloqueosActionPerformed(evt);
             }
         });
-        jplMenuAdm.add(btnBloqueos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 200, 50));
+        pnlMenuAdm.add(btnBloqueos, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 200, 50));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotipooogri.png"))); // NOI18N
-        jplMenuAdm.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 310, 120));
+        pnlMenuAdm.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, 310, 120));
 
         jButton1.setBackground(new java.awt.Color(255, 51, 51));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,9 +100,9 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jplMenuAdm.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 110, 30));
+        pnlMenuAdm.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 410, 110, 30));
 
-        getContentPane().add(jplMenuAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 450));
+        getContentPane().add(pnlMenuAdm, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 450));
 
         pack();
         setLocationRelativeTo(null);
@@ -180,7 +180,7 @@ public class frmMenuAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btnLabComputo;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jplMenuAdm;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlMenuAdm;
     // End of variables declaration//GEN-END:variables
 }

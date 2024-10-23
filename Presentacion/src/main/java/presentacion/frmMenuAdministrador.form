@@ -29,7 +29,7 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JPanel" name="jplMenuAdm">
+    <Container class="javax.swing.JPanel" name="pnlMenuAdm">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ec" green="ec" red="ec" type="rgb"/>

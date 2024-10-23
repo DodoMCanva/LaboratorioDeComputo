@@ -23,7 +23,7 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jplInfEstudiante = new javax.swing.JPanel();
+        pnlInfEstudiante = new javax.swing.JPanel();
         lblId = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
         lblApPaterno = new javax.swing.JLabel();
@@ -46,59 +46,59 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
         setTitle("Agregar Inf. Estudiante");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jplInfEstudiante.setBackground(new java.awt.Color(236, 236, 236));
-        jplInfEstudiante.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlInfEstudiante.setBackground(new java.awt.Color(236, 236, 236));
+        pnlInfEstudiante.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblId.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblId.setText("ID:");
-        jplInfEstudiante.add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 40, 30));
+        pnlInfEstudiante.add(lblId, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 40, 30));
 
         lblNombre.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblNombre.setText("Nombre:");
-        jplInfEstudiante.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 80, 30));
+        pnlInfEstudiante.add(lblNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, 80, 30));
 
         lblApPaterno.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblApPaterno.setText("Apellido Paterno:");
-        jplInfEstudiante.add(lblApPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 140, 30));
+        pnlInfEstudiante.add(lblApPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 170, 140, 30));
 
         lblApMaterno.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblApMaterno.setText("Apellido Materno:");
-        jplInfEstudiante.add(lblApMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 130, 30));
+        pnlInfEstudiante.add(lblApMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, 130, 30));
 
         lblContrasena.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblContrasena.setText("Contraseña:");
-        jplInfEstudiante.add(lblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 100, 30));
+        pnlInfEstudiante.add(lblContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 250, 100, 30));
 
         lblEstado.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblEstado.setText("Estatus:");
-        jplInfEstudiante.add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 70, 30));
+        pnlInfEstudiante.add(lblEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 70, 30));
 
         lblCarrera.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
         lblCarrera.setText("Carrera:");
-        jplInfEstudiante.add(lblCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, 30));
+        pnlInfEstudiante.add(lblCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, -1, 30));
 
         txtId.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jplInfEstudiante.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 240, 30));
+        pnlInfEstudiante.add(txtId, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 90, 240, 30));
 
         txtNombre.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtNombre.setToolTipText("");
-        jplInfEstudiante.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 240, 30));
+        pnlInfEstudiante.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 240, 30));
 
         txtApPaterno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jplInfEstudiante.add(txtApPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 240, 30));
+        pnlInfEstudiante.add(txtApPaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 170, 240, 30));
 
         txtApMaterno.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jplInfEstudiante.add(txtApMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 240, 30));
+        pnlInfEstudiante.add(txtApMaterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 240, 30));
 
         txtContrasena.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jplInfEstudiante.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 240, 30));
+        pnlInfEstudiante.add(txtContrasena, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 250, 240, 30));
 
         txtEstado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jplInfEstudiante.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 240, 30));
+        pnlInfEstudiante.add(txtEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 240, 30));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lblTitulo.setText("Agregar Estudiante");
-        jplInfEstudiante.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, -1, -1));
+        pnlInfEstudiante.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 40, -1, -1));
 
         btnGuardar.setBackground(new java.awt.Color(102, 204, 255));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -109,10 +109,10 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jplInfEstudiante.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 120, 30));
+        pnlInfEstudiante.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 120, 30));
 
         cbxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "​Licenciatura en Administración", "Ingeniería en Mecatrónica", "Ingeniería en Software", "​​Licenciatura en Psicología", "​​Ingeniería Civil", "Licenciatura en Gastronomía", "Licenciatura en Enfermería​", "Licenciatura en Diseño Gráfico", "Licenciatura en Arquitectura" }));
-        jplInfEstudiante.add(cbxCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 240, 30));
+        pnlInfEstudiante.add(cbxCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 240, 30));
 
         btnVolver.setBackground(new java.awt.Color(153, 153, 153));
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
@@ -122,9 +122,9 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        jplInfEstudiante.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        pnlInfEstudiante.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        getContentPane().add(jplInfEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 550));
+        getContentPane().add(pnlInfEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 550));
 
         pack();
         setLocationRelativeTo(null);
@@ -181,7 +181,6 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnVolver;
     private javax.swing.JComboBox<String> cbxCarrera;
-    private javax.swing.JPanel jplInfEstudiante;
     private javax.swing.JLabel lblApMaterno;
     private javax.swing.JLabel lblApPaterno;
     private javax.swing.JLabel lblCarrera;
@@ -190,6 +189,7 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlInfEstudiante;
     private javax.swing.JTextField txtApMaterno;
     private javax.swing.JTextField txtApPaterno;
     private javax.swing.JTextField txtContrasena;

@@ -26,57 +26,57 @@ public class frmReporteCentroComputo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jplRepCentroC = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        pnlRepCentroC = new javax.swing.JPanel();
+        txtTitulo = new javax.swing.JLabel();
+        lblCentro = new javax.swing.JLabel();
+        lblCarrera = new javax.swing.JLabel();
+        lblFechaInicio = new javax.swing.JLabel();
+        lblFechaFin = new javax.swing.JLabel();
+        cbxCentro = new javax.swing.JComboBox<>();
+        dtcFechaInicio = new com.toedter.calendar.JDateChooser();
+        dtcFechaFin = new com.toedter.calendar.JDateChooser();
+        slpRepCentro = new javax.swing.JScrollPane();
+        tblRepCentro = new javax.swing.JTable();
         btnConsultar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reporte de Centro de Computo");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jplRepCentroC.setBackground(new java.awt.Color(255, 255, 255));
-        jplRepCentroC.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlRepCentroC.setBackground(new java.awt.Color(255, 255, 255));
+        pnlRepCentroC.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 0, 0));
-        jLabel1.setText("Reporte Centro de Computo");
-        jplRepCentroC.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 50, -1, -1));
+        txtTitulo.setFont(new java.awt.Font("Segoe UI", 1, 30)); // NOI18N
+        txtTitulo.setForeground(new java.awt.Color(204, 0, 0));
+        txtTitulo.setText("Reporte Centro de Computo");
+        pnlRepCentroC.add(txtTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 50, -1, -1));
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel2.setText("Centro:");
-        jplRepCentroC.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 30));
+        lblCentro.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCentro.setText("Centro:");
+        pnlRepCentroC.add(lblCentro, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, -1, 30));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setText("Carrera:");
-        jplRepCentroC.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, 30));
+        lblCarrera.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblCarrera.setText("Carrera:");
+        pnlRepCentroC.add(lblCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, 30));
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setText("Fecha Inicio:");
-        jplRepCentroC.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, 30));
+        lblFechaInicio.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaInicio.setText("Fecha Inicio:");
+        pnlRepCentroC.add(lblFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, 30));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel5.setText("Fecha Fin:");
-        jplRepCentroC.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, 30));
+        lblFechaFin.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        lblFechaFin.setText("Fecha Fin:");
+        pnlRepCentroC.add(lblFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, -1, 30));
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jplRepCentroC.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 240, 30));
+        cbxCentro.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        pnlRepCentroC.add(cbxCentro, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 110, 240, 30));
 
-        jDateChooser1.setBackground(new java.awt.Color(255, 255, 255));
-        jplRepCentroC.add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 120, 25));
+        dtcFechaInicio.setBackground(new java.awt.Color(255, 255, 255));
+        pnlRepCentroC.add(dtcFechaInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 120, 25));
 
-        jDateChooser2.setBackground(new java.awt.Color(255, 255, 255));
-        jplRepCentroC.add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 120, 25));
+        dtcFechaFin.setBackground(new java.awt.Color(255, 255, 255));
+        pnlRepCentroC.add(dtcFechaFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 210, 120, 25));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblRepCentro.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -97,21 +97,32 @@ public class frmReporteCentroComputo extends javax.swing.JFrame {
                 "Nombre", "Num. Computadora", "Cant. Alumnos ", "Min. Uso día", "Min. Inactivo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        slpRepCentro.setViewportView(tblRepCentro);
 
-        jplRepCentroC.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 530, 250));
+        pnlRepCentroC.add(slpRepCentro, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, 530, 250));
 
         btnConsultar.setBackground(new java.awt.Color(102, 204, 255));
         btnConsultar.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         btnConsultar.setForeground(new java.awt.Color(255, 255, 255));
         btnConsultar.setText("Consultar");
-        jplRepCentroC.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 130, 40));
+        btnConsultar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConsultarActionPerformed(evt);
+            }
+        });
+        pnlRepCentroC.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 130, 40));
 
-        getContentPane().add(jplRepCentroC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 660));
+        getContentPane().add(pnlRepCentroC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 660));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConsultarActionPerformed
+        frmPdfReporteCentroComputo consultar = new frmPdfReporteCentroComputo();
+        consultar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnConsultarActionPerformed
 
 //    /**
 //     * @param args the command line arguments
@@ -150,16 +161,16 @@ public class frmReporteCentroComputo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JPanel jplRepCentroC;
+    private javax.swing.JComboBox<String> cbxCentro;
+    private com.toedter.calendar.JDateChooser dtcFechaFin;
+    private com.toedter.calendar.JDateChooser dtcFechaInicio;
+    private javax.swing.JLabel lblCarrera;
+    private javax.swing.JLabel lblCentro;
+    private javax.swing.JLabel lblFechaFin;
+    private javax.swing.JLabel lblFechaInicio;
+    private javax.swing.JPanel pnlRepCentroC;
+    private javax.swing.JScrollPane slpRepCentro;
+    private javax.swing.JTable tblRepCentro;
+    private javax.swing.JLabel txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

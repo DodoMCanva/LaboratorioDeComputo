@@ -22,7 +22,7 @@ public class frmMenuReportes extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jplMenuReportes = new javax.swing.JPanel();
+        pnlMenuReportes = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         btnRepCarrera = new javax.swing.JButton();
         btnRepCentroComputo = new javax.swing.JButton();
@@ -33,14 +33,14 @@ public class frmMenuReportes extends javax.swing.JFrame {
         setTitle("Reportes");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jplMenuReportes.setBackground(new java.awt.Color(236, 236, 236));
-        jplMenuReportes.setToolTipText("");
-        jplMenuReportes.setName(""); // NOI18N
-        jplMenuReportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        pnlMenuReportes.setBackground(new java.awt.Color(236, 236, 236));
+        pnlMenuReportes.setToolTipText("");
+        pnlMenuReportes.setName(""); // NOI18N
+        pnlMenuReportes.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lblTitulo.setText("Generar reporte");
-        jplMenuReportes.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 180, -1));
+        pnlMenuReportes.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 100, 180, -1));
 
         btnRepCarrera.setBackground(new java.awt.Color(102, 204, 255));
         btnRepCarrera.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -51,7 +51,7 @@ public class frmMenuReportes extends javax.swing.JFrame {
                 btnRepCarreraActionPerformed(evt);
             }
         });
-        jplMenuReportes.add(btnRepCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 230, 50));
+        pnlMenuReportes.add(btnRepCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 230, 50));
 
         btnRepCentroComputo.setBackground(new java.awt.Color(102, 204, 255));
         btnRepCentroComputo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -62,7 +62,7 @@ public class frmMenuReportes extends javax.swing.JFrame {
                 btnRepCentroComputoActionPerformed(evt);
             }
         });
-        jplMenuReportes.add(btnRepCentroComputo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 230, 50));
+        pnlMenuReportes.add(btnRepCentroComputo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 230, 50));
 
         btnRepBloqueos.setBackground(new java.awt.Color(102, 204, 255));
         btnRepBloqueos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -73,7 +73,7 @@ public class frmMenuReportes extends javax.swing.JFrame {
                 btnRepBloqueosActionPerformed(evt);
             }
         });
-        jplMenuReportes.add(btnRepBloqueos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 230, 50));
+        pnlMenuReportes.add(btnRepBloqueos, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, 230, 50));
 
         btnVolver.setBackground(new java.awt.Color(153, 153, 153));
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
@@ -83,16 +83,18 @@ public class frmMenuReportes extends javax.swing.JFrame {
                 btnVolverActionPerformed(evt);
             }
         });
-        jplMenuReportes.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        pnlMenuReportes.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        getContentPane().add(jplMenuReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 400));
+        getContentPane().add(pnlMenuReportes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 560, 400));
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRepCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepCarreraActionPerformed
-
+        frmReporteCarreras ir = new frmReporteCarreras();
+        ir.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRepCarreraActionPerformed
 
     private void btnRepCentroComputoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepCentroComputoActionPerformed
@@ -102,7 +104,9 @@ public class frmMenuReportes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRepCentroComputoActionPerformed
 
     private void btnRepBloqueosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepBloqueosActionPerformed
-
+        frmReporteBloqueos ir = new frmReporteBloqueos();
+        ir.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btnRepBloqueosActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
@@ -151,7 +155,7 @@ public class frmMenuReportes extends javax.swing.JFrame {
     private javax.swing.JButton btnRepCarrera;
     private javax.swing.JButton btnRepCentroComputo;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JPanel jplMenuReportes;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JPanel pnlMenuReportes;
     // End of variables declaration//GEN-END:variables
 }
