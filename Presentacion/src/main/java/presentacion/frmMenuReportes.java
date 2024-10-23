@@ -1,4 +1,3 @@
-
 package presentacion;
 
 /**
@@ -26,7 +25,7 @@ public class frmMenuReportes extends javax.swing.JFrame {
         jplMenuReportes = new javax.swing.JPanel();
         lblTitulo = new javax.swing.JLabel();
         btnRepCarrera = new javax.swing.JButton();
-        btnRepComputo = new javax.swing.JButton();
+        btnRepCentroComputo = new javax.swing.JButton();
         btnRepBloqueos = new javax.swing.JButton();
         btnVolver = new javax.swing.JButton();
 
@@ -54,16 +53,16 @@ public class frmMenuReportes extends javax.swing.JFrame {
         });
         jplMenuReportes.add(btnRepCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 150, 230, 50));
 
-        btnRepComputo.setBackground(new java.awt.Color(102, 204, 255));
-        btnRepComputo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnRepComputo.setText("Reporte de centro de computo");
-        btnRepComputo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        btnRepComputo.addActionListener(new java.awt.event.ActionListener() {
+        btnRepCentroComputo.setBackground(new java.awt.Color(102, 204, 255));
+        btnRepCentroComputo.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnRepCentroComputo.setText("Reporte de centro de computo");
+        btnRepCentroComputo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        btnRepCentroComputo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRepComputoActionPerformed(evt);
+                btnRepCentroComputoActionPerformed(evt);
             }
         });
-        jplMenuReportes.add(btnRepComputo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 230, 50));
+        jplMenuReportes.add(btnRepCentroComputo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 230, 50));
 
         btnRepBloqueos.setBackground(new java.awt.Color(102, 204, 255));
         btnRepBloqueos.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
@@ -93,12 +92,14 @@ public class frmMenuReportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnRepCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepCarreraActionPerformed
- 
+
     }//GEN-LAST:event_btnRepCarreraActionPerformed
 
-    private void btnRepComputoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepComputoActionPerformed
-
-    }//GEN-LAST:event_btnRepComputoActionPerformed
+    private void btnRepCentroComputoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepCentroComputoActionPerformed
+        frmReporteCentroComputo ir = new frmReporteCentroComputo();
+        ir.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnRepCentroComputoActionPerformed
 
     private void btnRepBloqueosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRepBloqueosActionPerformed
 
@@ -148,7 +149,7 @@ public class frmMenuReportes extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRepBloqueos;
     private javax.swing.JButton btnRepCarrera;
-    private javax.swing.JButton btnRepComputo;
+    private javax.swing.JButton btnRepCentroComputo;
     private javax.swing.JButton btnVolver;
     private javax.swing.JPanel jplMenuReportes;
     private javax.swing.JLabel lblTitulo;
