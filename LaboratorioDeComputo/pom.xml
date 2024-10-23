@@ -58,13 +58,18 @@
             <artifactId>jakarta.persistence</artifactId>
             <version>2.2.3</version>
         </dependency>
+    <dependency>
+        <groupId>com.toedter</groupId>
+        <artifactId>jcalendar</artifactId>
+        <version>1.4</version>
+    </dependency>
     </dependencies>
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>20</maven.compiler.source>
-        <maven.compiler.target>20</maven.compiler.target>
-        <exec.mainClass>LaboratorioDeComputo</exec.mainClass>
-    </properties>
-    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>20</maven.compiler.source>
+    <maven.compiler.target>20</maven.compiler.target>
+    <exec.mainClass>LaboratorioDeComputo</exec.mainClass>
+</properties>
+<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 
 </project>
