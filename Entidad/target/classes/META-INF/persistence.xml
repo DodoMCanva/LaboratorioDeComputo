@@ -3,6 +3,14 @@
   <persistence-unit name="EntidadLaboratorio" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>Entidades.Estudiante</class>
+    <class>Entidades.Carrera</class>
+    <class>Entidades.NombreCompleto</class>
+    <class>Entidades.PersonalAutorizado</class>
+    <class>Entidades.Bloqueo</class>
+    <class>Entidades.Sesion</class>
+    <class>Entidades.Computadora</class>
+    <class>Entidades.Software</class>
+    <class>Entidades.CentroLaboratorio</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/futbol?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
