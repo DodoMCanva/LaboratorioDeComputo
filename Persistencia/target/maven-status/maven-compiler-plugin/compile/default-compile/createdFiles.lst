@@ -1,1 +1,2 @@
-com\mycompany\persistencia\Persistencia.class
+Interfaces\IEstudianteDAO.class
+Persistencias\EstudianteDAO.class
