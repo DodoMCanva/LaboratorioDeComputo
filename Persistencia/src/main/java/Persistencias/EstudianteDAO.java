@@ -83,16 +83,16 @@ public class EstudianteDAO implements IEstudianteDAO {
     @Override
     public void eliminar(int id) {
         EntityManager em = emf.createEntityManager();
-    Estudiante estudiante = em.find(Estudiante.class, id);
+        Estudiante estudiante = em.find(Estudiante.class, id);
 
-    if (estudiante != null) {
-        em.getTransaction().begin();
-        estudiante.setEstaEgresado(true); // Cambia el booleano a true
-        em.merge(estudiante); // Actualiza el estado en la base de datos
-        em.getTransaction().commit();
-    }
+        if (estudiante != null) {
+            em.getTransaction().begin();
+            estudiante.setEstaEgresado(true);
+            em.merge(estudiante);
+            em.getTransaction().commit();
+        }
 
-    em.close();
+        em.close();
     }
 
     //Verificaciones
