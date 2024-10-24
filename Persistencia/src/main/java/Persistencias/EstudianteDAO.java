@@ -2,10 +2,16 @@ package Persistencias;
 import Entidades.Estudiante;
 import Interfaces.IEstudianteDAO;
 import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import utilerias.Tabla;
 
 public class EstudianteDAO implements IEstudianteDAO {
-
+    //com.mycompany_SegundaUnidad_jar_1.0PU se deberia cambiar eso
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_SegundaUnidad_jar_1.0PU");
+    
+    //Consultas
     @Override
     public List<Estudiante> obtenerEstudiantes(Tabla Filtro) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -21,9 +27,14 @@ public class EstudianteDAO implements IEstudianteDAO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    //Modificaciones
     @Override
     public void guardar(Estudiante estudiante) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        em.persist(estudiante);
+        em.getTransaction().commit();
+        em.close();
     }
 
     @Override
@@ -36,6 +47,7 @@ public class EstudianteDAO implements IEstudianteDAO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    //Verificaciones
     @Override
     public void reglasNegocio(Estudiante e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
