@@ -11,14 +11,14 @@ public interface IEstudianteDAO {
 
     public List<Estudiante> buscarporNombre(String nombre, Tabla Filtro) throws PersistenciaException;
 
-    public Estudiante consultar(int id) throws PersistenciaException;
+    public Estudiante consultar(Long id) throws PersistenciaException;
 
     //Modificaciones
     public void guardar(Estudiante estudiante) throws PersistenciaException;
 
-    public void editar(int id, Estudiante eEstudiante) throws PersistenciaException;
+    public void editar(Long id, Estudiante eEstudiante) throws PersistenciaException;
 
-    public void eliminar(int id) throws PersistenciaException;
+    public void eliminar(Long id) throws PersistenciaException;
 
     //verificadores
     public void reglasNegocio(Estudiante e) throws PersistenciaException;

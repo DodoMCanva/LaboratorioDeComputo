@@ -1,27 +1,28 @@
 package Interfaces;
 
+import BO.BOException;
 import DTOLabComputo.EstudianteDTO;
 import java.util.List;
 import utilerias.Tabla;
 
 public interface IEstudianteBO {
     //Consultas
-    public List<EstudianteDTO> obtenerEstudiantes(Tabla Filtro);
+    public List<EstudianteDTO> obtenerEstudiantes(Tabla Filtro) throws BOException;
     
-    public List<EstudianteDTO> buscarporNombre(String nombre, Tabla Filtro);
+    public List<EstudianteDTO> buscarporNombre(String nombre, Tabla Filtro) throws BOException;
     
-    public EstudianteDTO consultar(int id);
+    public EstudianteDTO consultar(Long id) throws BOException;
     
     //Modificaciones
-    public void guardar(EstudianteDTO estudiante);
+    public void guardar(EstudianteDTO estudiante) throws BOException;
     
-    public void editar();
+    public void editar(Long id, EstudianteDTO e) throws BOException;
     
-    public void eliminar();
+    public void eliminar(Long id) throws BOException;
     
     //verificadores
-    public void reglasNegocio(EstudianteDTO e);
+    public void reglasNegocio(EstudianteDTO e) throws BOException;
     
-    public void autenticarCliente(EstudianteDTO estudiante);
+    public void autenticarCliente(EstudianteDTO estudiante) throws BOException;
     
 }

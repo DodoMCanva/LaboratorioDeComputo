@@ -40,7 +40,7 @@ public class EstudianteDAO implements IEstudianteDAO {
     }
 
     @Override
-    public Estudiante consultar(int id) {
+    public Estudiante consultar(Long id) {
         EntityManager em = emf.createEntityManager();
         Estudiante estudiante = null;
         try {
@@ -62,7 +62,7 @@ public class EstudianteDAO implements IEstudianteDAO {
     }
 
     @Override
-    public void editar(int id, Estudiante eEstudiante) {
+    public void editar(Long id, Estudiante eEstudiante) {
         EntityManager em = emf.createEntityManager();
         try {
             em.getTransaction().begin();
@@ -81,7 +81,7 @@ public class EstudianteDAO implements IEstudianteDAO {
     }
 
     @Override
-    public void eliminar(int id) {
+    public void eliminar(Long id) {
         EntityManager em = emf.createEntityManager();
         Estudiante estudiante = em.find(Estudiante.class, id);
 

@@ -1,34 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTOLabComputo;
 
 /**
  *
- * @author cesar
+ * @author Equipo 3
  */
 public class EstudianteDTO {
-    private int Estudiante_ID;
-    private String Contrasena;
+    private Long Estudiante_ID;
+    private String Nombre;
+    private String apellidoPaterno;
+    private String apellidoMaterno;
+    private String Contraseña;
     private boolean estaEgresado;
-
     
-    
-    public int getEstudiante_ID() {
+    public Long getEstudiante_ID() {
         return Estudiante_ID;
     }
 
-    public void setEstudiante_ID(int Estudiante_ID) {
+    public void setEstudiante_ID(Long Estudiante_ID) {
         this.Estudiante_ID = Estudiante_ID;
     }
 
-    public String getContrasena() {
-        return Contrasena;
+    public String getContraseña() {
+        return Contraseña;
     }
 
-    public void setContrasena(String Contrasena) {
-        this.Contrasena = Contrasena;
+    public void setContraseña(String Contrasena) {
+        this.Contraseña = Contrasena;
     }
 
     public boolean isEstaEgresado() {
@@ -37,6 +34,30 @@ public class EstudianteDTO {
 
     public void setEstaEgresado(boolean estaEgresado) {
         this.estaEgresado = estaEgresado;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getApellidoPaterno() {
+        return apellidoPaterno;
+    }
+
+    public void setApellidoPaterno(String apellidoPaterno) {
+        this.apellidoPaterno = apellidoPaterno;
+    }
+
+    public String getApellidoMaterno() {
+        return apellidoMaterno;
+    }
+
+    public void setApellidoMaterno(String apellidoMaterno) {
+        this.apellidoMaterno = apellidoMaterno;
     }
     
     
