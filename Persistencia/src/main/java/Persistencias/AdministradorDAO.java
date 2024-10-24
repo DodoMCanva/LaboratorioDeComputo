@@ -19,6 +19,7 @@ public class AdministradorDAO {
     
      //com.mycompany_SegundaUnidad_jar_1.0PU se deberia cambiar eso
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
+    
      public boolean validarAdministrador(String usuario, String contraseña) {
         EntityManager em = emf.createEntityManager();  // Aquí creas el EntityManager
         try {
@@ -30,7 +31,7 @@ public class AdministradorDAO {
             query.setParameter("usuario", usuario);
             query.setParameter("contraseña", contraseña);
 
-            // Si se encuentra el administrador, el tamaño de la lista será mayor que 0
+            // Si se encuentra el administrador, el tamaño de la lista s        erá mayor que 0
             List<PersonalAutorizado> resultados = query.getResultList();
             return !resultados.isEmpty();
         } catch (Exception e) {

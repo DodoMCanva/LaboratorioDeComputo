@@ -4,16 +4,23 @@
  */
 package presentacion;
 
+import BO.AdministradorBO;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Valeria
  */
 public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
 
+    private AdministradorBO administradorBO;
+
     /**
      * Creates new form frmInicioSesionAdminsitrador
      */
     public frmInicioSesionAdminsitrador() {
+
+        administradorBO = new AdministradorBO();
         initComponents();
     }
 
@@ -88,9 +95,31 @@ public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
     }//GEN-LAST:event_txtContraseñaActionPerformed
 
     private void btnIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIniciarSesionActionPerformed
-        frmMenuAdministrador ir = new frmMenuAdministrador();
-        ir.setVisible(true);
-        this.dispose();
+        // Obtén los datos de usuario y contraseña ingresados
+        String usuario = txtUsuario.getText();
+        String contraseña = new String(txtContraseña.getPassword());
+
+        // Verifica si los campos están vacíos
+        if (usuario.isEmpty() || contraseña.isEmpty()) {
+            // Muestra un mensaje si algún campo está vacío
+            JOptionPane.showMessageDialog(this, "Por favor, llene todos los campos.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            return; // Detiene el flujo para que no continúe si hay campos vacíos
+        }
+
+        // Llama a la capa de negocio para validar el administrador
+        boolean esValido = administradorBO.validarCredenciales(usuario, contraseña);
+
+        // Si las credenciales son correctas, abrir la siguiente ventana
+        if (esValido) {
+            frmMenuAdministrador ir = new frmMenuAdministrador();
+            ir.setVisible(true);
+            this.dispose();
+        } else {
+            // Si las credenciales son incorrectas, muestra un mensaje de error
+            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+
     }//GEN-LAST:event_btnIniciarSesionActionPerformed
 
     /**

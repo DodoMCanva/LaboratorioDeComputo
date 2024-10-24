@@ -4,14 +4,13 @@
  */
 package Interfaces;
 
-import Persistencias.PersistenciaException;
 
 /**
  *
  * @author cesar
  */
 public interface IAdministradorDAO {
-    
-    public boolean validarCredenciales(String usuario, String contraseña) throws PersistenciaException;
-           
+
+    // Declaración del método que valida al administrador
+    boolean validarAdministrador(String usuario, String contraseña);
 }
