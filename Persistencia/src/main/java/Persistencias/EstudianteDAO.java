@@ -11,7 +11,7 @@ import utilerias.Tabla;
 public class EstudianteDAO implements IEstudianteDAO {
 
     //com.mycompany_SegundaUnidad_jar_1.0PU se deberia cambiar eso
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.mycompany_SegundaUnidad_jar_1.0PU");
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
 
     //Consultas
     @Override
