@@ -1,4 +1,5 @@
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Persistencias\AdministradorDAO.java
+C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Interfaces\ICentroLaboratorioDAO.java
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Interfaces\IAdministradorDAO.java
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Interfaces\IEstudianteDAO.java
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\utilerias\Convertidor.java
@@ -7,3 +8,4 @@ C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\utilerias\Tabla.java
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Persistencias\PersistenciaException.java
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\utilerias\Reportes.java
+C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Persistencias\CentroLaboratorioDAO.java
