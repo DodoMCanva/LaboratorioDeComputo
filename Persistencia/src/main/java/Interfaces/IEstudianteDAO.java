@@ -16,13 +16,13 @@ public interface IEstudianteDAO {
     //Modificaciones
     public void guardar(Estudiante estudiante) throws PersistenciaException;
 
-    public void editar(int id) throws PersistenciaException;
+    public void editar(int id, Estudiante eEstudiante) throws PersistenciaException;
 
     public void eliminar(int id) throws PersistenciaException;
 
     //verificadores
     public void reglasNegocio(Estudiante e) throws PersistenciaException;
 
-    public void autenticarCliente(Estudiante estudiante) throws PersistenciaException;
+    public void autenticarEstudiante(Estudiante estudiante) throws PersistenciaException;
 
 }

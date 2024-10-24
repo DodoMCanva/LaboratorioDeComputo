@@ -24,13 +24,31 @@ public class EstudianteDAO implements IEstudianteDAO {
 
     @Override
     public List<Estudiante> buscarporNombre(String nombre, Tabla Filtro) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-
+        EntityManager em = emf.createEntityManager();
+        List<Estudiante> estudiantes = null;
+        try {
+            estudiantes = em.createQuery(
+                    "SELECT e FROM Estudiante e WHERE e.nombreCompleto.nombre LIKE :nombre",
+                    Estudiante.class
+            ).setParameter("nombre", "%" + nombre + "%").getResultList();
+        } catch (Exception e) {
+            throw new PersistenciaException("Error buscando estudiantes por nombre", e);
+        } finally {
+            em.close();
+        }
+        return estudiantes;
     }
 
     @Override
     public Estudiante consultar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        EntityManager em = emf.createEntityManager();
+        Estudiante estudiante = null;
+        try {
+            estudiante = em.find(Estudiante.class, id);
+        } finally {
+            em.close();
+        }
+        return estudiante;
     }
 
     //Modificaciones
@@ -44,13 +62,37 @@ public class EstudianteDAO implements IEstudianteDAO {
     }
 
     @Override
-    public void editar(int id) {
-
+    public void editar(int id, Estudiante eEstudiante) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            Estudiante estudiante = em.find(Estudiante.class, id);
+            if (estudiante != null) {
+                estudiante.setContraseña(eEstudiante.getContraseña());
+                estudiante.setEstaEgresado(eEstudiante.isEstaEgresado());
+                estudiante.setCarrera(eEstudiante.getCarrera());
+                estudiante.setNombreCompleto(eEstudiante.getNombreCompleto());
+                em.merge(estudiante);
+            }
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
     }
 
     @Override
     public void eliminar(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        EntityManager em = emf.createEntityManager();
+        Estudiante estudiante = em.find(Estudiante.class, id);
+
+        if (estudiante != null) {
+            em.getTransaction().begin();
+            estudiante.setEstaEgresado(true);
+            em.merge(estudiante);
+            em.getTransaction().commit();
+        }
+
+        em.close();
     }
 
     //Verificaciones
@@ -60,8 +102,16 @@ public class EstudianteDAO implements IEstudianteDAO {
     }
 
     @Override
-    public void autenticarCliente(Estudiante estudiante) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void autenticarEstudiante(Estudiante estudiante) throws PersistenciaException {
+        EntityManager em = emf.createEntityManager();
+        try {
+            Estudiante encontrado = em.find(Estudiante.class, estudiante.getId());
+            if (encontrado == null || !encontrado.getContraseña().equals(estudiante.getContraseña())) {
+                throw new PersistenciaException("Autenticación fallida");
+            }
+        } finally {
+            em.close();
+        }
     }
 
 }
