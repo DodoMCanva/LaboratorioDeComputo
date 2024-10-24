@@ -6,6 +6,7 @@ import java.util.List;
 import utilerias.Tabla;
 
 public interface IEstudianteDAO {
+    
     //Consultas
     public List<Estudiante> obtenerEstudiantes(Tabla Filtro) throws PersistenciaException;
 
