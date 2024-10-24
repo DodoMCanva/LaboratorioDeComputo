@@ -1,6 +1,7 @@
-utilerias\Convertidor.class
 utilerias\Tabla.class
 utilerias\Utilidades.class
-Interfaces\IEstudianteDAO.class
 Persistencias\EstudianteDAO.class
 utilerias\Reportes.class
+Persistencias\PersistenciaException.class
+utilerias\Convertidor.class
+Interfaces\IEstudianteDAO.class

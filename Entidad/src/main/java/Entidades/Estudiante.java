@@ -33,6 +33,7 @@ public class Estudiante implements Serializable {
     private Carrera carrera;
 
     @OneToOne(mappedBy = "estudiante")
+    @JoinColumn(name = "Estudiante_ID", referencedColumnName = "Estudiante_ID")
     private NombreCompleto nombreCompleto;
 
     @OneToMany(mappedBy = "estudiante")
