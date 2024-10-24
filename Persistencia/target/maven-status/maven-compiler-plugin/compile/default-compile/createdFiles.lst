@@ -1,4 +1,6 @@
+Persistencias\AdministradorDAO.class
 utilerias\Tabla.class
+Interfaces\IAdministradorDAO.class
 utilerias\Utilidades.class
 Persistencias\EstudianteDAO.class
 utilerias\Reportes.class
