@@ -5,6 +5,7 @@
 package Persistencias;
 
 import Entidades.PersonalAutorizado;
+import Interfaces.IAdministradorDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,7 +16,7 @@ import javax.persistence.TypedQuery;
  *
  * @author cesar
  */
-public class AdministradorDAO {
+public class AdministradorDAO implements IAdministradorDAO {
     
      //com.mycompany_SegundaUnidad_jar_1.0PU se deberia cambiar eso
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");

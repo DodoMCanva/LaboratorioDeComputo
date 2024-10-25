@@ -13,14 +13,13 @@ import javax.swing.JOptionPane;
  */
 public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
 
-    private AdministradorBO administradorBO;
+    private AdministradorBO administradorBO= new AdministradorBO();
 
     /**
      * Creates new form frmInicioSesionAdminsitrador
      */
     public frmInicioSesionAdminsitrador() {
 
-        administradorBO = new AdministradorBO();
         initComponents();
     }
 
@@ -148,7 +147,7 @@ public class frmInicioSesionAdminsitrador extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(frmInicioSesionAdminsitrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

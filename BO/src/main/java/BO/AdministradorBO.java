@@ -6,13 +6,14 @@ package BO;
 
 import Interfaces.IAdministradorBO;
 import Interfaces.IAdministradorDAO;
+import Persistencias.AdministradorDAO;
 
 /**
  * @author cesar
  */
 public class AdministradorBO implements IAdministradorBO {
 
-    private IAdministradorDAO administradorDAO;
+    private IAdministradorDAO administradorDAO=new AdministradorDAO();
     
     public AdministradorBO(){
     
