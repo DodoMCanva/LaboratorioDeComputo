@@ -49,11 +49,11 @@
             <artifactId>org.eclipse.persistence.moxy</artifactId>
             <version>2.7.12</version>
         </dependency>
-    <dependency>
-        <groupId>com.toedter</groupId>
-        <artifactId>jcalendar</artifactId>
-        <version>1.4</version>
-    </dependency>
+        <dependency>
+            <groupId>com.toedter</groupId>
+            <artifactId>jcalendar</artifactId>
+            <version>1.4</version>
+        </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>BO</artifactId>
@@ -75,12 +75,12 @@
             <version>${project.version}</version>
         </dependency>
     </dependencies>
-<properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <maven.compiler.source>20</maven.compiler.source>
-    <maven.compiler.target>20</maven.compiler.target>
-    <exec.mainClass>LaboratorioDeComputo</exec.mainClass>
-</properties>
-<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>20</maven.compiler.source>
+        <maven.compiler.target>20</maven.compiler.target>
+        <exec.mainClass>LaboratorioDeComputo</exec.mainClass>
+    </properties>
+    <!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
     <name>Presentacion</name>
 </project>

@@ -141,7 +141,7 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    public void nuevoEstudiante()
+    public void nuevoEstudiante(){}
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
