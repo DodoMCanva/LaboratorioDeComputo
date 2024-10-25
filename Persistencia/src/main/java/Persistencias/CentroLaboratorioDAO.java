@@ -2,7 +2,11 @@ package Persistencias;
 
 import DTOLabComputo.centroLabDTO;
 import Entidades.CentroLaboratorio;
+import Entidades.Computadora;
 import Interfaces.ICentroLaboratorioDAO;
+import java.sql.Time;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -113,10 +117,12 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
     
     public CentroLaboratorio convertirDTOaEntidad(centroLabDTO dto){
         CentroLaboratorio ent = new CentroLaboratorio();
+        List<Computadora> computadoras = new ArrayList<>();
         ent.setCampus(dto.getCampus());
         ent.setEstEliminado(false);
         ent.setHoraInicio(dto.getHoraInicio());
         ent.setHoraFin(dto.getHoraFin());
+        ent.setComputadoras(computadoras);
         return ent;
     }
 

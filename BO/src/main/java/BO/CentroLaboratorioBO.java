@@ -5,6 +5,7 @@ import Interfaces.ICentroLaboratorioBO;
 import Interfaces.ICentroLaboratorioDAO;
 import Persistencias.CentroLaboratorioDAO;
 import Persistencias.PersistenciaException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,8 +21,17 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO{
     
     @Override
     public List<centroLabDTO> obtenerLaboratoriosTabla(Tabla Filtro) throws BOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+        List<centroLabDTO> estudiantesDTO = new ArrayList<>();
+        /*List<Estudiante> estudiantes = null;
+        try {
+            estudiantes = est.obtenerEstudiantes(Filtro);
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for (Estudiante estudiante : estudiantes) {
+            estudiantesDTO.add(convertirAEstudianteDTO(estudiante));
+        }*/
+        return estudiantesDTO;}
 
     @Override
     public List<centroLabDTO> obtenerLaboratorio() throws BOException {

@@ -1,7 +1,7 @@
 package Entidades;
 
 import java.io.Serializable;
-import java.time.LocalTime;
+import java.sql.Time;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,10 +24,10 @@ public class CentroLaboratorio implements Serializable {
     private Long id;
 
     @Column(name = "HoraInicio", nullable = false)
-    private LocalTime horaInicio;
+    private Time horaInicio;
 
     @Column(name = "HoraFin", nullable = false)
-    private LocalTime horaFin;
+    private Time horaFin;
 
     @Column(name = "Campus", length = 10, nullable = false)
     private String campus;
@@ -46,19 +46,19 @@ public class CentroLaboratorio implements Serializable {
         this.id = id;
     }
 
-    public LocalTime  getHoraInicio() {
+    public Time  getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(LocalTime  horaInicio) {
+    public void setHoraInicio(Time  horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public LocalTime  getHoraFin() {
+    public Time  getHoraFin() {
         return horaFin;
     }
 
-    public void setHoraFin(LocalTime horaFin) {
+    public void setHoraFin(Time horaFin) {
         this.horaFin = horaFin;
     }
 

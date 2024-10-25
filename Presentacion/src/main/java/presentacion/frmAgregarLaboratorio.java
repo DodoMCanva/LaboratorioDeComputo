@@ -3,6 +3,7 @@ package presentacion;
 import BO.BOException;
 import BO.CentroLaboratorioBO;
 import DTOLabComputo.centroLabDTO;
+import java.sql.Time;
 import java.time.LocalTime;
 
 /**
@@ -15,7 +16,6 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -124,22 +124,24 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
 
     public void guardar() {
         centroLabDTO lab = new centroLabDTO();
-        String horaInicio = txtHoraInicio.getText(); 
+        String horaInicio = txtHoraInicio.getText();
         String minutosInicio = txtMinutosInicio.getText();
-        LocalTime inicio = LocalTime.of(Integer.parseInt(horaInicio), Integer.parseInt(minutosInicio));
-        String horaFin = txtHoraFin.getText(); 
+        LocalTime inicioLocal = LocalTime.of(Integer.parseInt(horaInicio), Integer.parseInt(minutosInicio));
+        Time inicioSQL = Time.valueOf(inicioLocal);
+        String horaFin = txtHoraFin.getText();
         String minutosFin = txtMinutosFin.getText();
-        LocalTime fin = LocalTime.of(Integer.parseInt(horaFin), Integer.parseInt(minutosFin));
+        LocalTime finLocal = LocalTime.of(Integer.parseInt(horaFin), Integer.parseInt(minutosFin));
+        Time finSQL = Time.valueOf(finLocal); 
         lab.setCampus(cbxCampus.getSelectedItem().toString());
-        lab.setHoraInicio(inicio);
-        lab.setHoraInicio(fin);
-        
+        lab.setHoraInicio(inicioSQL);
+        lab.setHoraInicio(finSQL);
+
         CentroLaboratorioBO cl = new CentroLaboratorioBO();
         try {
             cl.guardar(lab);
         } catch (BOException e) {
         }
-        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,5 +1,6 @@
 package DTOLabComputo;
 
+import java.sql.Time;
 import java.time.LocalTime;
 
 /**
@@ -9,8 +10,8 @@ import java.time.LocalTime;
 public class centroLabDTO {
     
     private int CentroLab_ID;
-    private LocalTime HoraInicio;
-    private LocalTime HoraFin;
+    private Time HoraInicio;
+    private Time HoraFin;
     private String Campus;
     private boolean estEliminado;
 
@@ -22,19 +23,19 @@ public class centroLabDTO {
         this.CentroLab_ID = CentroLab_ID;
     }
 
-    public LocalTime getHoraInicio() {
+    public Time getHoraInicio() {
         return HoraInicio;
     }
 
-    public void setHoraInicio(LocalTime HoraInicio) {
+    public void setHoraInicio(Time HoraInicio) {
         this.HoraInicio = HoraInicio;
     }
 
-    public LocalTime getHoraFin() {
+    public Time getHoraFin() {
         return HoraFin;
     }
 
-    public void setHoraFin(LocalTime HoraFin) {
+    public void setHoraFin(Time HoraFin) {
         this.HoraFin = HoraFin;
     }
 

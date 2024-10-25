@@ -40,8 +40,8 @@ public class Prueba {
         
         centro.setCampus("Guaymas");
         centro.setEstEliminado(true);
-        centro.setHoraFin(LocalTime.of(8,30));
-        centro.setHoraInicio(LocalTime.of(6,00));
+        //centro.setHoraFin(LocalTime.of(8,30));
+        //centro.setHoraInicio(LocalTime.of(6,00));
         centro.setComputadoras(computadoras);
         
         
