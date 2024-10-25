@@ -2,6 +2,7 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -28,15 +29,15 @@ public class Estudiante implements Serializable {
     @Column(name = "estaEgresado", nullable = false)
     private boolean estaEgresado;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "Carrera_ID", nullable = false)
     private Carrera carrera;
 
-    @OneToOne(mappedBy = "estudiante")
+    @OneToOne(mappedBy = "estudiante",cascade = CascadeType.PERSIST)
     @JoinColumn(name = "Estudiante_ID", referencedColumnName = "Estudiante_ID")
     private NombreCompleto nombreCompleto;
 
-    @OneToMany(mappedBy = "estudiante")
+    @OneToMany(mappedBy = "estudiante", cascade = CascadeType.PERSIST)
     private List<Sesion> sesiones;
 
     public Long getId() {

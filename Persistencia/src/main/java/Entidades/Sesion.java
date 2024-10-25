@@ -3,6 +3,7 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Sesion implements Serializable {
     @Column(name = "FechaFin", nullable = false)
     private Date fechaFin;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "Estudiante_ID", nullable = false)
     private Estudiante estudiante;
 

@@ -18,11 +18,11 @@ import javax.persistence.TypedQuery;
  */
 public class AdministradorDAO implements IAdministradorDAO {
     
-     //com.mycompany_SegundaUnidad_jar_1.0PU se deberia cambiar eso
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
     
+    @Override
      public boolean validarAdministrador(String usuario, String contraseña) {
-        EntityManager em = emf.createEntityManager();  // Aquí creas el EntityManager
+        EntityManager em = emf.createEntityManager(); 
         try {
             // Consulta para buscar el administrador
             TypedQuery<PersonalAutorizado> query = em.createQuery(
@@ -32,7 +32,6 @@ public class AdministradorDAO implements IAdministradorDAO {
             query.setParameter("usuario", usuario);
             query.setParameter("contraseña", contraseña);
 
-            // Si se encuentra el administrador, el tamaño de la lista s        erá mayor que 0
             List<PersonalAutorizado> resultados = query.getResultList();
             return !resultados.isEmpty();
         } catch (Exception e) {

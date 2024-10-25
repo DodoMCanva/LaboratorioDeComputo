@@ -19,10 +19,10 @@ public class PersonalAutorizado implements Serializable {
     @Column(name = "Administrador_ID", nullable = false)
     private Long id;
 
-    @Column(name = "Contraseña", length = 10, unique = true, nullable = false)
+    @Column(name = "Contraseña", length = 10, nullable = false)
     private String contraseña;
 
-    @Column(name = "Usuario", length = 15, unique = true, nullable = false)
+    @Column(name = "Usuario", length = 50   , nullable = false)
     private String usuario;
     
     public Long getId() {

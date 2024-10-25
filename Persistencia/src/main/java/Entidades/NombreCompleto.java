@@ -1,6 +1,7 @@
 package Entidades;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,7 +32,7 @@ public class NombreCompleto implements Serializable {
     @Column(name = "ApellidoMaterno", length = 15, nullable = false)
     private String apellidoMaterno;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "Estudiante_ID", nullable = false)
     private Estudiante estudiante;
 
