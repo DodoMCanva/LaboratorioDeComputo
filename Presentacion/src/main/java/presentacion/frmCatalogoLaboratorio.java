@@ -2,7 +2,7 @@ package presentacion;
 
 /**
  *
- * @author Valeria
+ * @author Equipo 3
  */
 public class frmCatalogoLaboratorio extends javax.swing.JFrame {
 
