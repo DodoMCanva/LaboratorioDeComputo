@@ -1,5 +1,6 @@
 package Persistencias;
 
+import DTOLabComputo.centroLabDTO;
 import Entidades.CentroLaboratorio;
 import Interfaces.ICentroLaboratorioDAO;
 import java.util.List;
@@ -14,6 +15,9 @@ import utilerias.Tabla;
  */
 public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
+    
+    static CentroLaboratorio cl = new CentroLaboratorio();
+    
     @PersistenceContext
     private EntityManager em;
 
@@ -52,7 +56,8 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
     //Modificaciones
     @Override
-    public void guardar(CentroLaboratorio cl) throws PersistenciaException {
+    public void guardar(centroLabDTO dto) throws PersistenciaException {
+        cl = convertirDTOaEntidad(dto);
         try {
             if (cl.getId() == null) {
                 em.persist(cl);
@@ -65,7 +70,8 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
     }
 
     @Override
-    public void editar(Long id, CentroLaboratorio cl) throws PersistenciaException {
+    public void editar(Long id, centroLabDTO dto) throws PersistenciaException {
+        cl = convertirDTOaEntidad(dto);
         try {
             CentroLaboratorio existente = consultar(id);
             if (existente != null) {
@@ -89,20 +95,29 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
                 cl.setEstEliminado(true);
                 em.merge(cl);
             }
-        } catch (Exception e) {
+        } catch (PersistenciaException e) {
             throw new PersistenciaException("Error al eliminar centro de laboratorio con ID: " + id, e);
         }
     }
     
     //Verificaciones
     @Override
-    public void reglasNegocio(CentroLaboratorio cl) throws PersistenciaException {
+    public void reglasNegocio(centroLabDTO dto) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void autenticarEstudiante(CentroLaboratorio cl) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public CentroLaboratorio convertirDTOaEntidad(centroLabDTO dto){
+        CentroLaboratorio ent = new CentroLaboratorio();
+        ent.setCampus(dto.getCampus());
+        ent.setEstEliminado(false);
+        ent.setHoraInicio(dto.getHoraInicio());
+        ent.setHoraFin(dto.getHoraFin());
+        return ent;
     }
 
 }

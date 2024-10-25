@@ -1,20 +1,16 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTOLabComputo;
 
-import java.sql.Time;
+import java.time.LocalTime;
 
 /**
  *
- * @author cesar
+ * @author Equipo 3
  */
 public class centroLabDTO {
     
     private int CentroLab_ID;
-    private Time HoraInicio;
-    private Time HoraFin;
+    private LocalTime HoraInicio;
+    private LocalTime HoraFin;
     private String Campus;
     private boolean estEliminado;
 
@@ -26,19 +22,19 @@ public class centroLabDTO {
         this.CentroLab_ID = CentroLab_ID;
     }
 
-    public Time getHoraInicio() {
+    public LocalTime getHoraInicio() {
         return HoraInicio;
     }
 
-    public void setHoraInicio(Time HoraInicio) {
+    public void setHoraInicio(LocalTime HoraInicio) {
         this.HoraInicio = HoraInicio;
     }
 
-    public Time getHoraFin() {
+    public LocalTime getHoraFin() {
         return HoraFin;
     }
 
-    public void setHoraFin(Time HoraFin) {
+    public void setHoraFin(LocalTime HoraFin) {
         this.HoraFin = HoraFin;
     }
 
