@@ -108,7 +108,12 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
         });
         pnlInfEstudiante.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 380, 120, 30));
 
-        cbxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "​Licenciatura en Administración", "Ingeniería en Mecatrónica", "Ingeniería en Software", "​​Licenciatura en Psicología", "​​Ingeniería Civil", "Licenciatura en Gastronomía", "Licenciatura en Enfermería​", "Licenciatura en Diseño Gráfico", "Licenciatura en Arquitectura" }));
+        cbxCarrera.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Licenciatura en Administración​", " ", "Licenciatura en Administración de Empresas Turísticas", " ", "Licenciatura en Administración Estratégica", " ", "Licenciatura en Arquitectura", " ", "Licenciatura en Ciencias de la Educación", " ", "Licenciatura en Ciencias del Ejercicio Físico", " ", "Licenciatura en Contaduría Pública", " ", "Licenciatura en Dirección de la Cultura Física y el Deporte", " ", "Licenciatura en Diseño Gráfico", " ", "Licenciatura en Derecho", " ", "Licenciatura en Economía y Finanzas", " ", "Licenciatura en Educación Artística y Gest​ión Cultural​​", " ", "Licenciatura en Educación Infantil​​", " ", "Licenciatura en Educación Inicial y Gestión de Instituciones", " ", "Licenciatura en Emprendimiento e​ Innovación", " ", "Licenciatura en Enfermería", " ", "Licenciatura en Gastronomía", " ", "Licenciatura en Mercadotecnia", " ", "Licenciatura en Psicología", " ", "Licenciatura en Tecnología de Alimentos", " ", "Ingeniería en Biosistemas", " ", "Ingeniería en Biotecnología", " ", "Ingeniería en Ciencias Ambientales", " ", "Ingeniería Civil", " ", "Ingeniería Electromecánica", " ", "Ingeniería en Electrónica", " ", "Ingeniería Industrial y de Sistemas", " ", "Ingeniería en Logística​​", " ", "Ingeniería en Manufactura​", " ", "Ingeniería en Mecatrónica", " ", "Ingeniería Química ​", " ", "Ingeniería en Software​", " ", "Me​dici​na Veterinaria y Zootecnia" }));
+        cbxCarrera.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbxCarreraActionPerformed(evt);
+            }
+        });
         pnlInfEstudiante.add(cbxCarrera, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 330, 240, 30));
 
         btnVolver.setBackground(new java.awt.Color(153, 153, 153));
@@ -140,6 +145,10 @@ public class frmAgregarEsudiante extends javax.swing.JFrame {
         volver.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
+
+    private void cbxCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCarreraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbxCarreraActionPerformed
 
     public void nuevoEstudiante(){}
     

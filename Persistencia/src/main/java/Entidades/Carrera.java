@@ -18,11 +18,11 @@ public class Carrera implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "Carrera_ID", nullable = false)
     private Long id;
 
-    @Column(name = "Nombre", length = 50, nullable = false)
+    @Column(name = "Nombre", length = 100, nullable = false)
     private String nombre;
 
     @Column(name = "Tiempo", nullable = false)
