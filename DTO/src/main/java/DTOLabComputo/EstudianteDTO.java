@@ -11,6 +11,7 @@ public class EstudianteDTO {
     private String apellidoMaterno;
     private String Contraseña;
     private boolean estaEgresado;
+    private CarreraDTO Carrera; 
     
     public Long getEstudiante_ID() {
         return Estudiante_ID;
@@ -59,6 +60,16 @@ public class EstudianteDTO {
     public void setApellidoMaterno(String apellidoMaterno) {
         this.apellidoMaterno = apellidoMaterno;
     }
+
+    public CarreraDTO getCarrera() {
+        return Carrera;
+    }
+
+    public void setCarrera(CarreraDTO Carrera) {
+        this.Carrera = Carrera;
+    }
+
+  
     
     
     

@@ -19,14 +19,14 @@ public class Software implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Software_ID", nullable = false)
+    @Column(name = "Software_ID")
     private Long id;
 
-    @Column(name = "Software", length = 20, nullable = false)
+    @Column(name = "Software", length = 20)
     private String software;
 
     @ManyToOne
-    @JoinColumn(name = "Computadora_ID", nullable = false)
+    @JoinColumn(name = "Computadora_ID")
     private Computadora computadora;
     
     public Long getId() {

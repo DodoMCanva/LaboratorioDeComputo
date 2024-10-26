@@ -16,13 +16,13 @@ public class PersonalAutorizado implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Administrador_ID", nullable = false)
+    @Column(name = "Administrador_ID")
     private Long id;
 
-    @Column(name = "Contraseña", length = 10, nullable = false)
+    @Column(name = "Contraseña", length = 10)
     private String contraseña;
 
-    @Column(name = "Usuario", length = 50   , nullable = false)
+    @Column(name = "Usuario", length = 50   )
     private String usuario;
     
     public Long getId() {

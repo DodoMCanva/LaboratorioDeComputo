@@ -117,7 +117,7 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        guardar();
+        
         frmCatalogoLaboratorio ir = new frmCatalogoLaboratorio();
         ir.setVisible(true);
         this.dispose();

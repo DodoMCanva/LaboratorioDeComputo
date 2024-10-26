@@ -4,24 +4,23 @@
  */
 package DTOLabComputo;
 
-import java.sql.Time;
+
 
 /**
  *
  * @author cesar
  */
 public class CarreraDTO {
-    private int Carrera_ID;
+
+    private long Carrera_ID;
     private String Nombre;
     private int tiempo;
-    
-    
 
-    public int getCarrera_ID() {
+    public long getCarrera_ID() {
         return Carrera_ID;
     }
 
-    public void setCarrera_ID(int Carrera_ID) {
+    public void setCarrera_ID(long Carrera_ID) {
         this.Carrera_ID = Carrera_ID;
     }
 
@@ -41,8 +40,4 @@ public class CarreraDTO {
         this.tiempo = tiempo;
     }
 
-    
-    
-    
-    
 }

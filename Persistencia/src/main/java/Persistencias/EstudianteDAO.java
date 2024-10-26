@@ -1,6 +1,8 @@
 package Persistencias;
 
+import DTOLabComputo.EstudianteDTO;
 import Entidades.Estudiante;
+import Entidades.NombreCompleto;
 import Interfaces.IEstudianteDAO;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -12,7 +14,7 @@ public class EstudianteDAO implements IEstudianteDAO {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
 
-    //Consultas
+    // Consultas
     @Override
     public List<Estudiante> obtenerEstudiantes(Tabla Filtro) throws PersistenciaException {
         EntityManager em = emf.createEntityManager();
@@ -27,8 +29,8 @@ public class EstudianteDAO implements IEstudianteDAO {
         List<Estudiante> estudiantes = null;
         try {
             estudiantes = em.createQuery(
-                    "SELECT e FROM Estudiante e WHERE e.nombreCompleto.nombre LIKE :nombre",
-                    Estudiante.class
+                "SELECT e FROM Estudiante e WHERE e.nombreCompleto.nombre LIKE :nombre",
+                Estudiante.class
             ).setParameter("nombre", "%" + nombre + "%").getResultList();
         } catch (Exception e) {
             throw new PersistenciaException("Error buscando estudiantes por nombre", e);
@@ -49,16 +51,29 @@ public class EstudianteDAO implements IEstudianteDAO {
         }
         return estudiante;
     }
-
-    //Modificaciones
-    @Override
-    public void guardar(Estudiante estudiante) {
-        EntityManager em = emf.createEntityManager();
+@Override
+public void guardar(Estudiante estudiante) {
+    EntityManager em = emf.createEntityManager();
+    try {
         em.getTransaction().begin();
+        // Establecer la relación entre Estudiante y NombreCompleto
+        NombreCompleto nombreCompleto = estudiante.getNombreCompleto();
+        if (nombreCompleto != null) {
+            nombreCompleto.setEstudiante(estudiante);
+            estudiante.setNombreCompleto(nombreCompleto);
+        }
         em.persist(estudiante);
         em.getTransaction().commit();
+    } catch (Exception e) {
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().rollback();
+        }
+        throw e;
+    } finally {
         em.close();
     }
+
+}
 
     @Override
     public void editar(Long id, Estudiante eEstudiante) {
@@ -74,6 +89,11 @@ public class EstudianteDAO implements IEstudianteDAO {
                 em.merge(estudiante);
             }
             em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
         } finally {
             em.close();
         }
@@ -82,22 +102,28 @@ public class EstudianteDAO implements IEstudianteDAO {
     @Override
     public void eliminar(Long id) {
         EntityManager em = emf.createEntityManager();
-        Estudiante estudiante = em.find(Estudiante.class, id);
-
-        if (estudiante != null) {
-            em.getTransaction().begin();
-            estudiante.setEstaEgresado(true);
-            em.merge(estudiante);
-            em.getTransaction().commit();
+        try {
+            Estudiante estudiante = em.find(Estudiante.class, id);
+            if (estudiante != null) {
+                em.getTransaction().begin();
+                estudiante.setEstaEgresado(true);
+                em.merge(estudiante);
+                em.getTransaction().commit();
+            }
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            em.close();
         }
-
-        em.close();
     }
 
-    //Verificaciones
+    // Verificaciones
     @Override
     public void reglasNegocio(Estudiante e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
@@ -113,4 +139,17 @@ public class EstudianteDAO implements IEstudianteDAO {
         }
     }
 
+    // Convertidor de DTO a Entidad
+    private Estudiante convertirAEstudiante(EstudianteDTO dto) {
+        Estudiante estudiante = new Estudiante();
+        estudiante.setId(dto.getEstudiante_ID());
+        NombreCompleto nombreCompleto = new NombreCompleto();
+        nombreCompleto.setNombre(dto.getNombre());
+        nombreCompleto.setApellidoPaterno(dto.getApellidoPaterno());
+        nombreCompleto.setApellidoMaterno(dto.getApellidoMaterno());
+        estudiante.setNombreCompleto(nombreCompleto);
+        estudiante.setContraseña(dto.getContraseña());
+        estudiante.setEstaEgresado(dto.isEstaEgresado());
+        return estudiante;
+    }
 }

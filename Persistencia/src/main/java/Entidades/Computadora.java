@@ -21,26 +21,26 @@ public class Computadora implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Computadora_ID", nullable = false)
+    @Column(name = "Computadora_ID")
     private Long id;
 
-    @Column(name = "IP", length = 13, unique = true, nullable = false)
+    @Column(name = "IP", length = 13, unique = true)
     private String ip;
 
-    @Column(name = "NumeroPC", nullable = false)
+    @Column(name = "NumeroPC")
     private int numeroPC;
 
-    @Column(name = "Estatus", length = 20, nullable = false)
+    @Column(name = "Estatus", length = 20)
     private String estatus;
 
-    @Column(name = "estEliminado", nullable = false)
+    @Column(name = "estEliminado")
     private boolean estEliminado;
 
-    @Column(name = "TipoUsuario", length = 20, nullable = false)
+    @Column(name = "TipoUsuario", length = 20)
     private String tipoUsuario;
 
     @ManyToOne
-    @JoinColumn(name = "CentroLab_ID", nullable = false)
+    @JoinColumn(name = "CentroLab_ID")
     private CentroLaboratorio centroLab;
 
     @OneToMany(mappedBy = "computadora")
