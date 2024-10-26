@@ -1,6 +1,9 @@
 package BO;
+import DTOLabComputo.CarreraDTO;
 import DTOLabComputo.EstudianteDTO;
+import Entidades.Carrera;
 import Entidades.Estudiante;
+import Entidades.NombreCompleto;
 import Interfaces.IEstudianteBO;
 import Interfaces.IEstudianteDAO;
 import Persistencias.EstudianteDAO;
@@ -13,10 +16,10 @@ import utilerias.Tabla;
 
 public class EstudianteBO implements IEstudianteBO {
 
+
     static IEstudianteDAO est = new EstudianteDAO();
-    static Estudiante estent = new Estudiante();
-    
-    //Consultas
+
+    // Consultas
     @Override
     public List<EstudianteDTO> obtenerEstudiantes(Tabla Filtro) {
         List<EstudianteDTO> estudiantesDTO = new ArrayList<>();
@@ -64,10 +67,10 @@ public class EstudianteBO implements IEstudianteBO {
         }
     }
 
-    //Modificaciones
+    // Modificaciones
     @Override
     public void guardar(EstudianteDTO estudiante) {
-        estent = convertirAEstudiante(estudiante);
+        Estudiante estent = convertirAEstudiante(estudiante);
         try {
             est.guardar(estent);
         } catch (PersistenciaException ex) {
@@ -80,7 +83,7 @@ public class EstudianteBO implements IEstudianteBO {
         Estudiante estudiante = convertirAEstudiante(e);
         estudiante.setId(id);
         try {
-            est.editar(estudiante.getId(),estudiante);
+            est.editar(estudiante.getId(), estudiante);
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -95,8 +98,8 @@ public class EstudianteBO implements IEstudianteBO {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (estudiante != null) {
-            estudiante.setEstaEgresado(true); 
-            try { 
+            estudiante.setEstaEgresado(true);
+            try {
                 est.eliminar(estudiante.getId());
             } catch (PersistenciaException ex) {
                 Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
@@ -104,7 +107,7 @@ public class EstudianteBO implements IEstudianteBO {
         }
     }
 
-    //Verificaciones
+    // Verificaciones
     @Override
     public void reglasNegocio(EstudianteDTO e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
@@ -128,14 +131,24 @@ public class EstudianteBO implements IEstudianteBO {
 
     private Estudiante convertirAEstudiante(EstudianteDTO dto) {
         Estudiante estudiante = new Estudiante();
+        
         estudiante.setId(dto.getEstudiante_ID());
-        estudiante.getNombreCompleto().setNombre(dto.getNombre());
-        estudiante.getNombreCompleto().setApellidoPaterno(dto.getApellidoPaterno());
-        estudiante.getNombreCompleto().setApellidoPaterno(dto.getApellidoMaterno());
+        NombreCompleto nombreCompleto = new NombreCompleto();
+        nombreCompleto.setNombre(dto.getNombre());
+        nombreCompleto.setApellidoPaterno(dto.getApellidoPaterno());
+        nombreCompleto.setApellidoMaterno(dto.getApellidoMaterno());
+        estudiante.setNombreCompleto(nombreCompleto);
         estudiante.setContraseña(dto.getContraseña());
         estudiante.setEstaEgresado(dto.isEstaEgresado());
-        estudiante.setEstaEgresado(dto.isEstaEgresado());
+        estudiante.setCarrera(convertirCarrera(dto.getCarrera()));
         return estudiante;
     }
-    
+     public Carrera convertirCarrera(CarreraDTO carreraDTO) {
+        Carrera carrera = new Carrera();
+        carrera.setId(carreraDTO.getCarrera_ID());
+        carrera.setNombre(carreraDTO.getNombre());
+        carrera.setTiempo(carreraDTO.getTiempo());
+        
+        return carrera;
+    }
 }

@@ -5,6 +5,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -17,29 +19,29 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Estudiante implements Serializable {
-
     private static final long serialVersionUID = 1L;
+
     @Id
-    @Column(name = "Estudiante_ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "Estudiante_ID")
     private Long id;
 
-    @Column(name = "Contraseña", length = 15, nullable = false)
+    @Column(name = "Contraseña", length = 15)
     private String contraseña;
 
-    @Column(name = "estaEgresado", nullable = false)
+ @Column(name = "estaEgresado", columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean estaEgresado;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "Carrera_ID", nullable = false)
+    @JoinColumn(name = "Carrera_ID")
     private Carrera carrera;
 
-    @OneToOne(mappedBy = "estudiante",cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "Estudiante_ID", referencedColumnName = "Estudiante_ID")
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "estudiante")
     private NombreCompleto nombreCompleto;
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.PERSIST)
     private List<Sesion> sesiones;
-
+    
     public Long getId() {
         return id;
     }

@@ -14,27 +14,29 @@ import javax.persistence.OneToOne;
  *
  * @author Equipo 3
  */
+
 @Entity
 public class NombreCompleto implements Serializable {
-
     private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "NombreCompleto_ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "NombreCompleto_ID")
     private Long id;
-    
-    @Column(name = "Nombre", length = 50, nullable = false)
+
+    @Column(name = "Nombre")
     private String nombre;
 
-    @Column(name = "ApellidoPaterno", length = 15, nullable = false)
+    @Column(name = "ApellidoPaterno")
     private String apellidoPaterno;
 
-    @Column(name = "ApellidoMaterno", length = 15, nullable = false)
+    @Column(name = "ApellidoMaterno")
     private String apellidoMaterno;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "Estudiante_ID", nullable = false)
+    @OneToOne
+    @JoinColumn(name = "Estudiante_ID")
     private Estudiante estudiante;
+
 
     public Long getId() {
         return id;

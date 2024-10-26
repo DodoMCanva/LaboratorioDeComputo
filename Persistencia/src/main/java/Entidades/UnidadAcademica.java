@@ -21,10 +21,10 @@ public class UnidadAcademica implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "unidadId", nullable = false)
+    @Column(name = "unidadId")
     private Long id;
 
-    @Column(name = "Nombre", length = 50, nullable = false)
+    @Column(name = "Nombre", length = 50)
     private String nombre;
 
     public Long getId() {

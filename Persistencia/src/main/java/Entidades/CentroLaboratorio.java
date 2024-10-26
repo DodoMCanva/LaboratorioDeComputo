@@ -20,22 +20,22 @@ public class CentroLaboratorio implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "CentroLab_ID", nullable = false)
+    @Column(name = "CentroLab_ID")
     private Long id;
 
-    @Column(name = "Nombre", length = 100, nullable = false)
+    @Column(name = "Nombre", length = 100)
     private String nombre;
 
-    @Column(name = "HoraInicio", nullable = false)
+    @Column(name = "HoraInicio")
     private Time horaInicio;
 
-    @Column(name = "HoraFin", nullable = false)
+    @Column(name = "HoraFin")
     private Time horaFin;
 
-    @Column(name = "Campus", length = 100, nullable = false)
+    @Column(name = "Campus", length = 100)
     private String campus;
 
-    @Column(name = "estEliminado", nullable = false)
+    @Column(name = "estEliminado")
     private boolean estEliminado;
 
     @OneToMany(mappedBy = "centroLab")
