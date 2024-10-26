@@ -21,7 +21,6 @@ import utilerias.Tabla;
  */
 public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
-    
     static CentroLaboratorio cl = new CentroLaboratorio();
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
     @PersistenceContext
@@ -63,7 +62,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
     //Modificaciones
     @Override
     public void guardar(centroLabDTO dto) throws PersistenciaException {
-          EntityManager em = emf.createEntityManager();
+        EntityManager em = emf.createEntityManager();
         cl = convertirDTOaEntidad(dto);
         try {
             if (cl.getId() == null) {
@@ -107,7 +106,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
             throw new PersistenciaException("Error al eliminar centro de laboratorio con ID: " + id, e);
         }
     }
-    
+
     //Verificaciones
     @Override
     public void reglasNegocio(centroLabDTO dto) throws PersistenciaException {
@@ -118,8 +117,8 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
     public void autenticarEstudiante(CentroLaboratorio cl) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    public CentroLaboratorio convertirDTOaEntidad(centroLabDTO dto){
+
+    public CentroLaboratorio convertirDTOaEntidad(centroLabDTO dto) {
         CentroLaboratorio ent = new CentroLaboratorio();
         List<Computadora> computadoras = new ArrayList<>();
         ent.setCampus(dto.getCampus());

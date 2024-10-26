@@ -34,6 +34,8 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         txtHoraInicio = new javax.swing.JTextField();
         txtMinutosInicio = new javax.swing.JTextField();
+        lblCampus1 = new javax.swing.JLabel();
+        txtNombre = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Agrefar Inf. Laboratorios");
@@ -51,8 +53,8 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         jplInfLaboratorios.add(lblHoraFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 60, 30));
 
         lblCampus.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        lblCampus.setText("Campus:");
-        jplInfLaboratorios.add(lblCampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 60, 30));
+        lblCampus.setText("Nombre:");
+        jplInfLaboratorios.add(lblCampus, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 200, 70, 30));
 
         txtHoraFin.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jplInfLaboratorios.add(txtHoraFin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 40, 30));
@@ -73,7 +75,7 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
                 btnGuardarActionPerformed(evt);
             }
         });
-        jplInfLaboratorios.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 230, 120, 30));
+        jplInfLaboratorios.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 260, 120, 30));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lblTitulo.setText("Agregar Laboratorio");
@@ -102,6 +104,11 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         txtMinutosInicio.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         txtMinutosInicio.setToolTipText("");
         jplInfLaboratorios.add(txtMinutosInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 80, 40, 30));
+
+        lblCampus1.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        lblCampus1.setText("Campus:");
+        jplInfLaboratorios.add(lblCampus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 160, 60, 30));
+        jplInfLaboratorios.add(txtNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 202, 230, 30));
 
         getContentPane().add(jplInfLaboratorios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 300));
 
@@ -135,7 +142,7 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         lab.setCampus(cbxCampus.getSelectedItem().toString());
         lab.setHoraInicio(inicioSQL);
         lab.setHoraInicio(finSQL);
-
+        lab.setNombre(txtNombre.getText());
         CentroLaboratorioBO cl = new CentroLaboratorioBO();
         try {
             cl.guardar(lab);
@@ -152,6 +159,7 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jplInfLaboratorios;
     private javax.swing.JLabel lblCampus;
+    private javax.swing.JLabel lblCampus1;
     private javax.swing.JLabel lblHoraFin;
     private javax.swing.JLabel lblHoraInicio;
     private javax.swing.JLabel lblTitulo;
@@ -159,5 +167,6 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
     private javax.swing.JTextField txtHoraInicio;
     private javax.swing.JTextField txtMinutosFin;
     private javax.swing.JTextField txtMinutosInicio;
+    private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }
