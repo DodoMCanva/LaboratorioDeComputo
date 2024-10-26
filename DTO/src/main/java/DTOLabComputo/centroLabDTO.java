@@ -8,8 +8,9 @@ import java.time.LocalTime;
  * @author Equipo 3
  */
 public class centroLabDTO {
-    
+
     private int CentroLab_ID;
+    private String Nombre;
     private Time HoraInicio;
     private Time HoraFin;
     private String Campus;
@@ -21,6 +22,14 @@ public class centroLabDTO {
 
     public void setCentroLab_ID(int CentroLab_ID) {
         this.CentroLab_ID = CentroLab_ID;
+    }
+
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
     }
 
     public Time getHoraInicio() {
@@ -54,9 +63,5 @@ public class centroLabDTO {
     public void setEstEliminado(boolean estEliminado) {
         this.estEliminado = estEliminado;
     }
-    
-    
-    
-    
-    
+
 }

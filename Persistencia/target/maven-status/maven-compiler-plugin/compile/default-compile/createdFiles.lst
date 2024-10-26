@@ -1,5 +1,6 @@
 Entidades\Computadora.class
 Interfaces\ICentroLaboratorioDAO.class
+Entidades\UnidadAcademica.class
 Interfaces\IAdministradorDAO.class
 utilerias\Utilidades.class
 utilerias\Reportes.class

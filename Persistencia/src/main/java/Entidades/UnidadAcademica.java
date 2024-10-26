@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Entidades;
 
 import java.io.Serializable;
@@ -6,47 +10,29 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 /**
  *
- * @author Equipo 3
+ * @author Valeria
  */
 @Entity
-public class PersonalAutorizado implements Serializable {
+public class UnidadAcademica implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "Administrador_ID", nullable = false)
+    @Column(name = "unidadId", nullable = false)
     private Long id;
 
-    @Column(name = "Contraseña", length = 10, nullable = false)
-    private String contraseña;
+    @Column(name = "Nombre", length = 50, nullable = false)
+    private String nombre;
 
-    @Column(name = "Usuario", length = 50   , nullable = false)
-    private String usuario;
-    
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
     }
 
     @Override
@@ -59,10 +45,10 @@ public class PersonalAutorizado implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof PersonalAutorizado)) {
+        if (!(object instanceof UnidadAcademica)) {
             return false;
         }
-        PersonalAutorizado other = (PersonalAutorizado) object;
+        UnidadAcademica other = (UnidadAcademica) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -71,7 +57,7 @@ public class PersonalAutorizado implements Serializable {
 
     @Override
     public String toString() {
-        return "Entidades.PersonalAutorizado[ id=" + id + " ]";
+        return "Entidades.UnidadAcademica[ id=" + id + " ]";
     }
-    
+
 }

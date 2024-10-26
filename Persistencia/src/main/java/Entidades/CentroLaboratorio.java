@@ -19,9 +19,12 @@ public class CentroLaboratorio implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CentroLab_ID", nullable = false)
     private Long id;
+
+    @Column(name = "Nombre", length = 100, nullable = false)
+    private String nombre;
 
     @Column(name = "HoraInicio", nullable = false)
     private Time horaInicio;
@@ -29,7 +32,7 @@ public class CentroLaboratorio implements Serializable {
     @Column(name = "HoraFin", nullable = false)
     private Time horaFin;
 
-    @Column(name = "Campus", length = 10, nullable = false)
+    @Column(name = "Campus", length = 100, nullable = false)
     private String campus;
 
     @Column(name = "estEliminado", nullable = false)
@@ -37,7 +40,7 @@ public class CentroLaboratorio implements Serializable {
 
     @OneToMany(mappedBy = "centroLab")
     private List<Computadora> computadoras;
-    
+
     public Long getId() {
         return id;
     }
@@ -46,15 +49,23 @@ public class CentroLaboratorio implements Serializable {
         this.id = id;
     }
 
-    public Time  getHoraInicio() {
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Time getHoraInicio() {
         return horaInicio;
     }
 
-    public void setHoraInicio(Time  horaInicio) {
+    public void setHoraInicio(Time horaInicio) {
         this.horaInicio = horaInicio;
     }
 
-    public Time  getHoraFin() {
+    public Time getHoraFin() {
         return horaFin;
     }
 
@@ -109,5 +120,5 @@ public class CentroLaboratorio implements Serializable {
     public String toString() {
         return "Entidades.CentroLaboratorio[ id=" + id + " ]";
     }
-    
+
 }

@@ -9,6 +9,8 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import utilerias.Tabla;
@@ -21,7 +23,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
     
     static CentroLaboratorio cl = new CentroLaboratorio();
-    
+    private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
     @PersistenceContext
     private EntityManager em;
 
@@ -61,6 +63,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
     //Modificaciones
     @Override
     public void guardar(centroLabDTO dto) throws PersistenciaException {
+          EntityManager em = emf.createEntityManager();
         cl = convertirDTOaEntidad(dto);
         try {
             if (cl.getId() == null) {
@@ -79,6 +82,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
         try {
             CentroLaboratorio existente = consultar(id);
             if (existente != null) {
+                existente.setNombre(cl.getNombre());
                 existente.setHoraInicio(cl.getHoraInicio());
                 existente.setHoraFin(cl.getHoraFin());
                 existente.setCampus(cl.getCampus());
@@ -119,6 +123,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
         CentroLaboratorio ent = new CentroLaboratorio();
         List<Computadora> computadoras = new ArrayList<>();
         ent.setCampus(dto.getCampus());
+        ent.setNombre(dto.getNombre());
         ent.setEstEliminado(false);
         ent.setHoraInicio(dto.getHoraInicio());
         ent.setHoraFin(dto.getHoraFin());

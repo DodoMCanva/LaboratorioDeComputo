@@ -35,17 +35,16 @@ public class Prueba {
      */
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
-        CentroLaboratorio centro=new CentroLaboratorio();
-        List<Computadora> computadoras= new ArrayList<>();
-        
+        CentroLaboratorio centro = new CentroLaboratorio();
+        List<Computadora> computadoras = new ArrayList<>();
+
         centro.setCampus("Guaymas");
         centro.setEstEliminado(true);
         //centro.setHoraFin(LocalTime.of(8,30));
         //centro.setHoraInicio(LocalTime.of(6,00));
         centro.setComputadoras(computadoras);
-        
-        
-	EntityManager em = emf.createEntityManager();
+
+        EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(centro);
         em.getTransaction().commit();
