@@ -4,6 +4,7 @@
  */
 package Entidades;
 
+import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,8 +41,8 @@ public class Prueba {
 
         centro.setCampus("Guaymas");
         centro.setEstEliminado(true);
-        //centro.setHoraFin(LocalTime.of(8,30));
-        //centro.setHoraInicio(LocalTime.of(6,00));
+        centro.setHoraFin(Time.valueOf(LocalTime.of(8,30)));
+        centro.setHoraInicio(Time.valueOf(LocalTime.of(8,30)));
         centro.setComputadoras(computadoras);
 
         EntityManager em = emf.createEntityManager();
