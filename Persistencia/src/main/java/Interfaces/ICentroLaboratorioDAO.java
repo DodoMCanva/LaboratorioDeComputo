@@ -15,7 +15,7 @@ public interface ICentroLaboratorioDAO {
     //Consultas
     public List<CentroLaboratorio> obtenerCentros(Tabla Filtro) throws PersistenciaException;
 
-    public List<CentroLaboratorio> buscarporNombre(String nombre, Tabla Filtro) throws PersistenciaException;
+    public List<CentroLaboratorio> buscarporNombre(String Nombre, Tabla Filtro) throws PersistenciaException;
 
     public CentroLaboratorio consultar(Long id) throws PersistenciaException;
     

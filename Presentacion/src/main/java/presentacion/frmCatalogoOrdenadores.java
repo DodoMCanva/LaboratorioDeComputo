@@ -10,7 +10,7 @@ public class frmCatalogoOrdenadores extends javax.swing.JFrame {
     /**
      * Creates new form frmCatalogoOrdenadores
      */
-    public frmCatalogoOrdenadores() {
+    public frmCatalogoOrdenadores(Long id) {
         initComponents();
     }
 
