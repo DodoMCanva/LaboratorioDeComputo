@@ -6,12 +6,13 @@ package presentacion;
  * @author Valeria
  */
 public class frmCatalogoOrdenadores extends javax.swing.JFrame {
-
+    private Long id = null;
     /**
      * Creates new form frmCatalogoOrdenadores
      */
-    public frmCatalogoOrdenadores() {
+    public frmCatalogoOrdenadores(Long id) {
         initComponents();
+        this.id = id;
     }
 
     /**
@@ -121,7 +122,7 @@ public class frmCatalogoOrdenadores extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnAgregarOrdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarOrdActionPerformed
-       frmAgregarOrdenador ir = new frmAgregarOrdenador();
+       frmAgregarOrdenador ir = new frmAgregarOrdenador(id);
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAgregarOrdActionPerformed
