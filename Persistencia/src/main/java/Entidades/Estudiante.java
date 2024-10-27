@@ -19,6 +19,7 @@ import javax.persistence.OneToOne;
  */
 @Entity
 public class Estudiante implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -29,7 +30,7 @@ public class Estudiante implements Serializable {
     @Column(name = "Contraseña", length = 15)
     private String contraseña;
 
- @Column(name = "estaEgresado", columnDefinition = "BOOLEAN DEFAULT FALSE")
+    @Column(name = "estaEgresado", columnDefinition = "BOOLEAN DEFAULT FALSE")
     private boolean estaEgresado;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
@@ -41,7 +42,7 @@ public class Estudiante implements Serializable {
 
     @OneToMany(mappedBy = "estudiante", cascade = CascadeType.PERSIST)
     private List<Sesion> sesiones;
-    
+
     public Long getId() {
         return id;
     }

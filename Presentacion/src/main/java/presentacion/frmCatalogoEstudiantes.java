@@ -185,13 +185,15 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
     private void agregarRegistrosTabla(Tabla filtro) throws BOException {
         DefaultTableModel modeloTabla = (DefaultTableModel) tblEstudiantes.getModel();
         estudianteBO.obtenerEstudiantes(filtro).forEach(row -> {
-            Object[] fila = new Object[5];
+            Object[] fila = new Object[7];
             String nombreCompelto = row.getNombre() + " " + row.getApellidoPaterno() + " " + row.getApellidoMaterno();
             fila[0] = row.getEstudiante_ID();
             fila[1] = nombreCompelto;
-            fila[2] = row.getCarrera();
-            fila[3] = "Editar";
-            fila[4] = "Eliminar";
+            fila[2] = row.getCarrera().getNombre();
+            fila[3] = row.getContraseña();
+            fila[4] = row.isEstaEgresado();
+            fila[5] = "Eliminar";
+            fila[6] = "Eliminar";
             modeloTabla.addRow(fila);
         });
     }
