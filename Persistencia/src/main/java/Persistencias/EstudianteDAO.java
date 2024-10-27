@@ -18,7 +18,7 @@ public class EstudianteDAO implements IEstudianteDAO {
     @Override
     public List<Estudiante> obtenerEstudiantes(Tabla Filtro) throws PersistenciaException {
         EntityManager em = emf.createEntityManager();
-        List<Estudiante> estudiantes = em.createQuery("SELECT e FROM Estudiante e", Estudiante.class).getResultList();
+        List<Estudiante> estudiantes = em.createQuery("SELECT e FROM Estudiante e where e.estaEgresado=false ", Estudiante.class).getResultList();
         em.close();
         return estudiantes;
     }
@@ -138,19 +138,5 @@ public class EstudianteDAO implements IEstudianteDAO {
         } finally {
             em.close();
         }
-    }
-
-    // Convertidor de DTO a Entidad
-    private Estudiante convertirAEstudiante(EstudianteDTO dto) {
-        Estudiante estudiante = new Estudiante();
-        estudiante.setId(dto.getEstudiante_ID());
-        NombreCompleto nombreCompleto = new NombreCompleto();
-        nombreCompleto.setNombre(dto.getNombre());
-        nombreCompleto.setApellidoPaterno(dto.getApellidoPaterno());
-        nombreCompleto.setApellidoMaterno(dto.getApellidoMaterno());
-        estudiante.setNombreCompleto(nombreCompleto);
-        estudiante.setContraseña(dto.getContraseña());
-        estudiante.setEstaEgresado(dto.isEstaEgresado());
-        return estudiante;
     }
 }

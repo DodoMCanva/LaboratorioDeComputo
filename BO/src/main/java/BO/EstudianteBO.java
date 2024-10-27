@@ -110,11 +110,11 @@ public class EstudianteBO implements IEstudianteBO {
     @Override
     public boolean autenticarEstudiante(Long id) {
         try {
-            Estudiante estudiante = est.consultar(id); 
-            return estudiante != null; 
+            Estudiante estudiante = est.consultar(id);
+            return estudiante != null;
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, "Error al autenticar estudiante", ex);
-            return false; 
+            return false;
         }
     }
 
@@ -126,6 +126,8 @@ public class EstudianteBO implements IEstudianteBO {
     private EstudianteDTO convertirAEstudianteDTO(Estudiante estudiante) {
         EstudianteDTO dto = new EstudianteDTO();
         dto.setEstudiante_ID(estudiante.getId());
+        System.out.println(estudiante.getCarrera().getId());
+        dto.setCarrera(convertirCarreraDTO(estudiante.getCarrera()));
         dto.setNombre(estudiante.getNombreCompleto().getNombre());
         dto.setApellidoPaterno(estudiante.getNombreCompleto().getApellidoPaterno());
         dto.setApellidoMaterno(estudiante.getNombreCompleto().getApellidoMaterno());
@@ -156,5 +158,14 @@ public class EstudianteBO implements IEstudianteBO {
         carrera.setTiempo(carreraDTO.getTiempo());
 
         return carrera;
+    }
+
+    public CarreraDTO convertirCarreraDTO(Carrera carrera) {
+        CarreraDTO carreradto = new CarreraDTO();
+        carreradto.setCarrera_ID(carrera.getId());
+        carreradto.setNombre(carrera.getNombre());
+        carreradto.setTiempo(carrera.getTiempo());
+
+        return carreradto;
     }
 }

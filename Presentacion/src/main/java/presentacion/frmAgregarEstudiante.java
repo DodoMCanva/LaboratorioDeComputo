@@ -128,7 +128,7 @@ public class frmAgregarEstudiante extends javax.swing.JFrame {
         nuevo.setApellidoPaterno(txtApPaterno.getText());
         nuevo.setApellidoMaterno(txtApMaterno.getText());
         nuevo.setContraseña(txtContrasena.getText());
-        nuevo.setEstaEgresado(true); 
+       
         CarreraDTO carreraSeleccionada = carreraBO.consultarPorNombre(cbxCarrera.getSelectedItem().toString());
         if (carreraSeleccionada != null) {
             nuevo.setCarrera(carreraSeleccionada); 
