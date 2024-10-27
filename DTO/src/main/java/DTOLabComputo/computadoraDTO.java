@@ -1,29 +1,23 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTOLabComputo;
 
 /**
  *
- * @author cesar
+ * @author Equipo 3
  */
 public class computadoraDTO {
-    private int Computadora_ID;
+    private Long Computadora_ID;
     private String IP;
     private int NumeroPC;
     private String Estatus;
     private boolean estEliminado;
     private String TipoUsuario;
+    private centroLabDTO centro;
 
-    
-    
-    
-    public int getComputadora_ID() {
+    public Long getComputadora_ID() {
         return Computadora_ID;
     }
 
-    public void setComputadora_ID(int Computadora_ID) {
+    public void setComputadora_ID(Long Computadora_ID) {
         this.Computadora_ID = Computadora_ID;
     }
 
@@ -65,6 +59,14 @@ public class computadoraDTO {
 
     public void setTipoUsuario(String TipoUsuario) {
         this.TipoUsuario = TipoUsuario;
+    }
+
+    public centroLabDTO getCentro() {
+        return centro;
+    }
+
+    public void setCentro(centroLabDTO centro) {
+        this.centro = centro;
     }
     
     

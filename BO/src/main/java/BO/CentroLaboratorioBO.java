@@ -60,7 +60,13 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
 
     @Override
     public centroLabDTO consultar(Long id) throws BOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        CentroLaboratorio centro = null;
+        try {
+            centro = est.consultar(id);
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(CentroLaboratorioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return centro != null ? convertirEntidadaDTO(centro) : null;
     }
 
     @Override
