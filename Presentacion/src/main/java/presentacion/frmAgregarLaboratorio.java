@@ -11,20 +11,9 @@ import java.time.LocalTime;
  * @author Equipo 3
  */
 public class frmAgregarLaboratorio extends javax.swing.JFrame {
-    private boolean ge = true;
-    private Long id = null;
-    
+
     public frmAgregarLaboratorio() {
         initComponents();
-        ge = true;
-        this.lblTitulo.setText("Agregar Laboratorio");
-        
-    }
-    public frmAgregarLaboratorio(Long id) {
-        initComponents();
-        ge = false;
-        this.id = id;
-        this.lblTitulo.setText("Editar Laboratorio: " + id);
     }
 
     @SuppressWarnings("unchecked")
@@ -128,11 +117,7 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (ge) {
-            guardar();
-        }else{
-            editar(this.id);
-        }
+        guardar();
         frmCatalogoLaboratorio ir = new frmCatalogoLaboratorio();
         ir.setVisible(true);
         this.dispose();
@@ -165,28 +150,7 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         } catch (BOException e) {
             System.out.println("Aprenda a programar:"+e.toString());
         }
-    }
-    public void editar(Long id) {
-        centroLabDTO lab = new centroLabDTO();
-        String horaInicio = txtHoraInicio.getText();
-        String minutosInicio = txtMinutosInicio.getText();
-        LocalTime inicioLocal = LocalTime.of(Integer.parseInt(horaInicio), Integer.parseInt(minutosInicio));
-        Time inicioSQL = Time.valueOf(inicioLocal);
-        String horaFin = txtHoraFin.getText();
-        String minutosFin = txtMinutosFin.getText();
-        LocalTime finLocal = LocalTime.of(Integer.parseInt(horaFin), Integer.parseInt(minutosFin));
-        Time finSQL = Time.valueOf(finLocal); 
-        lab.setCampus(cbxCampus.getSelectedItem().toString());
-        lab.setHoraInicio(inicioSQL);
-        lab.setHoraFin(finSQL);
-        lab.setNombre(txtNombre.getText());
-        CentroLaboratorioBO cl = new CentroLaboratorioBO();
-        try {
-            System.out.println(lab.getNombre());
-            cl.editar(id, lab);
-        } catch (BOException e) {
-            System.out.println("Aprenda a programar:"+e.toString());
-        }
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

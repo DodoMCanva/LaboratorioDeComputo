@@ -105,7 +105,7 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
                 btnBuscarActionPerformed(evt);
             }
         });
-        jplCatalogoLaboratorio.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(612, 90, 70, 30));
+        jplCatalogoLaboratorio.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, 30));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lblTitulo.setText("Laboratorio Cómputo");
@@ -181,14 +181,7 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        String nombre = txtBuscar.getText();
-        if (!nombre.isEmpty()) {
-            this.cargarTablaBusqueda(nombre);
-        } else {
-            this.dispose();
-            frmCatalogoLaboratorio c = new frmCatalogoLaboratorio();
-            c.setVisible(true);
-        }
+        BorrarRegistrosTabla();
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void cargarTabla() {
@@ -226,50 +219,25 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
         });
     }
 
-    private void cargarTablaBusqueda(String nombre) {
-        try {
-            Tabla filtro = this.obtenerFiltrosTabla();
-            BorrarRegistrosTabla();
-            lblNumPagina.setText("Página " + (pag + 1));
-            if (this.clBO.buscarporNombre(nombre, filtro).isEmpty() && pag > 0) {
-                pag--;
-                cargarTabla();
-            }else{
-                agregarRegistrosTablaBusqueda(nombre, filtro);
-            }
-        } catch (BOException ex) {
-            BorrarRegistrosTabla();
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Información", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
-    private void agregarRegistrosTablaBusqueda(String nombre, Tabla filtro) throws BOException {
-        if (this.clBO.buscarporNombre(nombre, filtro)== null) {
-            return;
-        }
-        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblLaboratorio.getModel();
-        this.clBO.buscarporNombre(nombre, filtro).forEach(row -> {
-            Object[] fila = new Object[8];
-            fila[0] = row.getCentroLab_ID();
-            fila[1] = row.getHoraInicio();
-            fila[2] = row.getHoraFin();
-            fila[3] = row.getCampus();
-            fila[4] = row.getNombre();
-            fila[5] = "Ordenadores";
-            fila[6] = "Editar";
-            fila[7] = "Eliminar";
-            modeloTabla.addRow(fila);
-        });
-    }
-
     private void cargarConfiguracionInicialTabla() {
         TableColumnModel modeloColumnas = this.tblLaboratorio.getColumnModel();
         ActionListener onOrdenadoresClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = getIdSeleccionadoTabla();
-                Ordenadores(Long.valueOf(id));
-
+                frmCatalogoOrdenadores co = new frmCatalogoOrdenadores();
+                co.setVisible(true);
+                /*IConexionBD conexionBD = new ConexionBD();
+                ISalaDAO salaDAO = new SalaDAO(conexionBD);
+                int n = 0;
+                try {
+                    n = obtener();
+                } catch (PersistenciaException ex) {
+                    Logger.getLogger(frmCatalogoSucursales.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                frmCatalogoSalas catalogoSalas = new frmCatalogoSalas(n);
+                catalogoSalas.setVisible(true);
+                dispose();
+                 */
             }
         };
         modeloColumnas.getColumn(5).setCellRenderer(new JButtonRenderer("Ordenadores"));
@@ -278,8 +246,20 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
         ActionListener onEditarClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int id = getIdSeleccionadoTabla();
-                editar(Long.valueOf(id));
+                frmAgregarLaboratorio acl = new frmAgregarLaboratorio();
+                acl.setVisible(true);
+                /*IConexionBD conexionBD = new ConexionBD();
+                ISalaDAO salaDAO = new SalaDAO(conexionBD);
+                int n = 0;
+                try {
+                    n = obtener();
+                } catch (PersistenciaException ex) {
+                    Logger.getLogger(frmCatalogoSucursales.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                frmCatalogoSalas catalogoSalas = new frmCatalogoSalas(n);
+                catalogoSalas.setVisible(true);
+                dispose();
+                 */
             }
 
         };
@@ -334,18 +314,6 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
                 modeloTabla.removeRow(row);
             }
         }
-    }
-
-    public void editar(Long id) {
-        frmAgregarLaboratorio ir = new frmAgregarLaboratorio(id);
-        ir.setVisible(true);
-        this.dispose();
-    }
-
-    public void Ordenadores(Long id) {
-        frmCatalogoOrdenadores ir = new frmCatalogoOrdenadores(id);
-        ir.setVisible(true);
-        this.dispose();
     }
 
     private Tabla obtenerFiltrosTabla() {
