@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 import utilerias.Tabla;
 
 /**
@@ -15,10 +16,27 @@ import utilerias.Tabla;
 public class ComputadoraDAO implements IComputadoraDAO {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
-    
+
     @Override
-    public List<Computadora> obtenerComputadoras(Long CentroLab, Tabla Filtro) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<Computadora> obtenerComputadorasTabla(Long CentroLab, Tabla filtro) throws PersistenciaException {
+        EntityManager em = null;
+        try {
+            em = emf.createEntityManager();
+            String jpql = "SELECT c FROM Computadora c WHERE c.centroLab.id = :centroLabId AND c.estEliminado = false";
+
+            TypedQuery<Computadora> query = em.createQuery(jpql, Computadora.class);
+            query.setParameter("centroLabId", CentroLab);
+            query.setMaxResults(filtro.getLimite());
+            query.setFirstResult(filtro.getPagina() * filtro.getLimite());
+
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar computadoras por centro de laboratorio", e);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
     @Override
@@ -35,6 +53,7 @@ public class ComputadoraDAO implements IComputadoraDAO {
     public void guardar(Computadora Computadora) throws PersistenciaException {
         EntityManager em = emf.createEntityManager();
         try {
+            Computadora.setEstatus("Disponible");
             em.getTransaction().begin();
             em.persist(Computadora);
             em.getTransaction().commit();
@@ -67,5 +86,5 @@ public class ComputadoraDAO implements IComputadoraDAO {
     public void autenticarComputadora(Long id) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
+
 }

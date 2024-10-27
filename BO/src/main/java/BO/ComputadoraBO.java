@@ -18,13 +18,23 @@ import utilerias.Tabla;
  *
  * @author Equipo 3
  */
-public class ComputadoraBO implements IComputadoraBO{
+public class ComputadoraBO implements IComputadoraBO {
 
     private IComputadoraDAO cdao = new ComputadoraDAO();
-    
+
     @Override
-    public List<computadoraDTO> obtenerComputadoras(Tabla Filtro) throws BOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<computadoraDTO> obtenerComputadorasTabla(Long id, Tabla Filtro) throws BOException {
+        List<computadoraDTO> computadorasDTO = new ArrayList<>();
+        try {
+            List<Computadora> compENT = cdao.obtenerComputadorasTabla(id, Filtro);
+            for (Computadora entidad : compENT) {
+                computadoraDTO clDTO = convertirEntidadaDTO(entidad);
+                computadorasDTO.add(clDTO);
+            }
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(CentroLaboratorioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return computadorasDTO;
     }
 
     @Override
@@ -44,7 +54,8 @@ public class ComputadoraBO implements IComputadoraBO{
             cdao.guardar(cent);
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
-        }}
+        }
+    }
 
     @Override
     public void editar(Long id, computadoraDTO e) throws BOException {
@@ -86,7 +97,16 @@ public class ComputadoraBO implements IComputadoraBO{
         cl.setHoraFin(centro.getHoraFin());
         return cl;
     }
-    
-    
-    
+
+    private computadoraDTO convertirEntidadaDTO(Computadora entidad) {
+        computadoraDTO dto = new computadoraDTO();
+        dto.setEstatus(entidad.getEstatus());
+        dto.setComputadora_ID(entidad.getId());
+        dto.setEstatus(entidad.getEstatus());
+        dto.setIP(entidad.getIp());
+        dto.setNumeroPC(entidad.getNumeroPC());
+        dto.setTipoUsuario(entidad.getTipoUsuario());
+        return dto;
+    }
+
 }

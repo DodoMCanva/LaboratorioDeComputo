@@ -2,8 +2,10 @@ Interfaces\IAdministradorDAO.class
 utilerias\Utilidades.class
 utilerias\Reportes.class
 Entidades\Estudiante.class
+Interfaces\IComputadoraDAO.class
 Entidades\Bloqueo.class
 Persistencias\AdministradorDAO.class
+Persistencias\ComputadoraDAO.class
 Persistencias\EstudianteDAO.class
 Entidades\Prueba.class
 Entidades\Sesion.class

@@ -33,7 +33,6 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
         } catch (PersistenciaException ex) {
             Logger.getLogger(CentroLaboratorioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
         return centrosDTO;
     }
 

@@ -2,6 +2,7 @@ package Entidades;
 
 import java.io.Serializable;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,13 +40,13 @@ public class Computadora implements Serializable {
     @Column(name = "TipoUsuario", length = 20)
     private String tipoUsuario;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "CentroLab_ID")
     private CentroLaboratorio centroLab;
 
     @OneToMany(mappedBy = "computadora")
     private List<Sesion> sesiones;
-    
+
     public Long getId() {
         return id;
     }
@@ -133,5 +134,5 @@ public class Computadora implements Serializable {
     public String toString() {
         return "Entidades.Computadora[ id=" + id + " ]";
     }
-    
+
 }

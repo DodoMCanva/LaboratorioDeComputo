@@ -17,6 +17,7 @@ presentacion\frmInicioSesionAdminsitrador.class
 presentacion\frmMenuAdministrador$6.class
 presentacion\frmReporteBloqueos$1.class
 presentacion\frmSeleccionPC$9.class
+presentacion\frmCatalogoOrdenadores$5.class
 presentacion\frmMenuReportes$1.class
 presentacion\frmPdfReporteBloqueo.class
 presentacion\frmCatalogoBloqueos$1.class
@@ -60,6 +61,7 @@ presentacion\frmInicioExitoso$1.class
 presentacion\frmSeleccionPC$7.class
 presentacion\frmReporteCentroComputo.class
 presentacion\frmApartadaExito$1.class
+presentacion\frmCatalogoOrdenadores$3.class
 presentacion\frmAgregarEstudiante$1.class
 presentacion\frmConfirmacion$2.class
 presentacion\frmCatalogoEstudiantes$1.class
@@ -90,6 +92,7 @@ presentacion\frmReporteBloqueos.class
 presentacion\frmAgregarEstudiante.class
 presentacion\frmApartadaExito.class
 presentacion\frmAgregarOrdenador$2.class
+presentacion\frmCatalogoOrdenadores$4.class
 presentacion\frmMenuReportes$2.class
 presentacion\frmPdfReporteCentroComputo$1.class
 presentacion\frmCatalogoEstudiantes$3.class

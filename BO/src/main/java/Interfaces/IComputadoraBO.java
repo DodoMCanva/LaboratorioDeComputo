@@ -11,7 +11,7 @@ import utilerias.Tabla;
  */
 public interface IComputadoraBO {
     //Consultas
-    public List<computadoraDTO> obtenerComputadoras(Tabla Filtro) throws BOException;
+    public List<computadoraDTO> obtenerComputadorasTabla(Long id, Tabla Filtro) throws BOException;
     
     public List<computadoraDTO> buscarporNombre(String nombre, Tabla Filtro) throws BOException;
     

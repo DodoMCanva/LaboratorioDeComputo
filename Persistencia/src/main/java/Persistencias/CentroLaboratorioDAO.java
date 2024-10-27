@@ -39,7 +39,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
             throw new PersistenciaException("Error al obtener centros de laboratorio", e);
         } finally {
             if (em != null) {
-                em.close();  
+                em.close();
             }
         }
 
@@ -116,9 +116,10 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
             } else {
                 throw new PersistenciaException("No se encontró el centro de laboratorio con el ID: " + id);
             }
+
             em.getTransaction().commit();
         } catch (PersistenciaException e) {
-            if (em != null) {
+            if (em != null && em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
             }
             throw new PersistenciaException("Error al editar centro de laboratorio", e);
