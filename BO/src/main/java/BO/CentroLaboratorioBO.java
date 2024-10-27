@@ -33,7 +33,7 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
         } catch (PersistenciaException ex) {
             Logger.getLogger(CentroLaboratorioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         return centrosDTO;
     }
 
@@ -43,19 +43,8 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
     }
 
     @Override
-    public List<centroLabDTO> buscarporNombre(String Campus, Tabla Filtro) throws BOException {
-        List<centroLabDTO> centrosDTO = new ArrayList<>();
-        try {
-            List<CentroLaboratorio> centrosENT = est.buscarporNombre(Campus, Filtro);
-            for (CentroLaboratorio entidad : centrosENT) {
-                centroLabDTO clDTO = convertirEntidadaDTO(entidad);
-                centrosDTO.add(clDTO);
-            }
-        } catch (PersistenciaException ex) {
-            Logger.getLogger(CentroLaboratorioBO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return centrosDTO;
+    public List<centroLabDTO> buscarporCampus(String Campus, Tabla Filtro) throws BOException {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
@@ -74,17 +63,13 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
 
     @Override
     public void editar(Long id, centroLabDTO cl) throws BOException {
-        try {
-            est.editar(id, convertirCentroLaboratorio(cl));
-        } catch (PersistenciaException ex) {
-            Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
     public void eliminar(Long id) throws BOException {
         System.out.println(id);
-
+        
         try {
             est.eliminar(id);
         } catch (PersistenciaException e) {
@@ -110,14 +95,14 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
     }
 
     private centroLabDTO convertirEntidadaDTO(CentroLaboratorio entidad) {
-        centroLabDTO dto = new centroLabDTO();
-        dto.setCampus(entidad.getCampus());
-        dto.setCentroLab_ID(entidad.getId());
-        dto.setEstEliminado(false);
-        dto.setHoraFin(entidad.getHoraFin());
-        dto.setHoraInicio(entidad.getHoraInicio());
-        dto.setNombre(entidad.getNombre());
-        return dto;
+       centroLabDTO dto = new centroLabDTO();
+       dto.setCampus(entidad.getCampus());
+       dto.setCentroLab_ID(entidad.getId());
+       dto.setEstEliminado(false);
+       dto.setHoraFin(entidad.getHoraFin());
+       dto.setHoraInicio(entidad.getHoraInicio());
+       dto.setNombre(entidad.getNombre());
+       return dto;
     }
 
 }
