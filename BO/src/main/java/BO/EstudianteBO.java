@@ -1,4 +1,5 @@
 package BO;
+
 import DTOLabComputo.CarreraDTO;
 import DTOLabComputo.EstudianteDTO;
 import Entidades.Carrera;
@@ -15,7 +16,6 @@ import java.util.logging.Logger;
 import utilerias.Tabla;
 
 public class EstudianteBO implements IEstudianteBO {
-
 
     static IEstudianteDAO est = new EstudianteDAO();
 
@@ -107,14 +107,19 @@ public class EstudianteBO implements IEstudianteBO {
         }
     }
 
-    // Verificaciones
     @Override
-    public void reglasNegocio(EstudianteDTO e) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public boolean autenticarEstudiante(Long id) {
+        try {
+            Estudiante estudiante = est.consultar(id); 
+            return estudiante != null; 
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, "Error al autenticar estudiante", ex);
+            return false; 
+        }
     }
 
     @Override
-    public void autenticarCliente(EstudianteDTO estudiante) {
+    public void reglasNegocio(EstudianteDTO e) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -131,7 +136,7 @@ public class EstudianteBO implements IEstudianteBO {
 
     private Estudiante convertirAEstudiante(EstudianteDTO dto) {
         Estudiante estudiante = new Estudiante();
-        
+
         estudiante.setId(dto.getEstudiante_ID());
         NombreCompleto nombreCompleto = new NombreCompleto();
         nombreCompleto.setNombre(dto.getNombre());
@@ -143,12 +148,13 @@ public class EstudianteBO implements IEstudianteBO {
         estudiante.setCarrera(convertirCarrera(dto.getCarrera()));
         return estudiante;
     }
-     public Carrera convertirCarrera(CarreraDTO carreraDTO) {
+
+    public Carrera convertirCarrera(CarreraDTO carreraDTO) {
         Carrera carrera = new Carrera();
         carrera.setId(carreraDTO.getCarrera_ID());
         carrera.setNombre(carreraDTO.getNombre());
         carrera.setTiempo(carreraDTO.getTiempo());
-        
+
         return carrera;
     }
 }

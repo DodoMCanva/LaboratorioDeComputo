@@ -4,19 +4,24 @@
  */
 package presentacion;
 
+import BO.EstudianteBO;
+
 /**
  *
  * @author cesar
  */
 public class frmInicioSesionEstudiante extends javax.swing.JFrame {
 
+    private EstudianteBO estudianteBO = new EstudianteBO();
+
     /**
-     * Creates new form frmInicioSesionEstudiante
+     * Creates new form frmInicioSesionEstudi ante
      */
     public frmInicioSesionEstudiante() {
-        initComponents(); 
-        setSize(603, 430); // Establecemos el tamaño de la ventana
+        initComponents();
+        setSize(603, 430); 
         setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**
@@ -32,7 +37,7 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtID = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnContinuar = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -55,15 +60,15 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
         });
         jPanel1.add(txtID, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 210, 190, 40));
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 255));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Continuar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnContinuar.setBackground(new java.awt.Color(51, 153, 255));
+        btnContinuar.setForeground(new java.awt.Color(255, 255, 255));
+        btnContinuar.setText("Continuar");
+        btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnContinuarActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 120, 30));
+        jPanel1.add(btnContinuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 300, 120, 30));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotipoazul.png"))); // NOI18N
         jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 20, 200, 80));
@@ -86,13 +91,27 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtIDActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        frmSeleccionPC sel= new frmSeleccionPC();
-        sel.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
+        // Obtener el ID ingresado en el campo de texto
+        String idTexto = txtID.getText().trim();
 
-   /*
+        // Convertir el ID a Long
+        Long id = Long.valueOf(idTexto);
+
+        // Llamar al método de autenticación en la capa de negocio
+        if (estudianteBO.autenticarEstudiante(id)) { // Si la autenticación es exitosa, abrir la siguiente pantalla
+            frmSeleccionPC sel = new frmSeleccionPC();
+            sel.setVisible(true);
+            this.dispose();
+
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Por favor ingresa un ID válido.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+
+
+    }//GEN-LAST:event_btnContinuarActionPerformed
+
+    /*
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -106,16 +125,24 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmInicioSesionAdminsitrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmInicioSesionAdminsitrador.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmInicioSesionAdminsitrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmInicioSesionAdminsitrador.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmInicioSesionAdminsitrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmInicioSesionAdminsitrador.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmInicioSesionAdminsitrador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmInicioSesionAdminsitrador.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -128,7 +155,7 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnContinuar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;

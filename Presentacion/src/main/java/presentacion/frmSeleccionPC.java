@@ -15,9 +15,10 @@ public class frmSeleccionPC extends javax.swing.JFrame {
      * Creates new form frmSeleccionPC
      */
     public frmSeleccionPC() {
-        initComponents(); 
-        setSize(800, 600); // Establecemos el tamaño de la ventana
+        initComponents();
+        setSize(603, 500); 
         setLocationRelativeTo(null);
+        setResizable(false);
     }
     
 

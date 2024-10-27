@@ -24,6 +24,6 @@ public interface IEstudianteDAO {
     //verificadores
     public void reglasNegocio(Estudiante e) throws PersistenciaException;
 
-    public void autenticarEstudiante(Estudiante estudiante) throws PersistenciaException;
+    public void autenticarEstudiante(Long id) throws PersistenciaException;
 
 }

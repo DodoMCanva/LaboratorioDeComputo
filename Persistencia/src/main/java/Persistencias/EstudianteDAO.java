@@ -29,8 +29,8 @@ public class EstudianteDAO implements IEstudianteDAO {
         List<Estudiante> estudiantes = null;
         try {
             estudiantes = em.createQuery(
-                "SELECT e FROM Estudiante e WHERE e.nombreCompleto.nombre LIKE :nombre",
-                Estudiante.class
+                    "SELECT e FROM Estudiante e WHERE e.nombreCompleto.nombre LIKE :nombre",
+                    Estudiante.class
             ).setParameter("nombre", "%" + nombre + "%").getResultList();
         } catch (Exception e) {
             throw new PersistenciaException("Error buscando estudiantes por nombre", e);
@@ -51,29 +51,30 @@ public class EstudianteDAO implements IEstudianteDAO {
         }
         return estudiante;
     }
-@Override
-public void guardar(Estudiante estudiante) {
-    EntityManager em = emf.createEntityManager();
-    try {
-        em.getTransaction().begin();
-        // Establecer la relación entre Estudiante y NombreCompleto
-        NombreCompleto nombreCompleto = estudiante.getNombreCompleto();
-        if (nombreCompleto != null) {
-            nombreCompleto.setEstudiante(estudiante);
-            estudiante.setNombreCompleto(nombreCompleto);
-        }
-        em.persist(estudiante);
-        em.getTransaction().commit();
-    } catch (Exception e) {
-        if (em.getTransaction().isActive()) {
-            em.getTransaction().rollback();
-        }
-        throw e;
-    } finally {
-        em.close();
-    }
 
-}
+    @Override
+    public void guardar(Estudiante estudiante) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            em.getTransaction().begin();
+            // Establecer la relación entre Estudiante y NombreCompleto
+            NombreCompleto nombreCompleto = estudiante.getNombreCompleto();
+            if (nombreCompleto != null) {
+                nombreCompleto.setEstudiante(estudiante);
+                estudiante.setNombreCompleto(nombreCompleto);
+            }
+            em.persist(estudiante);
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            em.close();
+        }
+
+    }
 
     @Override
     public void editar(Long id, Estudiante eEstudiante) {
@@ -127,12 +128,12 @@ public void guardar(Estudiante estudiante) {
     }
 
     @Override
-    public void autenticarEstudiante(Estudiante estudiante) throws PersistenciaException {
+    public void autenticarEstudiante(Long id) throws PersistenciaException {
         EntityManager em = emf.createEntityManager();
         try {
-            Estudiante encontrado = em.find(Estudiante.class, estudiante.getId());
-            if (encontrado == null || !encontrado.getContraseña().equals(estudiante.getContraseña())) {
-                throw new PersistenciaException("Autenticación fallida");
+            Estudiante encontrado = em.find(Estudiante.class, id);
+            if (encontrado == null) {
+                throw new PersistenciaException("Autenticación fallida: ID no encontrado");
             }
         } finally {
             em.close();
