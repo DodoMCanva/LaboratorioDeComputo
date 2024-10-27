@@ -15,7 +15,7 @@ public interface ICentroLaboratorioBO {
     
     public List<centroLabDTO> obtenerLaboratorio() throws BOException;
     
-    public List<centroLabDTO> buscarporCampus(String Campus, Tabla Filtro) throws BOException;
+    public List<centroLabDTO> buscarporNombre(String Nombre, Tabla Filtro) throws BOException;
     
     public centroLabDTO consultar(Long id) throws BOException;
     
