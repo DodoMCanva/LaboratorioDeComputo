@@ -24,15 +24,16 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
     @Override
     public List<centroLabDTO> obtenerLaboratoriosTabla(Tabla Filtro) throws BOException {
         List<centroLabDTO> centrosDTO = new ArrayList<>();
-        /*List<Estudiante> estudiantes = null;
         try {
-            estudiantes = est.obtenerEstudiantes(Filtro);
+            List<CentroLaboratorio> centrosENT = est.obtenerCentros(Filtro);
+            for (CentroLaboratorio entidad : centrosENT) {
+                centroLabDTO clDTO = convertirEntidadaDTO(entidad);
+                centrosDTO.add(clDTO);
+            }
         } catch (PersistenciaException ex) {
-            Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CentroLaboratorioBO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        for (Estudiante estudiante : estudiantes) {
-            estudiantesDTO.add(convertirAEstudianteDTO(estudiante));
-        }*/
+        
         return centrosDTO;
     }
 
@@ -67,7 +68,13 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
 
     @Override
     public void eliminar(Long id) throws BOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        System.out.println(id);
+        
+        try {
+            est.eliminar(id);
+        } catch (PersistenciaException e) {
+            System.out.println("ERROR:" + e.toString());
+        }
     }
 
     @Override
@@ -85,6 +92,17 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
         cl.setHoraInicio(dto.getHoraInicio());
         cl.setHoraFin(dto.getHoraFin());
         return cl;
+    }
+
+    private centroLabDTO convertirEntidadaDTO(CentroLaboratorio entidad) {
+       centroLabDTO dto = new centroLabDTO();
+       dto.setCampus(entidad.getCampus());
+       dto.setCentroLab_ID(entidad.getId());
+       dto.setEstEliminado(false);
+       dto.setHoraFin(entidad.getHoraFin());
+       dto.setHoraInicio(entidad.getHoraInicio());
+       dto.setNombre(entidad.getNombre());
+       return dto;
     }
 
 }

@@ -27,6 +27,7 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
 
     public frmCatalogoLaboratorio() {
         initComponents();
+        cargarTabla();
         cargarConfiguracionInicialTabla();
     }
 
@@ -65,25 +66,33 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
 
         tblLaboratorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "ID", "Hora inicio", "Hora fin", "Campus", "Ordenadores", "Editar", "Eliminar"
+                "ID", "Hora inicio", "Hora fin", "Campus", "Nombre", "Ordenadores", "Editar", "Eliminar"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, true, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(tblLaboratorio);
 
         jplCatalogoLaboratorio.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 790, 260));
@@ -185,15 +194,16 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
             return;
         }
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tblLaboratorio.getModel();
-        this.clBO.obtenerLaboratoriosTabla(filtro) .forEach(row -> {
-            Object[] fila = new Object[5];
+        this.clBO.obtenerLaboratoriosTabla(filtro).forEach(row -> {
+            Object[] fila = new Object[8];
             fila[0] = row.getCentroLab_ID();
             fila[1] = row.getHoraInicio();
             fila[2] = row.getHoraFin();
             fila[3] = row.getCampus();
-            fila[4] = "Ordenadores";
-            fila[5] = "Editar";
-            fila[6] = "Eliminar";
+            fila[4] = row.getNombre();
+            fila[5] = "Ordenadores";
+            fila[6] = "Editar";
+            fila[7] = "Eliminar";
             modeloTabla.addRow(fila);
         });
     }
@@ -203,27 +213,32 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
         ActionListener onOrdenadoresClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                frmCatalogoOrdenadores co = new frmCatalogoOrdenadores();
+                co.setVisible(true);
                 /*IConexionBD conexionBD = new ConexionBD();
-                IFuncionDAO funcionDAO = new FuncionDAO(conexionBD);
+                ISalaDAO salaDAO = new SalaDAO(conexionBD);
                 int n = 0;
                 try {
                     n = obtener();
                 } catch (PersistenciaException ex) {
-                    Logger.getLogger(frmCatalogoLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(frmCatalogoSucursales.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                frmCatalogoFunciones catalogoFunciones = new frmCatalogoFunciones(n);
-                catalogoFunciones.setVisible(true);
+                frmCatalogoSalas catalogoSalas = new frmCatalogoSalas(n);
+                catalogoSalas.setVisible(true);
                 dispose();
                  */
             }
         };
-        modeloColumnas.getColumn(4).setCellRenderer(new JButtonRenderer("Ordenadores"));
-        modeloColumnas.getColumn(4).setCellEditor(new JButtonCellEditor("Ordenadores", onOrdenadoresClickListener));
+        modeloColumnas.getColumn(5).setCellRenderer(new JButtonRenderer("Ordenadores"));
+        modeloColumnas.getColumn(5).setCellEditor(new JButtonCellEditor("Ordenadores", onOrdenadoresClickListener));
 
         // Configurar botón "Salas"
         ActionListener onEditarClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                frmAgregarLaboratorio acl = new frmAgregarLaboratorio();
+                acl.setVisible(true);
                 /*IConexionBD conexionBD = new ConexionBD();
                 ISalaDAO salaDAO = new SalaDAO(conexionBD);
                 int n = 0;
@@ -239,8 +254,8 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
             }
 
         };
-        modeloColumnas.getColumn(5).setCellRenderer(new JButtonRenderer("Editar"));
-        modeloColumnas.getColumn(5).setCellEditor(new JButtonCellEditor("Editar", onEditarClickListener));
+        modeloColumnas.getColumn(6).setCellRenderer(new JButtonRenderer("Editar"));
+        modeloColumnas.getColumn(6).setCellEditor(new JButtonCellEditor("Editar", onEditarClickListener));
 
         // Configurar botón "Eliminar"
         ActionListener onEliminarClickListener = new ActionListener() {
@@ -248,36 +263,41 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 try {
                     eliminar();
-                } catch (Exception ex) {
+                } catch (BOException ex) {
                     Logger.getLogger(frmCatalogoLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         };
-        modeloColumnas.getColumn(6).setCellRenderer(new JButtonRenderer("Eliminar"));
-        modeloColumnas.getColumn(6).setCellEditor(new JButtonCellEditor("Eliminar", onEliminarClickListener));
+        modeloColumnas.getColumn(7).setCellRenderer(new JButtonRenderer("Eliminar"));
+        modeloColumnas.getColumn(7).setCellEditor(new JButtonCellEditor("Eliminar", onEliminarClickListener));
     }
 
     private void eliminar() throws BOException {
         long id = this.getIdSeleccionadoTabla();
         clBO.eliminar(id);
-        //cargarTabla();
+        cargarTabla();
     }
 
     private int getIdSeleccionadoTabla() {
-
-        //SucursalDAO sucursalDAO = new SucursalDAO();
         int idS = 0;
         int indiceFilaSeleccionada = this.tblLaboratorio.getSelectedRow();
         if (indiceFilaSeleccionada != -1) {
             DefaultTableModel modelo = (DefaultTableModel) this.tblLaboratorio.getModel();
             int indiceColumnaId = 0;
-            String idSocioSeleccionado = (String) modelo.getValueAt(indiceFilaSeleccionada, indiceColumnaId);
-            //idS = sucursalDAO.buscarIdporNombre(idSocioSeleccionado);
-            return idS;
-
-        } else {
-            return 0;
+            Object idSeleccionado = modelo.getValueAt(indiceFilaSeleccionada, indiceColumnaId);
+            try {
+                if (idSeleccionado instanceof Integer) {
+                    idS = (Integer) idSeleccionado;
+                } else if (idSeleccionado instanceof String) {
+                    idS = Integer.parseInt((String) idSeleccionado);
+                } else {
+                    System.out.println("Tipo de dato inesperado para el ID: " + idSeleccionado.getClass().getName());
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error al convertir ID: " + e.getMessage());
+            }
         }
+        return idS;
     }
 
     private void BorrarRegistrosTabla() {

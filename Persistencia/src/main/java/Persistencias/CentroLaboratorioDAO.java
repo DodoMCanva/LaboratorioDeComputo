@@ -21,25 +21,33 @@ import utilerias.Tabla;
  */
 public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
-    static CentroLaboratorio cl = new CentroLaboratorio();
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
-    @PersistenceContext
-    private EntityManager em;
 
     //Consultas
     @Override
-    public List<CentroLaboratorio> obtenerCentros(Tabla Filtro) throws PersistenciaException {
+    public List<CentroLaboratorio> obtenerCentros(Tabla filtro) throws PersistenciaException {
+        EntityManager em = null;
         try {
-            String jpql = "SELECT cl FROM CentroLab cl WHERE cl.estEliminado = false";
+            em = emf.createEntityManager();
+            String jpql = "SELECT cl FROM CentroLaboratorio cl WHERE cl.estEliminado = false";
             TypedQuery<CentroLaboratorio> query = em.createQuery(jpql, CentroLaboratorio.class);
+            query.setMaxResults(filtro.getLimite());
+            query.setFirstResult(filtro.getPagina() * filtro.getLimite());
             return query.getResultList();
         } catch (Exception e) {
+            e.printStackTrace();
             throw new PersistenciaException("Error al obtener centros de laboratorio", e);
+        } finally {
+            if (em != null) {
+                em.close();  // Cierra el EntityManager después de usarlo
+            }
         }
+
     }
 
     @Override
     public List<CentroLaboratorio> buscarporNombre(String nombre, Tabla Filtro) throws PersistenciaException {
+        EntityManager em = null;
         try {
             String jpql = "SELECT cl FROM CentroLaboratorio cl WHERE cl.nombre LIKE :nombre AND cl.estEliminado = false";
             TypedQuery<CentroLaboratorio> query = em.createQuery(jpql, CentroLaboratorio.class);
@@ -52,6 +60,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
     @Override
     public CentroLaboratorio consultar(Long id) throws PersistenciaException {
+        EntityManager em = null;
         try {
             return em.find(CentroLaboratorio.class, id);
         } catch (Exception e) {
@@ -63,7 +72,6 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
     @Override
     public void guardar(CentroLaboratorio cl) throws PersistenciaException {
         EntityManager em = emf.createEntityManager();
-        
         try {
             em.getTransaction().begin();
             em.persist(cl);
@@ -80,7 +88,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
     @Override
     public void editar(Long id, CentroLaboratorio cl) throws PersistenciaException {
-        
+        EntityManager em = null;
         try {
             CentroLaboratorio existente = consultar(id);
             if (existente != null) {
@@ -99,14 +107,24 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
     @Override
     public void eliminar(Long id) throws PersistenciaException {
+        EntityManager em = emf.createEntityManager();
         try {
-            CentroLaboratorio cl = consultar(id);
+            em.getTransaction().begin();
+            CentroLaboratorio cl = em.find(CentroLaboratorio.class, id);
             if (cl != null) {
                 cl.setEstEliminado(true);
                 em.merge(cl);
             }
-        } catch (PersistenciaException e) {
+            em.getTransaction().commit();
+        } catch (Exception e) {
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
             throw new PersistenciaException("Error al eliminar centro de laboratorio con ID: " + id, e);
+        } finally {
+            if (em != null && em.isOpen()) {
+                em.close();
+            }
         }
     }
 
