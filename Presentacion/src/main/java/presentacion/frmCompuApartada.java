@@ -14,8 +14,10 @@ public class frmCompuApartada extends javax.swing.JFrame {
      * Creates new form frmCompuApartada
      */
     public frmCompuApartada() {
-        initComponents();
-    }
+       initComponents();
+        setSize(603, 430); 
+        setLocationRelativeTo(null);
+        setResizable(false);    }
 
     /**
      * This method is called from within the constructor to initialize the form.

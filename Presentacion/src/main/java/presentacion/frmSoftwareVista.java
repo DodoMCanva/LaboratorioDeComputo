@@ -14,7 +14,10 @@ public class frmSoftwareVista extends javax.swing.JFrame {
      * Creates new form frmSoftwareVista
      */
     public frmSoftwareVista() {
-        initComponents();
+      initComponents();
+        setSize(603, 430); 
+        setLocationRelativeTo(null);
+        setResizable(false);
     }
 
     /**

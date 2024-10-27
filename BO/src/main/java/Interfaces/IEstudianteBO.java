@@ -23,6 +23,5 @@ public interface IEstudianteBO {
     //verificadores
     public void reglasNegocio(EstudianteDTO e) throws BOException;
     
-    public void autenticarCliente(EstudianteDTO estudiante) throws BOException;
-    
+    boolean autenticarEstudiante(Long id)throws BOException;
 }
