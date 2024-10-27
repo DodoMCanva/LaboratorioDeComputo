@@ -51,7 +51,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
         try {
             String jpql = "SELECT cl FROM CentroLaboratorio cl WHERE cl.nombre LIKE :nombre AND cl.estEliminado = false";
             TypedQuery<CentroLaboratorio> query = em.createQuery(jpql, CentroLaboratorio.class);
-            query.setParameter("nombre", "%" + nombre + "%");  // Busca por coincidencias parciales
+            query.setParameter("nombre", "%" + nombre + "%");
             return query.getResultList();
         } catch (Exception e) {
             throw new PersistenciaException("Error al buscar centros de laboratorio por nombre", e);
@@ -60,11 +60,19 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
     @Override
     public CentroLaboratorio consultar(Long id) throws PersistenciaException {
-        EntityManager em = null;
+        EntityManager em = emf.createEntityManager();
         try {
-            return em.find(CentroLaboratorio.class, id);
-        } catch (Exception e) {
+            CentroLaboratorio centroLaboratorio = em.find(CentroLaboratorio.class, id);
+            if (centroLaboratorio == null) {
+                throw new PersistenciaException("No se encontró el centro de laboratorio con ID: " + id);
+            }
+            return centroLaboratorio;
+        } catch (PersistenciaException e) {
             throw new PersistenciaException("Error al consultar centro de laboratorio con ID: " + id, e);
+        } finally {
+            if (em != null) {
+                em.close(); // Cerrar el EntityManager
+            }
         }
     }
 
@@ -88,8 +96,9 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
     @Override
     public void editar(Long id, CentroLaboratorio cl) throws PersistenciaException {
-        EntityManager em = null;
+        EntityManager em = emf.createEntityManager();
         try {
+            em.getTransaction().begin();
             CentroLaboratorio existente = consultar(id);
             if (existente != null) {
                 existente.setNombre(cl.getNombre());
@@ -100,8 +109,16 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
             } else {
                 throw new PersistenciaException("No se encontró el centro de laboratorio con el ID: " + id);
             }
-        } catch (Exception e) {
+            em.getTransaction().commit();
+        } catch (PersistenciaException e) {
+            if (em != null) {
+                em.getTransaction().rollback();
+            }
             throw new PersistenciaException("Error al editar centro de laboratorio", e);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
         }
     }
 

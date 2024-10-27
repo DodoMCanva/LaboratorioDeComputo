@@ -246,20 +246,8 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
         ActionListener onEditarClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmAgregarLaboratorio acl = new frmAgregarLaboratorio();
-                acl.setVisible(true);
-                /*IConexionBD conexionBD = new ConexionBD();
-                ISalaDAO salaDAO = new SalaDAO(conexionBD);
-                int n = 0;
-                try {
-                    n = obtener();
-                } catch (PersistenciaException ex) {
-                    Logger.getLogger(frmCatalogoSucursales.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                frmCatalogoSalas catalogoSalas = new frmCatalogoSalas(n);
-                catalogoSalas.setVisible(true);
-                dispose();
-                 */
+                int id = getIdSeleccionadoTabla();
+                editar(Long.valueOf(id));
             }
 
         };
@@ -314,6 +302,12 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
                 modeloTabla.removeRow(row);
             }
         }
+    }
+
+    public void editar(Long id) {
+        frmAgregarLaboratorio ir = new frmAgregarLaboratorio(id);
+        ir.setVisible(true);
+        this.dispose();
     }
 
     private Tabla obtenerFiltrosTabla() {
