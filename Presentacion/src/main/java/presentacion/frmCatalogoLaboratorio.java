@@ -162,11 +162,22 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarLabActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        // TODO add your handling code here:
+        this.pag++;
+        int imp = pag + 1;
+        lblNumPagina.setText("Página " + imp);
+        this.cargarTabla();
+        btnAtras.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        // TODO add your handling code here:
+        if (pag == 0) {
+            btnAtras.setEnabled(false);
+        } else {
+            this.pag--;
+            int impresion = pag + 1;
+            lblNumPagina.setText("Página " + impresion);
+            this.cargarTabla();
+        }
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
@@ -232,11 +243,9 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
         modeloColumnas.getColumn(5).setCellRenderer(new JButtonRenderer("Ordenadores"));
         modeloColumnas.getColumn(5).setCellEditor(new JButtonCellEditor("Ordenadores", onOrdenadoresClickListener));
 
-        // Configurar botón "Salas"
         ActionListener onEditarClickListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 frmAgregarLaboratorio acl = new frmAgregarLaboratorio();
                 acl.setVisible(true);
                 /*IConexionBD conexionBD = new ConexionBD();
@@ -257,12 +266,14 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
         modeloColumnas.getColumn(6).setCellRenderer(new JButtonRenderer("Editar"));
         modeloColumnas.getColumn(6).setCellEditor(new JButtonCellEditor("Editar", onEditarClickListener));
 
-        // Configurar botón "Eliminar"
         ActionListener onEliminarClickListener = new ActionListener() {
+
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    eliminar();
+                    int id = getIdSeleccionadoTabla();
+                    clBO.eliminar(Long.valueOf(id));
+                    cargarTabla();
                 } catch (BOException ex) {
                     Logger.getLogger(frmCatalogoLaboratorio.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -270,12 +281,6 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
         };
         modeloColumnas.getColumn(7).setCellRenderer(new JButtonRenderer("Eliminar"));
         modeloColumnas.getColumn(7).setCellEditor(new JButtonCellEditor("Eliminar", onEliminarClickListener));
-    }
-
-    private void eliminar() throws BOException {
-        long id = this.getIdSeleccionadoTabla();
-        clBO.eliminar(id);
-        cargarTabla();
     }
 
     private int getIdSeleccionadoTabla() {
@@ -288,6 +293,8 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
             try {
                 if (idSeleccionado instanceof Integer) {
                     idS = (Integer) idSeleccionado;
+                } else if (idSeleccionado instanceof Long) {
+                    idS = ((Long) idSeleccionado).intValue(); // Convierte Long a int
                 } else if (idSeleccionado instanceof String) {
                     idS = Integer.parseInt((String) idSeleccionado);
                 } else {

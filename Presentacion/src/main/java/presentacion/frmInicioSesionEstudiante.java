@@ -19,7 +19,7 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
      */
     public frmInicioSesionEstudiante() {
         initComponents();
-        setSize(603, 430); 
+        setSize(603, 430);
         setLocationRelativeTo(null);
         setResizable(false);
     }
@@ -92,14 +92,9 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_txtIDActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-        // Obtener el ID ingresado en el campo de texto
         String idTexto = txtID.getText().trim();
-
-        // Convertir el ID a Long
         Long id = Long.valueOf(idTexto);
-
-        // Llamar al método de autenticación en la capa de negocio
-        if (estudianteBO.autenticarEstudiante(id)) { // Si la autenticación es exitosa, abrir la siguiente pantalla
+        if (estudianteBO.autenticarEstudiante(id)) {
             frmSeleccionPC sel = new frmSeleccionPC();
             sel.setVisible(true);
             this.dispose();
