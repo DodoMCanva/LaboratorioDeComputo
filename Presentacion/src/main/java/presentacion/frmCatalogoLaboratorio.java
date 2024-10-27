@@ -27,6 +27,7 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
 
     public frmCatalogoLaboratorio() {
         initComponents();
+        cargarConfiguracionInicialTabla();
     }
 
     @SuppressWarnings("unchecked")
@@ -90,6 +91,11 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
 
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         jplCatalogoLaboratorio.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, 30));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -153,47 +159,43 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnAtrasActionPerformed
-    /*
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        BorrarRegistrosTabla();
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
     private void cargarTabla() {
         try {
             Tabla filtro = this.obtenerFiltrosTabla();
-            List<centroLabDTO> Lista = this.clBO.obtenerLaboratoriosTabla(filtro);
-            this.BorrarRegistrosTabla();
-            this.AgregarRegistrosTabla(Lista);
-            if (Lista.size() == 0 && pag > 0) {
-                pag--;
-            }
+            BorrarRegistrosTabla();
+            agregarRegistrosTabla(filtro);
             lblNumPagina.setText("Página " + (pag + 1));
+            if (this.clBO.obtenerLaboratoriosTabla(filtro).isEmpty() && pag > 0) {
+                pag--;
+                cargarTabla();
+            }
         } catch (BOException ex) {
-            this.BorrarRegistrosTabla();
+            BorrarRegistrosTabla();
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Información", JOptionPane.ERROR_MESSAGE);
         }
     }
 
-    private void agregarRegistrosTabla(List<centroLabDTO> lista) {
-        if (lista == null) {
+    private void agregarRegistrosTabla(Tabla filtro) throws BOException {
+        if (this.clBO.obtenerLaboratoriosTabla(filtro) == null) {
             return;
         }
         DefaultTableModel modeloTabla = (DefaultTableModel) this.tblLaboratorio.getModel();
-        lista.forEach(row -> {
+        this.clBO.obtenerLaboratoriosTabla(filtro) .forEach(row -> {
             Object[] fila = new Object[5];
-            String direccion = row.getCalle() + " " + row.getCodigoPostal() + ", " + row.getCiudad() + ", " + row.getEstado();
-            fila[0] = row.getNombre();
-            fila[1] = direccion;
-            fila[2] = "Función";  // Texto del botón de función
-            fila[3] = "Salas";    // Texto del botón de salas
-            fila[4] = "Eliminar"; // Texto del botón de eliminar
+            fila[0] = row.getCentroLab_ID();
+            fila[1] = row.getHoraInicio();
+            fila[2] = row.getHoraFin();
+            fila[3] = row.getCampus();
+            fila[4] = "Ordenadores";
+            fila[5] = "Editar";
+            fila[6] = "Eliminar";
             modeloTabla.addRow(fila);
         });
-    }
-     */
-    private void BorrarRegistrosTablaClientes() {
-        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblLaboratorio.getModel();
-        if (modeloTabla.getRowCount() > 0) {
-            for (int row = modeloTabla.getRowCount() - 1; row > -1; row--) {
-                modeloTabla.removeRow(row);
-            }
-        }
     }
 
     private void cargarConfiguracionInicialTabla() {
@@ -261,11 +263,7 @@ public class frmCatalogoLaboratorio extends javax.swing.JFrame {
         //cargarTabla();
     }
 
-    private int obtener() {
-        return this.getIdSeleccionadoTabla();
-    }
-
-    private int getIdSeleccionadoTabla()  {
+    private int getIdSeleccionadoTabla() {
 
         //SucursalDAO sucursalDAO = new SucursalDAO();
         int idS = 0;

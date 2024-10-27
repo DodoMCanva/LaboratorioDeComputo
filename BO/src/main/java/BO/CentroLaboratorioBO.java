@@ -1,6 +1,8 @@
 package BO;
 
 import DTOLabComputo.centroLabDTO;
+import Entidades.CentroLaboratorio;
+import Entidades.Computadora;
 import Interfaces.ICentroLaboratorioBO;
 import Interfaces.ICentroLaboratorioDAO;
 import Persistencias.CentroLaboratorioDAO;
@@ -15,13 +17,13 @@ import utilerias.Tabla;
  *
  * @author Equipo 3
  */
-public class CentroLaboratorioBO implements ICentroLaboratorioBO{
+public class CentroLaboratorioBO implements ICentroLaboratorioBO {
 
     static ICentroLaboratorioDAO est = new CentroLaboratorioDAO();
-    
+
     @Override
     public List<centroLabDTO> obtenerLaboratoriosTabla(Tabla Filtro) throws BOException {
-        List<centroLabDTO> estudiantesDTO = new ArrayList<>();
+        List<centroLabDTO> centrosDTO = new ArrayList<>();
         /*List<Estudiante> estudiantes = null;
         try {
             estudiantes = est.obtenerEstudiantes(Filtro);
@@ -31,7 +33,8 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO{
         for (Estudiante estudiante : estudiantes) {
             estudiantesDTO.add(convertirAEstudianteDTO(estudiante));
         }*/
-        return estudiantesDTO;}
+        return centrosDTO;
+    }
 
     @Override
     public List<centroLabDTO> obtenerLaboratorio() throws BOException {
@@ -51,7 +54,7 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO{
     @Override
     public void guardar(centroLabDTO cl) throws BOException {
         try {
-            est.guardar(cl);
+            est.guardar(convertirCentroLaboratorio(cl));
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -72,7 +75,16 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO{
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    
+    private CentroLaboratorio convertirCentroLaboratorio(centroLabDTO dto) {
+        CentroLaboratorio cl = new CentroLaboratorio();
+        List<Computadora> computadoras = new ArrayList<>();
+        cl.setCampus(dto.getCampus());
+        cl.setComputadoras(computadoras);
+        cl.setEstEliminado(false);
+        cl.setNombre(dto.getNombre());
+        cl.setHoraInicio(dto.getHoraInicio());
+        cl.setHoraFin(dto.getHoraFin());
+        return cl;
+    }
 
-    
 }

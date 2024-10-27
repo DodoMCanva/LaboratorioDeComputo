@@ -21,7 +21,6 @@ import utilerias.Tabla;
  */
 public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
-    
     static CentroLaboratorio cl = new CentroLaboratorio();
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
     @PersistenceContext
@@ -62,23 +61,26 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
     //Modificaciones
     @Override
-    public void guardar(centroLabDTO dto) throws PersistenciaException {
-          EntityManager em = emf.createEntityManager();
-        cl = convertirDTOaEntidad(dto);
+    public void guardar(CentroLaboratorio cl) throws PersistenciaException {
+        EntityManager em = emf.createEntityManager();
+        
         try {
-            if (cl.getId() == null) {
-                em.persist(cl);
-            } else {
-                em.merge(cl);
-            }
+            em.getTransaction().begin();
+            em.persist(cl);
+            em.getTransaction().commit();
         } catch (Exception e) {
-            throw new PersistenciaException("Error al guardar centro de laboratorio", e);
+            if (em.getTransaction().isActive()) {
+                em.getTransaction().rollback();
+            }
+            throw e;
+        } finally {
+            em.close();
         }
     }
 
     @Override
-    public void editar(Long id, centroLabDTO dto) throws PersistenciaException {
-        cl = convertirDTOaEntidad(dto);
+    public void editar(Long id, CentroLaboratorio cl) throws PersistenciaException {
+        
         try {
             CentroLaboratorio existente = consultar(id);
             if (existente != null) {
@@ -107,10 +109,10 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
             throw new PersistenciaException("Error al eliminar centro de laboratorio con ID: " + id, e);
         }
     }
-    
+
     //Verificaciones
     @Override
-    public void reglasNegocio(centroLabDTO dto) throws PersistenciaException {
+    public void reglasNegocio(CentroLaboratorio cl) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
@@ -118,8 +120,8 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
     public void autenticarEstudiante(CentroLaboratorio cl) throws PersistenciaException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
-    public CentroLaboratorio convertirDTOaEntidad(centroLabDTO dto){
+
+    public CentroLaboratorio convertirDTOaEntidad(centroLabDTO dto) {
         CentroLaboratorio ent = new CentroLaboratorio();
         List<Computadora> computadoras = new ArrayList<>();
         ent.setCampus(dto.getCampus());

@@ -117,7 +117,7 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        
+        guardar();
         frmCatalogoLaboratorio ir = new frmCatalogoLaboratorio();
         ir.setVisible(true);
         this.dispose();
@@ -141,10 +141,11 @@ public class frmAgregarLaboratorio extends javax.swing.JFrame {
         Time finSQL = Time.valueOf(finLocal); 
         lab.setCampus(cbxCampus.getSelectedItem().toString());
         lab.setHoraInicio(inicioSQL);
-        lab.setHoraInicio(finSQL);
+        lab.setHoraFin(finSQL);
         lab.setNombre(txtNombre.getText());
         CentroLaboratorioBO cl = new CentroLaboratorioBO();
         try {
+            System.out.println(lab.getNombre());
             cl.guardar(lab);
         } catch (BOException e) {
             System.out.println("Aprenda a programar:"+e.toString());

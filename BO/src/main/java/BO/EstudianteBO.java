@@ -131,7 +131,6 @@ public class EstudianteBO implements IEstudianteBO {
 
     private Estudiante convertirAEstudiante(EstudianteDTO dto) {
         Estudiante estudiante = new Estudiante();
-        
         estudiante.setId(dto.getEstudiante_ID());
         NombreCompleto nombreCompleto = new NombreCompleto();
         nombreCompleto.setNombre(dto.getNombre());
