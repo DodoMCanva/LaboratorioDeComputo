@@ -6,15 +6,12 @@ package presentacion;
  */
 public class frmAgregarOrdenador extends javax.swing.JFrame {
     private Long id = null;
-    /**
-     * Creates new form frmAgregarOrdenador
-     */
+    
     public frmAgregarOrdenador(Long id) {
         initComponents();
         this.id = id;
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
