@@ -43,8 +43,19 @@ public class CentroLaboratorioBO implements ICentroLaboratorioBO {
     }
 
     @Override
-    public List<centroLabDTO> buscarporCampus(String Campus, Tabla Filtro) throws BOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<centroLabDTO> buscarporNombre(String Campus, Tabla Filtro) throws BOException {
+        List<centroLabDTO> centrosDTO = new ArrayList<>();
+        try {
+            List<CentroLaboratorio> centrosENT = est.buscarporNombre(Campus, Filtro);
+            for (CentroLaboratorio entidad : centrosENT) {
+                centroLabDTO clDTO = convertirEntidadaDTO(entidad);
+                centrosDTO.add(clDTO);
+            }
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(CentroLaboratorioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return centrosDTO;
     }
 
     @Override

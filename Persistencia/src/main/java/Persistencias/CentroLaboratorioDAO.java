@@ -46,15 +46,22 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
     }
 
     @Override
-    public List<CentroLaboratorio> buscarporNombre(String nombre, Tabla Filtro) throws PersistenciaException {
+    public List<CentroLaboratorio> buscarporNombre(String Nombre, Tabla filtro) throws PersistenciaException {
         EntityManager em = null;
         try {
+            em = emf.createEntityManager();
             String jpql = "SELECT cl FROM CentroLaboratorio cl WHERE cl.nombre LIKE :nombre AND cl.estEliminado = false";
             TypedQuery<CentroLaboratorio> query = em.createQuery(jpql, CentroLaboratorio.class);
-            query.setParameter("nombre", "%" + nombre + "%");
+            query.setParameter("nombre", "%" + Nombre + "%");
+            query.setMaxResults(filtro.getLimite());
+            query.setFirstResult(filtro.getPagina() * filtro.getLimite());
             return query.getResultList();
         } catch (Exception e) {
             throw new PersistenciaException("Error al buscar centros de laboratorio por nombre", e);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
         }
     }
 
@@ -71,7 +78,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
             throw new PersistenciaException("Error al consultar centro de laboratorio con ID: " + id, e);
         } finally {
             if (em != null) {
-                em.close(); // Cerrar el EntityManager
+                em.close();
             }
         }
     }
