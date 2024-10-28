@@ -30,6 +30,7 @@ presentacion\frmCatalogoEstudiantes$5.class
 presentacion\frmMenuAdministrador.class
 presentacion\frmSoftwareVista$3.class
 presentacion\frmSeleccionPC$3.class
+presentacion\frmCatalogoOrdenadores$7.class
 presentacion\frmCatalogoLaboratorio$4.class
 presentacion\frmSoftwareVista.class
 presentacion\frmInicioSesionAdminsitrador$1.class
@@ -43,6 +44,7 @@ presentacion\frmCatalogoEstudiantes$7.class
 presentacion\frmSoftwareVista$1.class
 presentacion\frmCompuApartada$2.class
 presentacion\frmCatalogoLaboratorio$5.class
+presentacion\frmCatalogoOrdenadores$8.class
 presentacion\frmReporteCarreras$1.class
 presentacion\frmConfirmacion$1.class
 presentacion\frmSeleccionPC$5.class
@@ -68,6 +70,7 @@ presentacion\frmCatalogoEstudiantes$1.class
 presentacion\frmInicioSesionEstudiante$3.class
 presentacion\frmCatalogoLaboratorio$7.class
 presentacion\frmAgregarOrdenador.class
+presentacion\frmCatalogoOrdenadores$6.class
 presentacion\frmBloqueo$1.class
 presentacion\frmSeleccionPC$1.class
 presentacion\frmPantallaDesbloqueada.class
