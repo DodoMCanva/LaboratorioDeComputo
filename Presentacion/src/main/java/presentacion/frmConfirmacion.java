@@ -1,19 +1,24 @@
 package presentacion;
 
+import DTOLabComputo.EstudianteDTO;
+import DTOLabComputo.computadoraDTO;
+
 /**
  *
  * @author Equipo 3
  */
 public class frmConfirmacion extends javax.swing.JFrame {
-
+    private Long ide, idCentro;
     /**
      * Creates new form frmConfirmacion
      */
-    public frmConfirmacion() {
+    public frmConfirmacion(computadoraDTO comp, EstudianteDTO est, Long idcentro) {
         initComponents();
         setSize(603, 500);
         setLocationRelativeTo(null);
         setResizable(false);
+        this.ide = est.getEstudiante_ID();
+        this.idCentro = idcentro;
     }
 
     @SuppressWarnings("unchecked")
@@ -115,7 +120,7 @@ public class frmConfirmacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSoftwareActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        frmSeleccionPC sel = new frmSeleccionPC();
+        frmSeleccionPC sel = new frmSeleccionPC(this.ide, this.idCentro);
         sel.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed

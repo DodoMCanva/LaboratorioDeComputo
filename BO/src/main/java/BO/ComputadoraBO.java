@@ -36,22 +36,35 @@ public class ComputadoraBO implements IComputadoraBO {
         }
         return computadorasDTO;
     }
+    @Override
+    public List<computadoraDTO> obtenerComputadorasTablaSeleccion(Long id, Tabla Filtro) throws BOException {
+        List<computadoraDTO> computadorasDTO = new ArrayList<>();
+        try {
+            List<Computadora> compENT = cdao.obtenerComputadorasTabla(id, Filtro);
+            for (Computadora entidad : compENT) {
+                computadoraDTO clDTO = convertirEntidadaDTO(entidad);
+                computadorasDTO.add(clDTO);
+            }
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(CentroLaboratorioBO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return computadorasDTO;
+    }
 
     @Override
     public List<computadoraDTO> buscarporNombre(String nombre, Tabla Filtro) throws BOException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-   @Override
-public computadoraDTO consultar(Long id) throws BOException {
-    try {
-        Computadora entidad = cdao.consultar(id);
-        return convertirEntidadaDTO(entidad);
-    } catch (PersistenciaException ex) {
-        throw new BOException("Error al consultar la computadora", ex);
+    @Override
+    public computadoraDTO consultar(Long id) throws BOException {
+        try {
+            Computadora entidad = cdao.consultar(id);
+            return convertirEntidadaDTO(entidad);
+        } catch (PersistenciaException ex) {
+            throw new BOException("Error al consultar la computadora", ex);
+        }
     }
-}
-
 
     @Override
     public void guardar(computadoraDTO Computadora) throws BOException {
@@ -82,7 +95,6 @@ public computadoraDTO consultar(Long id) throws BOException {
     public boolean autenticarComputadora(Long id) throws BOException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
-    
 
     private Computadora convertirDTOaEntidad(computadoraDTO dto) {
         Computadora c = new Computadora();

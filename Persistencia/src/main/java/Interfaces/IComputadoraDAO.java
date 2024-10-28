@@ -12,6 +12,8 @@ import utilerias.Tabla;
 public interface IComputadoraDAO {
     //Consultas
     public List<Computadora> obtenerComputadorasTabla(Long CentroLab, Tabla Filtro) throws PersistenciaException;
+    
+    public List<Computadora> obtenerComputadorasTablaSeleccion(Long CentroLab, Tabla Filtro) throws PersistenciaException;
 
     public List<Computadora> buscarporNumero(Long CentroLab, String nombre, Tabla Filtro) throws PersistenciaException;
 

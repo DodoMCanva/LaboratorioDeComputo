@@ -39,55 +39,74 @@ public class ComputadoraDAO implements IComputadoraDAO {
             }
         }
     }
-    
+
     @Override
-public Computadora consultar(Long id) throws PersistenciaException {
-    EntityManager em = null;
-    try {
-        em = emf.createEntityManager();
-        return em.find(Computadora.class, id);
-    } catch (Exception e) {
-        throw new PersistenciaException("Error al consultar la computadora por ID", e);
-    } finally {
-        if (em != null) {
-            em.close();
+    public List<Computadora> obtenerComputadorasTablaSeleccion(Long CentroLab, Tabla filtro) throws PersistenciaException {
+        EntityManager em = null;
+        try {
+            em = emf.createEntityManager();
+            String jpql = "SELECT c FROM Computadora c WHERE c.centroLab.id = :centroLabId AND c.estEliminado = false AND c.tipoUsuario = 'Estudiantil'";
+            TypedQuery<Computadora> query = em.createQuery(jpql, Computadora.class);
+            query.setParameter("centroLabId", CentroLab);
+            query.setMaxResults(filtro.getLimite());
+            query.setFirstResult(filtro.getPagina() * filtro.getLimite());
+
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar computadoras por centro de laboratorio", e);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
         }
     }
-}
+
     @Override
-public List<Computadora> buscarporNumero(Long CentroLab, String numero, Tabla Filtro) throws PersistenciaException {
-    EntityManager em = null;
-    try {
-        em = emf.createEntityManager();
-        String jpql = "SELECT c FROM Computadora c WHERE c.centroLab.id = :centroLabId AND c.numero = :numero AND c.estEliminado = false";
-
-        TypedQuery<Computadora> query = em.createQuery(jpql, Computadora.class);
-        query.setParameter("centroLabId", CentroLab);
-        query.setParameter("numero", numero);
-        query.setMaxResults(Filtro.getLimite());
-        query.setFirstResult(Filtro.getPagina() * Filtro.getLimite());
-
-        return query.getResultList();
-    } catch (Exception e) {
-        throw new PersistenciaException("Error al buscar computadoras por número", e);
-    } finally {
-        if (em != null) {
-            em.close();
+    public Computadora consultar(Long id) throws PersistenciaException {
+        EntityManager em = null;
+        try {
+            em = emf.createEntityManager();
+            return em.find(Computadora.class, id);
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al consultar la computadora por ID", e);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
         }
     }
-}
+
+    @Override
+    public List<Computadora> buscarporNumero(Long CentroLab, String numero, Tabla Filtro) throws PersistenciaException {
+        EntityManager em = null;
+        try {
+            em = emf.createEntityManager();
+            String jpql = "SELECT c FROM Computadora c WHERE c.centroLab.id = :centroLabId AND c.numero = :numero AND c.estEliminado = false";
+
+            TypedQuery<Computadora> query = em.createQuery(jpql, Computadora.class);
+            query.setParameter("centroLabId", CentroLab);
+            query.setParameter("numero", numero);
+            query.setMaxResults(Filtro.getLimite());
+            query.setFirstResult(Filtro.getPagina() * Filtro.getLimite());
+
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar computadoras por número", e);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
+    }
 
     @Override
     public void guardar(Computadora computadora) throws PersistenciaException {
         EntityManager em = emf.createEntityManager();
         try {
             computadora.setEstatus("Disponible");
-
-            // Si el centro de laboratorio de la computadora no es nulo, asegúrate de que esté gestionado
             if (computadora.getCentroLab() != null && !em.contains(computadora.getCentroLab())) {
                 computadora.setCentroLab(em.find(CentroLaboratorio.class, computadora.getCentroLab().getId()));
             }
-
             em.getTransaction().begin();
             em.persist(computadora);
             em.getTransaction().commit();

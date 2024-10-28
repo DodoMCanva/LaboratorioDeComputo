@@ -28,7 +28,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+          <Component id="jPanel1" min="-2" pref="461" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -44,158 +44,6 @@
         <Property name="useNullLayout" type="boolean" value="false"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JButton" name="btnPC8">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="0" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Seleccionar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPC8ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="460" y="370" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPC1">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="0" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Seleccionar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPC1ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="60" y="210" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPC2">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="0" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Seleccionar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPC2ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="180" y="210" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPC3">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="0" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Seleccionar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPC3ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="310" y="210" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPC4">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="0" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Seleccionar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPC4ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="450" y="210" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPC5">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="0" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Seleccionar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPC5ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="60" y="370" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPC6">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="0" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Seleccionar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPC6ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="200" y="370" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="btnPC7">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="99" red="0" type="rgb"/>
-            </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="ff" green="ff" red="ff" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Seleccionar"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnPC7ActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="330" y="370" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
         <Component class="javax.swing.JButton" name="btnSalir">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -212,206 +60,6 @@
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="500" y="420" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblnumPC1">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="PC 1"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="140" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPC1">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/compuITson.png"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="70" y="110" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblnumPC2">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="PC 2"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="220" y="140" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPC2">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/compuITson.png"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="190" y="110" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblnumPC3">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="PC 3"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="350" y="140" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPC3">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/compuITson.png"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="320" y="110" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblnumPC4">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="PC 4"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="480" y="140" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPC4">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/compuITson.png"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="450" y="110" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblnumPC5">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="PC 5"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="100" y="310" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPC5">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/compuITson.png"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="70" y="280" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblnumPC6">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="PC 6"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="230" y="310" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPC6">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/compuITson.png"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="200" y="280" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblnumPC7">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="PC 7"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="360" y="310" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPC7">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/compuITson.png"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="330" y="280" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblnumPC8">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Segoe UI" size="18" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="PC 8"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="490" y="310" width="-1" height="-1"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblPC8">
-          <Properties>
-            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/imagenes/compuITson.png"/>
-            </Property>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="460" y="280" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -441,6 +89,31 @@
             </Constraint>
           </Constraints>
         </Component>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+              <AbsoluteConstraints x="30" y="100" width="540" height="290"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTable" name="tblCompus">
+              <Properties>
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                  <Table columnCount="3" rowCount="8">
+                    <Column editable="true" title="ID" type="java.lang.Object"/>
+                    <Column editable="true" title="Computadora" type="java.lang.Object"/>
+                    <Column editable="true" title="Seleccionar" type="java.lang.Object"/>
+                  </Table>
+                </Property>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
