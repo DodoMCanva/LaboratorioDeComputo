@@ -1,5 +1,6 @@
 package Persistencias;
 
+import Entidades.CentroLaboratorio;
 import Entidades.Computadora;
 import Interfaces.IComputadoraDAO;
 import java.util.List;
@@ -77,12 +78,18 @@ public List<Computadora> buscarporNumero(Long CentroLab, String numero, Tabla Fi
 }
 
     @Override
-    public void guardar(Computadora Computadora) throws PersistenciaException {
+    public void guardar(Computadora computadora) throws PersistenciaException {
         EntityManager em = emf.createEntityManager();
         try {
-            Computadora.setEstatus("Disponible");
+            computadora.setEstatus("Disponible");
+
+            // Si el centro de laboratorio de la computadora no es nulo, asegúrate de que esté gestionado
+            if (computadora.getCentroLab() != null && !em.contains(computadora.getCentroLab())) {
+                computadora.setCentroLab(em.find(CentroLaboratorio.class, computadora.getCentroLab().getId()));
+            }
+
             em.getTransaction().begin();
-            em.persist(Computadora);
+            em.persist(computadora);
             em.getTransaction().commit();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {

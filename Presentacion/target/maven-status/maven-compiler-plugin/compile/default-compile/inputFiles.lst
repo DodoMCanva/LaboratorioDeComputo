@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmSeleccionPC.java
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmSoftwareVista.java
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmMenuAdministrador.java
@@ -23,3 +24,30 @@ C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmPdfReporteCentroComputo.java
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmAgregarLaboratorio.java
 C:\Users\cesar\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmReporteCarreras.java
+=======
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmSoftwareVista.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmReporteCentroComputo.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmReporteBloqueos.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmCatalogoBloqueos.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmInicioSesionAdminsitrador.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmMenuAdministrador.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmApartadaExito.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmInicioSesionEstudiante.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmPdfReporteCarrera.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmInicioExitoso.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmAgregarLaboratorio.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmBloqueo.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmPdfReporteBloqueo.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmSeleccionPC.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmCatalogoLaboratorio.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmCompuApartada.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmAgregarOrdenador.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmPdfReporteCentroComputo.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmAgregarEstudiante.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmReporteCarreras.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmCatalogoOrdenadores.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmConfirmacion.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmCatalogoEstudiantes.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmMenuReportes.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Presentacion\src\main\java\presentacion\frmPantallaDesbloqueada.java
+>>>>>>> main
