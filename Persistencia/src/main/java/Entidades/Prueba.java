@@ -7,7 +7,6 @@ package Entidades;
 import java.sql.Time;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
