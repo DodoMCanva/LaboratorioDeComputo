@@ -3,14 +3,15 @@ package Interfaces;
 
 import Entidades.Computadora;
 import Entidades.Software;
-import Persistencias.PersistenciaException;
 import java.util.List;
 
 /**
- *
- * @author Valeria
+ * Interfaz para operaciones de acceso a datos de Software.
+ * @author Equipo 3
  */
 public interface ISoftwareDAO {
 
-    public List<Software> obtenerPorComputadora(Computadora computadora);
+    // Consulta de software instalado en una computadora específica
+    List<Software> obtenerPorComputadora(Computadora computadora);
 }
+

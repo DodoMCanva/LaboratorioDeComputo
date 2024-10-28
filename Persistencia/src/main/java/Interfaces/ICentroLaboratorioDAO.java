@@ -1,33 +1,29 @@
 package Interfaces;
 
-import DTOLabComputo.centroLabDTO;
 import Entidades.CentroLaboratorio;
 import Persistencias.PersistenciaException;
 import java.util.List;
 import utilerias.Tabla;
 
 /**
+ * Interfaz DAO para CentroLaboratorio.
  *
- * @author Equipo 3
+ * @autor Equipo 3
  */
 public interface ICentroLaboratorioDAO {
-    
-    //Consultas
-    public List<CentroLaboratorio> obtenerCentros(Tabla Filtro) throws PersistenciaException;
 
-    public List<CentroLaboratorio> buscarporNombre(String Nombre, Tabla Filtro) throws PersistenciaException;
+    // Consultas
+    List<CentroLaboratorio> obtenerCentros(Tabla filtro) throws PersistenciaException;
 
-    public CentroLaboratorio consultar(Long id) throws PersistenciaException;
-    
-    //Modificaciones
-    public void guardar(CentroLaboratorio cl) throws PersistenciaException;
+   public List<CentroLaboratorio> buscarporNombre(String Nombre, Tabla filtro) throws PersistenciaException;
 
-    public void editar(Long id, CentroLaboratorio cl) throws PersistenciaException;
+    CentroLaboratorio consultar(Long id) throws PersistenciaException;
 
-    public void eliminar(Long id) throws PersistenciaException;
+    // Modificaciones
+    void guardar(CentroLaboratorio cl) throws PersistenciaException;
 
-    //verificadores
-    public void reglasNegocio(CentroLaboratorio cl) throws PersistenciaException;
+    void editar(Long id, CentroLaboratorio cl) throws PersistenciaException;
 
-    public void autenticarEstudiante(CentroLaboratorio cl) throws PersistenciaException;
+    void eliminar(Long id) throws PersistenciaException;
+
 }

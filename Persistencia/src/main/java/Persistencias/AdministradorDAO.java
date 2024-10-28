@@ -13,18 +13,19 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 /**
- *
+ * Implementación de IAdministradorDAO para validar credenciales de administrador en la base de datos.
+ * Crea el EntityManager para gestionar la persistencia de datos.
  * @author cesar
  */
 public class AdministradorDAO implements IAdministradorDAO {
     
     private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
-    
+
     @Override
-     public boolean validarAdministrador(String usuario, String contraseña) {
+    public boolean validarAdministrador(String usuario, String contraseña) {
         EntityManager em = emf.createEntityManager(); 
         try {
-            // Consulta para buscar el administrador
+            // Consulta el administrador por usuario y contraseña
             TypedQuery<PersonalAutorizado> query = em.createQuery(
                 "SELECT a FROM PersonalAutorizado a WHERE a.usuario = :usuario AND a.contraseña = :contraseña",
                 PersonalAutorizado.class

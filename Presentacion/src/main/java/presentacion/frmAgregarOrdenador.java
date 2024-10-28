@@ -3,7 +3,6 @@ package presentacion;
 import BO.BOException;
 import BO.CentroLaboratorioBO;
 import BO.ComputadoraBO;
-import DTOLabComputo.centroLabDTO;
 import DTOLabComputo.computadoraDTO;
 import java.util.logging.Level;
 import java.util.logging.Logger;

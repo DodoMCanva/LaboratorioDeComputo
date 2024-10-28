@@ -8,16 +8,14 @@ import DTOLabComputo.CarreraDTO;
 import Entidades.Carrera;
 import Interfaces.ICarreraDAO;
 import java.util.List;
-import java.util.Optional;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 
 /**
- *
- * @author cesar
+ * Implementación de ICarreraDAO para gestionar operaciones de Carrera en la base de datos.
+ * @author Equipo 3
  */
 public class CarreraDAO implements ICarreraDAO {
 
@@ -28,6 +26,7 @@ public class CarreraDAO implements ICarreraDAO {
         EntityManager em = emf.createEntityManager();
         Carrera carrera = null;
         try {
+            // Busca la carrera por nombre
             TypedQuery<Carrera> query = em.createQuery(
                     "SELECT c FROM Carrera c WHERE c.nombre = :nombreCarrera",
                     Carrera.class
@@ -35,7 +34,7 @@ public class CarreraDAO implements ICarreraDAO {
             query.setParameter("nombreCarrera", nombreCarrera);
             List<Carrera> carreras = query.getResultList();
             if (carreras.size() == 1) {
-                carrera = carreras.get(0); // Solo hay una carrera
+                carrera = carreras.get(0); // Retorna si solo hay una carrera
             } else if (carreras.isEmpty()) {
                 System.out.println("Carrera no encontrada.");
             } else {
@@ -47,10 +46,14 @@ public class CarreraDAO implements ICarreraDAO {
         } finally {
             em.close();
         }
-
         return carrera;
     }
 
+    /**
+     * Convierte un CarreraDTO a una entidad Carrera.
+     * @param carreraDTO DTO de carrera a convertir
+     * @return Carrera convertida
+     */
     public Carrera convertirDTOAEntity(CarreraDTO carreraDTO) {
         Carrera carrera = new Carrera();
         carrera.setId(carrera.getId());
