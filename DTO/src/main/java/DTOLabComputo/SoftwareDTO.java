@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTOLabComputo;
 
 /**
@@ -9,12 +5,9 @@ package DTOLabComputo;
  * @author cesar
  */
 public class SoftwareDTO {
+
     private int Software_ID;
     private String Software;
-    
-    
-    
-    
 
     public int getSoftware_ID() {
         return Software_ID;
@@ -31,7 +24,5 @@ public class SoftwareDTO {
     public void setSoftware(String Software) {
         this.Software = Software;
     }
-    
-    
-    
+
 }
