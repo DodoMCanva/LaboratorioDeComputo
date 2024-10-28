@@ -1,3 +1,4 @@
+Interfaces\ISesionDAO.class
 Interfaces\IAdministradorDAO.class
 utilerias\Utilidades.class
 utilerias\Reportes.class
@@ -17,6 +18,7 @@ Interfaces\ICentroLaboratorioDAO.class
 Entidades\UnidadAcademica.class
 Persistencias\CentroLaboratorioDAO.class
 Entidades\Carrera.class
+Persistencias\SesionDAO.class
 utilerias\Tabla.class
 Entidades\CentroLaboratorio.class
 Interfaces\ICarreraDAO.class

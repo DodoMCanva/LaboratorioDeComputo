@@ -103,16 +103,8 @@ public class frmAgregarOrdenador extends javax.swing.JFrame {
         nueva.setIP(txtIp.getText());
         nueva.setNumeroPC(Integer.parseInt(txtNumero.getText()));
         nueva.setTipoUsuario(cboxTipo.getSelectedItem().toString());
-        centroLabDTO Centro = null;
         try {
-            Centro = clbo.consultar(idc);
-        } catch (BOException ex) {
-            Logger.getLogger(frmAgregarOrdenador.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (Centro != null) {
-            nueva.setCentro(Centro);
-        }
-        try {
+            nueva.setCentro(clbo.consultar(idc));
             cbo.guardar(nueva);
         } catch (BOException ex) {
             Logger.getLogger(frmAgregarOrdenador.class.getName()).log(Level.SEVERE, null, ex);

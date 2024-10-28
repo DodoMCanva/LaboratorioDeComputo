@@ -84,12 +84,13 @@ public class ComputadoraBO implements IComputadoraBO {
         c.setEstatus(dto.getEstatus());
         c.setNumeroPC(dto.getNumeroPC());
         c.setTipoUsuario(dto.getTipoUsuario());
-        c.setCentroLab(convertircenDTOacenEntidad(dto.getCentro()));
+        //c.setCentroLab(convertircenDTOacenEntidad(dto.getCentro()));
         return c;
     }
 
     private CentroLaboratorio convertircenDTOacenEntidad(centroLabDTO centro) {
         CentroLaboratorio cl = new CentroLaboratorio();
+        cl.setId(centro.getCentroLab_ID());
         cl.setCampus(centro.getCampus());
         cl.setEstEliminado(centro.isEstEliminado());
         cl.setNombre(centro.getNombre());
