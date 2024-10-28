@@ -1,6 +1,5 @@
 package Persistencias;
 
-import DTOLabComputo.EstudianteDTO;
 import Entidades.Estudiante;
 import Entidades.NombreCompleto;
 import Interfaces.IEstudianteDAO;

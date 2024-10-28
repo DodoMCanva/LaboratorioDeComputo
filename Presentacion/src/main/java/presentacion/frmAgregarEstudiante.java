@@ -4,7 +4,6 @@ import BO.CarreraBO;
 import BO.EstudianteBO;
 import DTOLabComputo.CarreraDTO;
 import DTOLabComputo.EstudianteDTO;
-import Entidades.Carrera;
 import Persistencias.CarreraDAO;
 
 /**
@@ -22,6 +21,17 @@ public class frmAgregarEstudiante extends javax.swing.JFrame {
     public frmAgregarEstudiante() {
         initComponents();
     }
+
+        public frmAgregarEstudiante(Long estudianteId) {
+            initComponents();
+            // Obtener el estudiante usando el estudianteId
+            EstudianteDTO estudiante = estudianteBO.consultar(estudianteId);
+            if (estudiante != null) {
+                cargarDatosEstudiante(estudiante); // Llama al método para cargar datos en modo edición
+            } else {
+                System.out.println("Estudiante no encontrado.");
+            }
+        }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -122,19 +132,24 @@ public class frmAgregarEstudiante extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+
         EstudianteDTO nuevo = new EstudianteDTO();
         //nuevo.setEstudiante_ID(Long.parseLong(txtId.getText()));
         nuevo.setNombre(txtNombre.getText());
         nuevo.setApellidoPaterno(txtApPaterno.getText());
         nuevo.setApellidoMaterno(txtApMaterno.getText());
         nuevo.setContraseña(txtContrasena.getText());
-       
+
         CarreraDTO carreraSeleccionada = carreraBO.consultarPorNombre(cbxCarrera.getSelectedItem().toString());
         if (carreraSeleccionada != null) {
-            nuevo.setCarrera(carreraSeleccionada); 
+            nuevo.setCarrera(carreraSeleccionada);
         }
-        System.out.println(carreraSeleccionada.getCarrera_ID());
-        estudianteBO.guardar(nuevo);
+       
+        if (estudianteId == null) { // Modo de agregar
+            estudianteBO.guardar(nuevo);
+        } else { // Modo de edición
+            estudianteBO.editar(estudianteId, nuevo);
+        }
 
         frmCatalogoEstudiantes ir = new frmCatalogoEstudiantes();
         ir.setVisible(true);
@@ -151,8 +166,39 @@ public class frmAgregarEstudiante extends javax.swing.JFrame {
     private void cbxCarreraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxCarreraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbxCarreraActionPerformed
+    private Long estudianteId = null; // Declaración de la variable de clase estudianteId
+    // Método para cargar los datos del estudiante en los campos
 
-    public void nuevoEstudiante() {
+    private void cargarDatosEstudiante(EstudianteDTO estudiante) {
+        if (estudiante != null) { // Verificar que el estudiante no sea nulo
+            this.estudianteId = estudiante.getEstudiante_ID(); // Asigna el ID del estudiante para edición
+            txtNombre.setText(estudiante.getNombre());
+            txtApPaterno.setText(estudiante.getApellidoPaterno());
+            txtApMaterno.setText(estudiante.getApellidoMaterno());
+            txtContrasena.setText(estudiante.getContraseña());
+
+            // Selecciona la carrera del estudiante en el combo box
+            String nombreCarrera = estudiante.getCarrera().getNombre();
+            if (carreraExistente(nombreCarrera)) { // Verifica que la carrera esté en el ComboBox
+                cbxCarrera.setSelectedItem(nombreCarrera);
+            } else {
+                System.out.println("Carrera no encontrada en el ComboBox: " + nombreCarrera);
+            }
+
+            lblTitulo.setText("Editar Estudiante"); // Cambia el título
+        } else {
+            System.out.println("Estudiante no válido.");
+        }
+    }
+
+// Método adicional para verificar la existencia de la carrera en el ComboBox
+    private boolean carreraExistente(String nombreCarrera) {
+        for (int i = 0; i < cbxCarrera.getItemCount(); i++) {
+            if (cbxCarrera.getItemAt(i).equals(nombreCarrera)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

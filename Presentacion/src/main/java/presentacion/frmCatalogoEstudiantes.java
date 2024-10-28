@@ -4,8 +4,6 @@ import BO.BOException;
 import BO.EstudianteBO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -66,10 +64,6 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
 
         tblEstudiantes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -168,16 +162,23 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        cargarTabla();
+        String nombre = txtBuscar.getText();
+        if (!nombre.isEmpty()) {
+            this.cargarTablaBusqueda(nombre);
+        } else {
+            this.dispose();
+            frmCatalogoEstudiantes es = new frmCatalogoEstudiantes();
+            es.setVisible(true);
+        }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void cargarTabla() {
         try {
             Tabla filtro = obtenerFiltrosTabla();
-            limpiarTabla();
+            borrarRegistrosTabla();
             agregarRegistrosTabla(filtro);
         } catch (BOException ex) {
-            limpiarTabla();
+            borrarRegistrosTabla();
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
@@ -198,44 +199,107 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
         });
     }
 
-    private void cargarConfiguracionInicialTabla() {
-        TableColumnModel modeloColumnas = tblEstudiantes.getColumnModel();
+    private void cargarTablaBusqueda(String nombre) {
+        try {
+            Tabla filtro = this.obtenerFiltrosTabla();
+            borrarRegistrosTabla();
+            lblNumPagina.setText("Página " + (pag + 1));
+            if (this.estudianteBO.buscarporNombre(nombre, filtro).isEmpty() && pag > 0) {
+                pag--;
+                cargarTabla();
+            } else {
+                agregarRegistrosTablaBusqueda(nombre, filtro);
+            }
+        } catch (BOException ex) {
+            borrarRegistrosTabla();
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Información", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
-        ActionListener onEditarClickListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frmAgregarEstudiante editarEstudiante = new frmAgregarEstudiante();
+    private void agregarRegistrosTablaBusqueda(String nombre, Tabla filtro) throws BOException {
+        DefaultTableModel modeloTabla = (DefaultTableModel) tblEstudiantes.getModel();
+        estudianteBO.obtenerEstudiantes(filtro).forEach(row -> {
+            Object[] fila = new Object[7];
+            String nombreCompelto = row.getNombre() + " " + row.getApellidoPaterno() + " " + row.getApellidoMaterno();
+            fila[0] = row.getEstudiante_ID();
+            fila[1] = nombreCompelto;
+            fila[2] = row.getCarrera().getNombre();
+            fila[3] = row.getContraseña();
+            fila[4] = row.isEstaEgresado();
+            fila[5] = "Eliminar";
+            fila[6] = "Eliminar";
+            modeloTabla.addRow(fila);
+        });
+    }
+
+    private void cargarConfiguracionInicialTabla() {
+    TableColumnModel modeloColumnas = tblEstudiantes.getColumnModel();
+
+    ActionListener onEditarClickListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            long idSeleccionado = getIdSeleccionadoTabla(); // Obtener ID del estudiante seleccionado
+            if (idSeleccionado != 0) { // Verifica que haya un estudiante seleccionado
+                frmAgregarEstudiante editarEstudiante = new frmAgregarEstudiante(idSeleccionado);
                 editarEstudiante.setVisible(true);
                 dispose();
+            } else {
+                JOptionPane.showMessageDialog(frmCatalogoEstudiantes.this, "Por favor selecciona un estudiante para editar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
-        };
-        modeloColumnas.getColumn(5).setCellRenderer(new JButtonRenderer("Editar"));
-        modeloColumnas.getColumn(5).setCellEditor(new JButtonCellEditor("Editar", onEditarClickListener));
+        }
+    };
+    modeloColumnas.getColumn(5).setCellRenderer(new JButtonRenderer("Editar"));
+    modeloColumnas.getColumn(5).setCellEditor(new JButtonCellEditor("Editar", onEditarClickListener));
 
-        ActionListener onEliminarClickListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int id = getIdSeleccionadoTabla();
+    ActionListener onEliminarClickListener = new ActionListener() {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            int id = getIdSeleccionadoTabla();
+            if (id != 0) {
                 estudianteBO.eliminar(Long.valueOf(id));
                 cargarTabla();
+            } else {
+                JOptionPane.showMessageDialog(frmCatalogoEstudiantes.this, "Por favor selecciona un estudiante para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             }
-        };
-        modeloColumnas.getColumn(6).setCellRenderer(new JButtonRenderer("Eliminar"));
-        modeloColumnas.getColumn(6).setCellEditor(new JButtonCellEditor("Eliminar", onEliminarClickListener));
-    }
+        }
+    };
+    modeloColumnas.getColumn(6).setCellRenderer(new JButtonRenderer("Eliminar"));
+    modeloColumnas.getColumn(6).setCellEditor(new JButtonCellEditor("Eliminar", onEliminarClickListener));
+}
 
     private int getIdSeleccionadoTabla() {
-        int filaSeleccionada = tblEstudiantes.getSelectedRow();
-        if (filaSeleccionada != -1) {
-            DefaultTableModel modelo = (DefaultTableModel) tblEstudiantes.getModel();
-            return (int) modelo.getValueAt(filaSeleccionada, 0);
+        int idS = 0;
+        int indiceFilaSeleccionada = this.tblEstudiantes.getSelectedRow();
+        if (indiceFilaSeleccionada != -1) {
+            DefaultTableModel modelo = (DefaultTableModel) this.tblEstudiantes.getModel();
+            int indiceColumnaId = 0;
+            Object idSeleccionado = modelo.getValueAt(indiceFilaSeleccionada, indiceColumnaId);
+            try {
+                if (idSeleccionado instanceof Integer) {
+                    idS = (Integer) idSeleccionado;
+                } else if (idSeleccionado instanceof Long) {
+                    idS = ((Long) idSeleccionado).intValue(); // Convierte Long a int
+                } else if (idSeleccionado instanceof String) {
+                    idS = Integer.parseInt((String) idSeleccionado);
+                } else {
+                    System.out.println("Tipo de dato inesperado para el ID: " + idSeleccionado.getClass().getName());
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error al convertir ID: " + e.getMessage());
+            }
         }
-        return -1;
+        return idS;
     }
 
-    private void limpiarTabla() {
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblEstudiantes.getModel();
+    private void borrarRegistrosTabla() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblEstudiantes.getModel();
         modeloTabla.setRowCount(0);
+    }
+
+    public void editar(Long id) {
+        frmAgregarEstudiante ir = new frmAgregarEstudiante(id);
+        ir.setVisible(true);
+        this.dispose();
     }
 
     private Tabla obtenerFiltrosTabla() {
