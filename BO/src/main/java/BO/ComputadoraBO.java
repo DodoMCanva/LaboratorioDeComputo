@@ -67,10 +67,10 @@ public class ComputadoraBO implements IComputadoraBO {
     }
 
     @Override
-    public void guardar(computadoraDTO Computadora) throws BOException {
+    public void guardar(Long idcl, computadoraDTO Computadora) throws BOException {
         Computadora cent = convertirDTOaEntidad(Computadora);
         try {
-            cdao.guardar(cent);
+            cdao.guardar(idcl,cent);
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -103,7 +103,7 @@ public class ComputadoraBO implements IComputadoraBO {
         c.setEstatus(dto.getEstatus());
         c.setNumeroPC(dto.getNumeroPC());
         c.setTipoUsuario(dto.getTipoUsuario());
-        //c.setCentroLab(convertircenDTOacenEntidad(dto.getCentro()));
+        c.setCentroLab(convertircenDTOacenEntidad(dto.getCentro()));
         return c;
     }
 

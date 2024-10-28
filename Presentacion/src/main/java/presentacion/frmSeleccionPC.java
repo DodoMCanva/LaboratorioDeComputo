@@ -112,18 +112,18 @@ public class frmSeleccionPC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void cargarTabla() {
-        try {
+        /*try {
             Tabla filtro = this.obtenerFiltrosTabla();
             BorrarRegistrosTabla();
             agregarRegistrosTabla(filtro);
-            if (this.cBO.obtenerComputadorasTablaSeleccion(idCentro, filtro).isEmpty() && pag > 0) {
+            if (this.cBO.obtenerComputadorasTablaSeleccion(idC, filtro).isEmpty() && pag > 0) {
                 pag--;
                 cargarTabla();
             }
         } catch (BOException ex) {
             BorrarRegistrosTabla();
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Información", JOptionPane.ERROR_MESSAGE);
-        }
+        }*/
     }
 
     private void agregarRegistrosTabla(Tabla filtro) throws BOException {

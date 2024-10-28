@@ -21,7 +21,7 @@ public interface IComputadoraBO {
     public computadoraDTO consultar(Long id) throws BOException;
 
     //Modificaciones
-    public void guardar(computadoraDTO Computadora) throws BOException;
+    public void guardar(Long idcl, computadoraDTO Computadora) throws BOException;
 
     public void editar(Long id, computadoraDTO e) throws BOException;
 
