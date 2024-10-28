@@ -120,15 +120,57 @@ public class ComputadoraDAO implements IComputadoraDAO {
         }
     }
 
-    @Override
-    public void editar(Long id, Computadora eComputadora) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   @Override
+public void editar(Long id, Computadora eComputadora) throws PersistenciaException {
+    EntityManager em = emf.createEntityManager();
+    try {
+        em.getTransaction().begin();
+        Computadora existente = em.find(Computadora.class, id);
+        if (existente != null) {
+            // Actualiza los atributos de la computadora
+            existente.setIp(eComputadora.getIp());
+            existente.setNumeroPC(eComputadora.getNumeroPC());
+            existente.setTipoUsuario(eComputadora.getTipoUsuario());
+            em.merge(existente);
+        } else {
+            throw new PersistenciaException("No se encontró la computadora con el ID: " + id);
+        }
+        em.getTransaction().commit();
+    } catch (PersistenciaException e) {
+        if (em != null && em.getTransaction().isActive()) {
+            em.getTransaction().rollback();
+        }
+        throw new PersistenciaException("Error al editar computadora", e);
+    } finally {
+        if (em != null) {
+            em.close();
+        }
     }
+}
 
-    @Override
-    public void eliminar(Long id) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+@Override
+public void eliminar(Long id) throws PersistenciaException {
+    EntityManager em = emf.createEntityManager();
+    try {
+        em.getTransaction().begin();
+        Computadora computadora = em.find(Computadora.class, id);
+        if (computadora != null) {
+            // Marca la computadora como eliminada (borrado lógico)
+            computadora.setEstEliminado(true);
+            em.merge(computadora);
+        }
+        em.getTransaction().commit();
+    } catch (Exception e) {
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().rollback();
+        }
+        throw new PersistenciaException("Error al eliminar computadora con ID: " + id, e);
+    } finally {
+        if (em != null && em.isOpen()) {
+            em.close();
+        }
     }
+}
 
     @Override
     public void reglasNegocio(Computadora e) throws PersistenciaException {

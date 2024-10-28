@@ -92,6 +92,11 @@ public class frmCatalogoOrdenadores extends javax.swing.JFrame {
 
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         jplCatalogoOrdenadores.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, 30));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -110,11 +115,21 @@ public class frmCatalogoOrdenadores extends javax.swing.JFrame {
         btnAtras.setBackground(new java.awt.Color(153, 153, 153));
         btnAtras.setForeground(new java.awt.Color(255, 255, 255));
         btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
         jplCatalogoOrdenadores.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, -1, 25));
 
         btnSiguiente.setBackground(new java.awt.Color(153, 153, 153));
         btnSiguiente.setForeground(new java.awt.Color(255, 255, 255));
         btnSiguiente.setText("Siguiente");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
         jplCatalogoOrdenadores.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, -1, 25));
 
         lblNumPagina.setText("numPagina");
@@ -137,6 +152,28 @@ public class frmCatalogoOrdenadores extends javax.swing.JFrame {
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnAgregarOrdActionPerformed
+
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+         pag++;
+        cargarTabla();
+    
+    }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+         if (pag > 0) {
+            pag--;
+            cargarTabla();
+        }
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String query = txtBuscar.getText();
+        if (!query.isEmpty()) {
+            cargarTablaBusqueda(query);
+        } else {
+            cargarTabla();
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
 
     private void cargarTabla() {
         try {
