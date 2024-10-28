@@ -40,8 +40,7 @@ public class CarreraDAO implements ICarreraDAO {
                 System.out.println("Carrera no encontrada.");
             } else {
                 System.out.println("Más de una carrera encontrada con el nombre: " + nombreCarrera);
-                // Aquí puedes manejar la lógica según tu aplicación (por ejemplo, devolver la primera o lanzar una excepción)
-                carrera = carreras.get(0); // Puedes optar por devolver el primero o manejar el caso adecuadamente.
+                carrera = carreras.get(0);
             }
         } catch (Exception e) {
             System.out.println("Error en la búsqueda de carrera: " + e.getMessage());
