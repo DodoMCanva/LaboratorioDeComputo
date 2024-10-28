@@ -40,7 +40,7 @@ public class ComputadoraBO implements IComputadoraBO {
     public List<computadoraDTO> obtenerComputadorasTablaSeleccion(Long id, Tabla Filtro) throws BOException {
         List<computadoraDTO> computadorasDTO = new ArrayList<>();
         try {
-            List<Computadora> compENT = cdao.obtenerComputadorasTabla(id, Filtro);
+            List<Computadora> compENT = cdao.obtenerComputadorasTablaSeleccion(id, Filtro);
             for (Computadora entidad : compENT) {
                 computadoraDTO clDTO = convertirEntidadaDTO(entidad);
                 computadorasDTO.add(clDTO);

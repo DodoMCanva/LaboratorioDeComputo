@@ -35,7 +35,7 @@ public class frmSeleccionPC extends javax.swing.JFrame {
         cargarConfiguracionInicialTabla();
         cargarTabla();
         this.idE = idE;
-        this.idCentro = idCentro;
+        this.idCentro = 1L;
     }
 
     @SuppressWarnings("unchecked")

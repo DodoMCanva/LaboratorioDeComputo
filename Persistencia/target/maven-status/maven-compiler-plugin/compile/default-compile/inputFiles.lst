@@ -6,10 +6,12 @@ C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\En
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Persistencias\ComputadoraDAO.java
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Persistencias\PersistenciaException.java
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Interfaces\ICentroLaboratorioDAO.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Interfaces\ISoftwareDAO.java
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Interfaces\ISesionDAO.java
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Entidades\CentroLaboratorio.java
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Interfaces\IComputadoraDAO.java
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Entidades\UnidadAcademica.java
+C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Persistencias\SoftwareDAO.java
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Entidades\NombreCompleto.java
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\utilerias\Utilidades.java
 C:\Users\Fer\Documents\GitHub\LaboratorioDeComputo\Persistencia\src\main\java\Persistencias\CentroLaboratorioDAO.java
