@@ -81,7 +81,7 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblEstudiantes);
 
-        jplCatalogoEstudiantes.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 790, 260));
+        jplCatalogoEstudiantes.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 790, 230));
         jplCatalogoEstudiantes.add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 580, 30));
 
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -104,7 +104,7 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
                 btnAgregarEstActionPerformed(evt);
             }
         });
-        jplCatalogoEstudiantes.add(btnAgregarEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 400, 110, 30));
+        jplCatalogoEstudiantes.add(btnAgregarEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 380, 110, 30));
 
         btnAtras.setBackground(new java.awt.Color(153, 153, 153));
         btnAtras.setForeground(new java.awt.Color(255, 255, 255));
@@ -126,7 +126,7 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
         });
         jplCatalogoEstudiantes.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, -1, 25));
 
-        lblNumPagina.setText("numPagina");
+        lblNumPagina.setText("Pagina 1");
         jplCatalogoEstudiantes.add(lblNumPagina, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 460, -1, 25));
 
         getContentPane().add(jplCatalogoEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 840, 510));
@@ -162,13 +162,13 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-        String nombre = txtBuscar.getText();
+         String nombre = txtBuscar.getText();
         if (!nombre.isEmpty()) {
             this.cargarTablaBusqueda(nombre);
         } else {
             this.dispose();
-            frmCatalogoEstudiantes es = new frmCatalogoEstudiantes();
-            es.setVisible(true);
+            frmCatalogoLaboratorio c = new frmCatalogoLaboratorio();
+            c.setVisible(true);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
