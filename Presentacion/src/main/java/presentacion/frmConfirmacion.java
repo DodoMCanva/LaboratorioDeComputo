@@ -2,6 +2,7 @@ package presentacion;
 
 import DTOLabComputo.EstudianteDTO;
 import DTOLabComputo.computadoraDTO;
+import java.awt.HeadlessException;
 
 /**
  *
@@ -19,6 +20,9 @@ public class frmConfirmacion extends javax.swing.JFrame {
         setResizable(false);
         this.ide = est.getEstudiante_ID();
         this.idCentro = idcentro;
+    }
+
+    public frmConfirmacion()  {
     }
 
     @SuppressWarnings("unchecked")

@@ -30,5 +30,5 @@ public interface IComputadoraBO {
     //verificadores
     public void reglasNegocio(computadoraDTO e) throws BOException;
 
-    boolean autenticarComputadora(Long id) throws BOException;
+   
 }
