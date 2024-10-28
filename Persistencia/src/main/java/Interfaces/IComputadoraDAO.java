@@ -20,7 +20,7 @@ public interface IComputadoraDAO {
     public Computadora consultar(Long id) throws PersistenciaException;
 
     //Modificaciones
-    public void guardar(Computadora Computadora) throws PersistenciaException;
+    public void guardar(Long idcl, Computadora computadora) throws PersistenciaException;
 
     public void editar(Long id, Computadora eComputadora) throws PersistenciaException;
 

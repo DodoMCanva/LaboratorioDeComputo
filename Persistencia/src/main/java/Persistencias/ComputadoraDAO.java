@@ -100,12 +100,12 @@ public class ComputadoraDAO implements IComputadoraDAO {
     }
 
     @Override
-    public void guardar(Computadora computadora) throws PersistenciaException {
+    public void guardar(Long idcl, Computadora computadora) throws PersistenciaException {
         EntityManager em = emf.createEntityManager();
         try {
             computadora.setEstatus("Disponible");
             if (computadora.getCentroLab() != null && !em.contains(computadora.getCentroLab())) {
-                computadora.setCentroLab(em.find(CentroLaboratorio.class, computadora.getCentroLab().getId()));
+                computadora.setCentroLab(em.find(CentroLaboratorio.class, idcl));
             }
             em.getTransaction().begin();
             em.persist(computadora);

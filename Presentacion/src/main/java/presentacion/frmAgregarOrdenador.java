@@ -105,7 +105,7 @@ public class frmAgregarOrdenador extends javax.swing.JFrame {
         nueva.setTipoUsuario(cboxTipo.getSelectedItem().toString());
         try {
             nueva.setCentro(clbo.consultar(idc));
-            cbo.guardar(nueva);
+            cbo.guardar(idc, nueva);
         } catch (BOException ex) {
             Logger.getLogger(frmAgregarOrdenador.class.getName()).log(Level.SEVERE, null, ex);
         }
