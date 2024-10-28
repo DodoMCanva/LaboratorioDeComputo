@@ -4,26 +4,22 @@ import DTOLabComputo.centroLabDTO;
 import Entidades.CentroLaboratorio;
 import Entidades.Computadora;
 import Interfaces.ICentroLaboratorioDAO;
-import java.sql.Time;
-import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import utilerias.Tabla;
 
 /**
- *
+ * Implementación de ICentroLaboratorioDAO para gestionar operaciones de CentroLaboratorio en la base de datos.
  * @author Equipo 3
  */
 public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
 
     private static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
 
-    //Consultas
     @Override
     public List<CentroLaboratorio> obtenerCentros(Tabla filtro) throws PersistenciaException {
         EntityManager em = null;
@@ -37,27 +33,6 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
         } catch (Exception e) {
             e.printStackTrace();
             throw new PersistenciaException("Error al obtener centros de laboratorio", e);
-        } finally {
-            if (em != null) {
-                em.close();
-            }
-        }
-
-    }
-
-    @Override
-    public List<CentroLaboratorio> buscarporNombre(String Nombre, Tabla filtro) throws PersistenciaException {
-        EntityManager em = null;
-        try {
-            em = emf.createEntityManager();
-            String jpql = "SELECT cl FROM CentroLaboratorio cl WHERE cl.nombre LIKE :nombre AND cl.estEliminado = false";
-            TypedQuery<CentroLaboratorio> query = em.createQuery(jpql, CentroLaboratorio.class);
-            query.setParameter("nombre", "%" + Nombre + "%");
-            query.setMaxResults(filtro.getLimite());
-            query.setFirstResult(filtro.getPagina() * filtro.getLimite());
-            return query.getResultList();
-        } catch (Exception e) {
-            throw new PersistenciaException("Error al buscar centros de laboratorio por nombre", e);
         } finally {
             if (em != null) {
                 em.close();
@@ -83,7 +58,7 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
         }
     }
 
-    //Modificaciones
+    // Modificaciones
     @Override
     public void guardar(CentroLaboratorio cl) throws PersistenciaException {
         EntityManager em = emf.createEntityManager();
@@ -116,7 +91,6 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
             } else {
                 throw new PersistenciaException("No se encontró el centro de laboratorio con el ID: " + id);
             }
-
             em.getTransaction().commit();
         } catch (PersistenciaException e) {
             if (em != null && em.getTransaction().isActive()) {
@@ -153,17 +127,31 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
         }
     }
 
-    //Verificaciones
     @Override
-    public void reglasNegocio(CentroLaboratorio cl) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public List<CentroLaboratorio> buscarporNombre(String nombre, Tabla filtro) throws PersistenciaException {
+        EntityManager em = null;
+        try {
+            em = emf.createEntityManager();
+            String jpql = "SELECT cl FROM CentroLaboratorio cl WHERE cl.nombre LIKE :nombre AND cl.estEliminado = false";
+            TypedQuery<CentroLaboratorio> query = em.createQuery(jpql, CentroLaboratorio.class);
+            query.setParameter("nombre", "%" + nombre + "%");
+            query.setMaxResults(filtro.getLimite());
+            query.setFirstResult(filtro.getPagina() * filtro.getLimite());
+            return query.getResultList();
+        } catch (Exception e) {
+            throw new PersistenciaException("Error al buscar centros de laboratorio por nombre", e);
+        } finally {
+            if (em != null) {
+                em.close();
+            }
+        }
     }
 
-    @Override
-    public void autenticarEstudiante(CentroLaboratorio cl) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
+    /**
+     * Convierte un centroLabDTO a una entidad CentroLaboratorio.
+     * @param dto DTO de centro de laboratorio a convertir
+     * @return CentroLaboratorio convertida
+     */
     public CentroLaboratorio convertirDTOaEntidad(centroLabDTO dto) {
         CentroLaboratorio ent = new CentroLaboratorio();
         List<Computadora> computadoras = new ArrayList<>();
@@ -175,5 +163,4 @@ public class CentroLaboratorioDAO implements ICentroLaboratorioDAO {
         ent.setComputadoras(computadoras);
         return ent;
     }
-
 }

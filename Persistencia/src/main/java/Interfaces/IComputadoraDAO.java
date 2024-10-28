@@ -26,8 +26,7 @@ public interface IComputadoraDAO {
 
     public void eliminar(Long id) throws PersistenciaException;
 
-    //verificadores
-    public void reglasNegocio(Computadora e) throws PersistenciaException;
+   
 
    
 }
