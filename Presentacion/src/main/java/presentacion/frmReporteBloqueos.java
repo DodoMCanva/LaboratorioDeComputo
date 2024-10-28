@@ -31,6 +31,7 @@ public class frmReporteBloqueos extends javax.swing.JFrame {
         splRepBloqueos = new javax.swing.JScrollPane();
         tblTablaRepBloqueos = new javax.swing.JTable();
         btnConsultar = new javax.swing.JButton();
+        btnVistaPrevia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reporte de Bloqueos");
@@ -95,6 +96,9 @@ public class frmReporteBloqueos extends javax.swing.JFrame {
         });
         pnlRepBloqueos.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 130, 40));
 
+        btnVistaPrevia.setText("Vista Previa");
+        pnlRepBloqueos.add(btnVistaPrevia, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 200, -1, -1));
+
         getContentPane().add(pnlRepBloqueos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 660));
 
         pack();
@@ -144,6 +148,7 @@ public class frmReporteBloqueos extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnVistaPrevia;
     private com.toedter.calendar.JDateChooser dtcFechaFin;
     private com.toedter.calendar.JDateChooser dtcFechaInicio;
     private javax.swing.JLabel lblFechaFin;

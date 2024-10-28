@@ -38,6 +38,7 @@ public class frmReporteCentroComputo extends javax.swing.JFrame {
         slpRepCentro = new javax.swing.JScrollPane();
         tblRepCentro = new javax.swing.JTable();
         btnConsultar = new javax.swing.JButton();
+        btnVistaPrevia = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reporte de Centro de Computo");
@@ -112,6 +113,9 @@ public class frmReporteCentroComputo extends javax.swing.JFrame {
         });
         pnlRepCentroC.add(btnConsultar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 540, 130, 40));
 
+        btnVistaPrevia.setText("Vista Previa");
+        pnlRepCentroC.add(btnVistaPrevia, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 110, -1, -1));
+
         getContentPane().add(pnlRepCentroC, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 580, 660));
 
         pack();
@@ -161,6 +165,7 @@ public class frmReporteCentroComputo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConsultar;
+    private javax.swing.JButton btnVistaPrevia;
     private javax.swing.JComboBox<String> cbxCentro;
     private com.toedter.calendar.JDateChooser dtcFechaFin;
     private com.toedter.calendar.JDateChooser dtcFechaInicio;
