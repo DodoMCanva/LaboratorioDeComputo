@@ -42,10 +42,16 @@ public class ComputadoraBO implements IComputadoraBO {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    @Override
-    public computadoraDTO consultar(Long id) throws BOException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+   @Override
+public computadoraDTO consultar(Long id) throws BOException {
+    try {
+        Computadora entidad = cdao.consultar(id);
+        return convertirEntidadaDTO(entidad);
+    } catch (PersistenciaException ex) {
+        throw new BOException("Error al consultar la computadora", ex);
     }
+}
+
 
     @Override
     public void guardar(computadoraDTO Computadora) throws BOException {
@@ -76,6 +82,7 @@ public class ComputadoraBO implements IComputadoraBO {
     public boolean autenticarComputadora(Long id) throws BOException {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+    
 
     private Computadora convertirDTOaEntidad(computadoraDTO dto) {
         Computadora c = new Computadora();

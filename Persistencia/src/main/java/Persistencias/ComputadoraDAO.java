@@ -38,16 +38,43 @@ public class ComputadoraDAO implements IComputadoraDAO {
             }
         }
     }
-
+    
     @Override
-    public List<Computadora> buscarporNumero(Long CentroLab, String nombre, Tabla Filtro) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+public Computadora consultar(Long id) throws PersistenciaException {
+    EntityManager em = null;
+    try {
+        em = emf.createEntityManager();
+        return em.find(Computadora.class, id);
+    } catch (Exception e) {
+        throw new PersistenciaException("Error al consultar la computadora por ID", e);
+    } finally {
+        if (em != null) {
+            em.close();
+        }
     }
-
+}
     @Override
-    public Computadora consultar(Long id) throws PersistenciaException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+public List<Computadora> buscarporNumero(Long CentroLab, String numero, Tabla Filtro) throws PersistenciaException {
+    EntityManager em = null;
+    try {
+        em = emf.createEntityManager();
+        String jpql = "SELECT c FROM Computadora c WHERE c.centroLab.id = :centroLabId AND c.numero = :numero AND c.estEliminado = false";
+
+        TypedQuery<Computadora> query = em.createQuery(jpql, Computadora.class);
+        query.setParameter("centroLabId", CentroLab);
+        query.setParameter("numero", numero);
+        query.setMaxResults(Filtro.getLimite());
+        query.setFirstResult(Filtro.getPagina() * Filtro.getLimite());
+
+        return query.getResultList();
+    } catch (Exception e) {
+        throw new PersistenciaException("Error al buscar computadoras por número", e);
+    } finally {
+        if (em != null) {
+            em.close();
+        }
     }
+}
 
     @Override
     public void guardar(Computadora Computadora) throws PersistenciaException {

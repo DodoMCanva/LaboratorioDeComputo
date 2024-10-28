@@ -30,15 +30,15 @@ public class frmConfirmacion extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblNumeroTitul = new javax.swing.JLabel();
         lblPC = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
+        btnConfirmrSeleccion = new javax.swing.JButton();
+        btnSoftware = new javax.swing.JButton();
+        lblText = new javax.swing.JLabel();
+        lblTextt = new javax.swing.JLabel();
         lblNumPC = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,9 +46,9 @@ public class frmConfirmacion extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(102, 204, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
-        jLabel1.setText("Computadora seleccionada");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
+        lblTitulo.setText("Computadora seleccionada");
+        jPanel1.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 80, -1, -1));
 
         btnVolver.setText("Volver");
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -61,40 +61,40 @@ public class frmConfirmacion extends javax.swing.JFrame {
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotipoazul.png"))); // NOI18N
         jPanel1.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 210, 60));
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel3.setText("Numero:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 100, 30));
+        lblNumeroTitul.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblNumeroTitul.setText("Numero:");
+        jPanel1.add(lblNumeroTitul, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 180, 100, 30));
 
         lblPC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/compuITson.png"))); // NOI18N
         jPanel1.add(lblPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 240, -1, -1));
 
-        jButton1.setBackground(new java.awt.Color(51, 153, 255));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Confirmar Seleccion");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnConfirmrSeleccion.setBackground(new java.awt.Color(51, 153, 255));
+        btnConfirmrSeleccion.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        btnConfirmrSeleccion.setForeground(new java.awt.Color(255, 255, 255));
+        btnConfirmrSeleccion.setText("Confirmar Seleccion");
+        btnConfirmrSeleccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnConfirmrSeleccionActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
+        jPanel1.add(btnConfirmrSeleccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 350, -1, -1));
 
-        jButton2.setBackground(new java.awt.Color(51, 153, 255));
-        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Software");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnSoftware.setBackground(new java.awt.Color(51, 153, 255));
+        btnSoftware.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnSoftware.setForeground(new java.awt.Color(255, 255, 255));
+        btnSoftware.setText("Software");
+        btnSoftware.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnSoftwareActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 110, 40));
+        jPanel1.add(btnSoftware, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, 110, 40));
 
-        jLabel2.setText("Para ver el software que tiene esta PC ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        lblText.setText("Para ver el software que tiene esta PC ");
+        jPanel1.add(lblText, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
-        jLabel4.setText("da click aqui");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
+        lblTextt.setText("da click aqui");
+        jPanel1.add(lblTextt, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
         lblNumPC.setText("Numero PC");
         jPanel1.add(lblNumPC, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 190, -1, -1));
@@ -117,11 +117,11 @@ public class frmConfirmacion extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnSoftwareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSoftwareActionPerformed
       frmSoftwareVista sf=new frmSoftwareVista();
       sf.setVisible(true);
       this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnSoftwareActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
        frmSeleccionPC sel=new frmSeleccionPC();
@@ -129,26 +129,26 @@ public class frmConfirmacion extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnConfirmrSeleccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmrSeleccionActionPerformed
       frmApartadaExito ex=new frmApartadaExito();
       ex.setVisible(true);
       this.dispose();
       
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnConfirmrSeleccionActionPerformed
 
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConfirmrSeleccion;
+    private javax.swing.JButton btnSoftware;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblLogo;
     private javax.swing.JLabel lblNumPC;
+    private javax.swing.JLabel lblNumeroTitul;
     private javax.swing.JLabel lblPC;
+    private javax.swing.JLabel lblText;
+    private javax.swing.JLabel lblTextt;
+    private javax.swing.JLabel lblTitulo;
     // End of variables declaration//GEN-END:variables
 }
