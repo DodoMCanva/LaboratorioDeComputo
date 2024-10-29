@@ -24,23 +24,23 @@ public class Sesion implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Sesion_ID", nullable = false)
+    @Column(name = "Sesion_ID")
     private Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "FechaInicio", nullable = false)
+    @Column(name = "FechaInicio")
     private Date fechaInicio;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "FechaFin", nullable = false)
+    @Column(name = "FechaFin")
     private Date fechaFin;
 
     @ManyToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "Estudiante_ID", nullable = false)
+    @JoinColumn(name = "Estudiante_ID")
     private Estudiante estudiante;
 
     @ManyToOne
-    @JoinColumn(name = "Computadora_ID", nullable = false)
+    @JoinColumn(name = "Computadora_ID")
     private Computadora computadora;
     
     public Long getId() {

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package presentacion;
 
 /**
@@ -119,9 +115,9 @@ public class frmSoftwareVista extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-      frmConfirmacion con=new frmConfirmacion();
+      /*frmConfirmacion con=new frmConfirmacion();
       con.setVisible(true);
-      this.dispose();
+      this.dispose();*/
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void txtBuscarSwrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscarSwrActionPerformed

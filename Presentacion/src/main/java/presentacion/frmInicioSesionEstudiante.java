@@ -95,7 +95,7 @@ public class frmInicioSesionEstudiante extends javax.swing.JFrame {
         String idTexto = txtID.getText().trim();
         Long id = Long.valueOf(idTexto);
         if (estudianteBO.autenticarEstudiante(id)) {
-            frmSeleccionPC sel = new frmSeleccionPC();
+            frmSeleccionPC sel = new frmSeleccionPC(id, 1L);
             sel.setVisible(true);
             this.dispose();
 

@@ -1,19 +1,28 @@
 package presentacion;
+import BO.ComputadoraBO;
+import BO.EstudianteBO;
+import BO.SesionBO;
 
 /**
  *
  * @author Equipo 3
  */
 public class frmConfirmacion extends javax.swing.JFrame {
-
+    private Long ide, idc, idcen;
+    private ComputadoraBO cBO = new ComputadoraBO();
+    private EstudianteBO eBO = new EstudianteBO();
+    private SesionBO sBO = new SesionBO();
     /**
      * Creates new form frmConfirmacion
      */
-    public frmConfirmacion() {
+    public frmConfirmacion(Long ide, Long idc, Long idcen) {
         initComponents();
         setSize(603, 500);
         setLocationRelativeTo(null);
         setResizable(false);
+        this.ide = ide;
+        this.idc = idc;
+        this.idcen = idcen;
     }
 
     @SuppressWarnings("unchecked")
@@ -115,7 +124,7 @@ public class frmConfirmacion extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSoftwareActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        frmSeleccionPC sel = new frmSeleccionPC();
+        frmSeleccionPC sel = new frmSeleccionPC(ide, idcen);
         sel.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
