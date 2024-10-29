@@ -12,6 +12,9 @@ public class Tabla {
         this.textoBusqueda = textoBusqueda;
     }
 
+    public Tabla() {
+    }
+
     public int getLimite() {
         return limite;
     }

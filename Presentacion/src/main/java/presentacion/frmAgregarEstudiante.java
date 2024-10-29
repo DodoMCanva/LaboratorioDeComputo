@@ -1,10 +1,13 @@
 package presentacion;
 
+import BO.BOException;
 import BO.CarreraBO;
 import BO.EstudianteBO;
 import DTOLabComputo.CarreraDTO;
 import DTOLabComputo.EstudianteDTO;
 import Persistencias.CarreraDAO;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -22,16 +25,16 @@ public class frmAgregarEstudiante extends javax.swing.JFrame {
         initComponents();
     }
 
-        public frmAgregarEstudiante(Long estudianteId) {
-            initComponents();
-            // Obtener el estudiante usando el estudianteId
-            EstudianteDTO estudiante = estudianteBO.consultar(estudianteId);
-            if (estudiante != null) {
-                cargarDatosEstudiante(estudiante); // Llama al método para cargar datos en modo edición
-            } else {
-                System.out.println("Estudiante no encontrado.");
-            }
+    public frmAgregarEstudiante(Long estudianteId) throws BOException {
+        initComponents();
+        // Obtener el estudiante usando el estudianteId
+        EstudianteDTO estudiante = estudianteBO.consultar(estudianteId);
+        if (estudiante != null) {
+            cargarDatosEstudiante(estudiante); // Llama al método para cargar datos en modo edición
+        } else {
+            System.out.println("Estudiante no encontrado.");
         }
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -125,7 +128,7 @@ public class frmAgregarEstudiante extends javax.swing.JFrame {
         });
         pnlInfEstudiante.add(btnVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        getContentPane().add(pnlInfEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 450));
+        getContentPane().add(pnlInfEstudiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 630, 470));
 
         pack();
         setLocationRelativeTo(null);
@@ -144,11 +147,21 @@ public class frmAgregarEstudiante extends javax.swing.JFrame {
         if (carreraSeleccionada != null) {
             nuevo.setCarrera(carreraSeleccionada);
         }
-       
-        if (estudianteId == null) { // Modo de agregar
-            estudianteBO.guardar(nuevo);
-        } else { // Modo de edición
-            estudianteBO.editar(estudianteId, nuevo);
+
+        if (estudianteId == null) {
+            try {
+                // Modo de agregar
+                estudianteBO.guardar(nuevo);
+            } catch (BOException ex) {
+                Logger.getLogger(frmAgregarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            try {
+                // Modo de edición
+                estudianteBO.editar(estudianteId, nuevo);
+            } catch (BOException ex) {
+                Logger.getLogger(frmAgregarEstudiante.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
 
         frmCatalogoEstudiantes ir = new frmCatalogoEstudiantes();

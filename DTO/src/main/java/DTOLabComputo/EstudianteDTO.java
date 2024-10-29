@@ -13,6 +13,7 @@ public class EstudianteDTO {
     private boolean estaEgresado;
     private CarreraDTO Carrera; 
     
+    
     public Long getEstudiante_ID() {
         return Estudiante_ID;
     }

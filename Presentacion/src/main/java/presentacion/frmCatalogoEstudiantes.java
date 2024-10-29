@@ -4,6 +4,8 @@ import BO.BOException;
 import BO.EstudianteBO;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
@@ -23,7 +25,6 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
 
     public frmCatalogoEstudiantes() {
         initComponents();
-
         cargarTabla();
         cargarConfiguracionInicialTabla();
     }
@@ -148,38 +149,48 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarEstActionPerformed
 
     private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
-        if (pag > 0) {
+        if (pag == 0) {
+            btnAtras.setEnabled(false);
+        } else {
             this.pag--;
-            lblNumPagina.setText("Página " + (pag + 1));
-            cargarTabla();
+            int impresion = pag + 1;
+            lblNumPagina.setText("Página " + impresion);
+            this.cargarTabla();
         }
     }//GEN-LAST:event_btnAtrasActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        this.pag++;
-        lblNumPagina.setText("Página " + (pag + 1));
-        cargarTabla();
+       this.pag++;
+        int imp = pag + 1;
+        lblNumPagina.setText("Página " + imp);
+        this.cargarTabla();
+        btnAtras.setEnabled(true);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
-         String nombre = txtBuscar.getText();
+        String nombre = txtBuscar.getText();
         if (!nombre.isEmpty()) {
             this.cargarTablaBusqueda(nombre);
         } else {
             this.dispose();
-            frmCatalogoLaboratorio c = new frmCatalogoLaboratorio();
+            frmCatalogoEstudiantes c = new frmCatalogoEstudiantes();
             c.setVisible(true);
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
-    private void cargarTabla() {
+     private void cargarTabla() {
         try {
-            Tabla filtro = obtenerFiltrosTabla();
+            Tabla filtro = this.obtenerFiltrosTabla();
             borrarRegistrosTabla();
             agregarRegistrosTabla(filtro);
+            lblNumPagina.setText("Página " + (pag + 1));
+            if (this.estudianteBO.obtenerEstudiantes(filtro).isEmpty() && pag > 0) {
+                pag--;
+                cargarTabla();
+            }
         } catch (BOException ex) {
             borrarRegistrosTabla();
-            JOptionPane.showMessageDialog(this, ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Información", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -193,7 +204,7 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
             fila[2] = row.getCarrera().getNombre();
             fila[3] = row.getContraseña();
             fila[4] = row.isEstaEgresado();
-            fila[5] = "Eliminar";
+            fila[5] = "Editar";
             fila[6] = "Eliminar";
             modeloTabla.addRow(fila);
         });
@@ -217,8 +228,11 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
     }
 
     private void agregarRegistrosTablaBusqueda(String nombre, Tabla filtro) throws BOException {
-        DefaultTableModel modeloTabla = (DefaultTableModel) tblEstudiantes.getModel();
-        estudianteBO.obtenerEstudiantes(filtro).forEach(row -> {
+        if (this.estudianteBO.buscarporNombre(nombre, filtro) == null) {
+            return;
+        }
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblEstudiantes.getModel();
+        this.estudianteBO.buscarporNombre(nombre, filtro).forEach(row -> {
             Object[] fila = new Object[7];
             String nombreCompelto = row.getNombre() + " " + row.getApellidoPaterno() + " " + row.getApellidoMaterno();
             fila[0] = row.getEstudiante_ID();
@@ -226,46 +240,55 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
             fila[2] = row.getCarrera().getNombre();
             fila[3] = row.getContraseña();
             fila[4] = row.isEstaEgresado();
-            fila[5] = "Eliminar";
+            fila[5] = "Editar";
             fila[6] = "Eliminar";
             modeloTabla.addRow(fila);
         });
     }
 
     private void cargarConfiguracionInicialTabla() {
-    TableColumnModel modeloColumnas = tblEstudiantes.getColumnModel();
+        TableColumnModel modeloColumnas = tblEstudiantes.getColumnModel();
 
-    ActionListener onEditarClickListener = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            long idSeleccionado = getIdSeleccionadoTabla(); // Obtener ID del estudiante seleccionado
-            if (idSeleccionado != 0) { // Verifica que haya un estudiante seleccionado
-                frmAgregarEstudiante editarEstudiante = new frmAgregarEstudiante(idSeleccionado);
-                editarEstudiante.setVisible(true);
-                dispose();
-            } else {
-                JOptionPane.showMessageDialog(frmCatalogoEstudiantes.this, "Por favor selecciona un estudiante para editar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        ActionListener onEditarClickListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                long idSeleccionado = getIdSeleccionadoTabla(); // Obtener ID del estudiante seleccionado
+                if (idSeleccionado != 0) { // Verifica que haya un estudiante seleccionado
+                    frmAgregarEstudiante editarEstudiante = null;
+                    try {
+                        editarEstudiante = new frmAgregarEstudiante(idSeleccionado);
+                    } catch (BOException ex) {
+                        Logger.getLogger(frmCatalogoEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    editarEstudiante.setVisible(true);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(frmCatalogoEstudiantes.this, "Por favor selecciona un estudiante para editar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
             }
-        }
-    };
-    modeloColumnas.getColumn(5).setCellRenderer(new JButtonRenderer("Editar"));
-    modeloColumnas.getColumn(5).setCellEditor(new JButtonCellEditor("Editar", onEditarClickListener));
+        };
+        modeloColumnas.getColumn(5).setCellRenderer(new JButtonRenderer("Editar"));
+        modeloColumnas.getColumn(5).setCellEditor(new JButtonCellEditor("Editar", onEditarClickListener));
 
-    ActionListener onEliminarClickListener = new ActionListener() {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            int id = getIdSeleccionadoTabla();
-            if (id != 0) {
-                estudianteBO.eliminar(Long.valueOf(id));
-                cargarTabla();
-            } else {
-                JOptionPane.showMessageDialog(frmCatalogoEstudiantes.this, "Por favor selecciona un estudiante para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        ActionListener onEliminarClickListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int id = getIdSeleccionadoTabla();
+                if (id != 0) {
+                    try {
+                        estudianteBO.eliminar(Long.valueOf(id));
+                    } catch (BOException ex) {
+                        Logger.getLogger(frmCatalogoEstudiantes.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    cargarTabla();
+                } else {
+                    JOptionPane.showMessageDialog(frmCatalogoEstudiantes.this, "Por favor selecciona un estudiante para eliminar.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
             }
-        }
-    };
-    modeloColumnas.getColumn(6).setCellRenderer(new JButtonRenderer("Eliminar"));
-    modeloColumnas.getColumn(6).setCellEditor(new JButtonCellEditor("Eliminar", onEliminarClickListener));
-}
+        };
+        modeloColumnas.getColumn(6).setCellRenderer(new JButtonRenderer("Eliminar"));
+        modeloColumnas.getColumn(6).setCellEditor(new JButtonCellEditor("Eliminar", onEliminarClickListener));
+    }
 
     private int getIdSeleccionadoTabla() {
         int idS = 0;
@@ -296,7 +319,7 @@ public class frmCatalogoEstudiantes extends javax.swing.JFrame {
         modeloTabla.setRowCount(0);
     }
 
-    public void editar(Long id) {
+    public void editar(Long id) throws BOException {
         frmAgregarEstudiante ir = new frmAgregarEstudiante(id);
         ir.setVisible(true);
         this.dispose();

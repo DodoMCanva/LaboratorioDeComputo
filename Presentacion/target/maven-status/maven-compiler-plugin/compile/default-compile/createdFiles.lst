@@ -21,6 +21,7 @@ presentacion\frmCatalogoOrdenadores$5.class
 presentacion\frmMenuReportes$1.class
 presentacion\frmPdfReporteBloqueo.class
 presentacion\frmCatalogoBloqueos$1.class
+presentacion\frmCatalogoBloqueos$6.class
 presentacion\frmPantallaDesbloqueada$1.class
 presentacion\frmMenuAdministrador$3.class
 presentacion\frmCatalogoLaboratorio$1.class
@@ -34,6 +35,7 @@ presentacion\frmCatalogoLaboratorio$4.class
 presentacion\frmSoftwareVista.class
 presentacion\frmInicioSesionAdminsitrador$1.class
 presentacion\frmCatalogoBloqueos.class
+presentacion\frmCatalogoBloqueos$3.class
 presentacion\frmMenuAdministrador$1.class
 presentacion\frmBloqueo$2.class
 presentacion\frmCompuApartada$1.class
@@ -78,6 +80,7 @@ presentacion\frmPdfReporteBloqueo$1.class
 presentacion\frmMenuAdministrador$4.class
 presentacion\frmAgregarLaboratorio$1.class
 presentacion\frmPdfReporteCentroComputo.class
+presentacion\frmCatalogoBloqueos$4.class
 presentacion\frmMenuReportes$3.class
 presentacion\frmAgregarEstudiante$3.class
 presentacion\frmCatalogoLaboratorio$8.class
@@ -96,5 +99,6 @@ presentacion\frmCatalogoOrdenadores$4.class
 presentacion\frmMenuReportes$2.class
 presentacion\frmPdfReporteCentroComputo$1.class
 presentacion\frmCatalogoEstudiantes$3.class
+presentacion\frmCatalogoBloqueos$5.class
 presentacion\frmAgregarLaboratorio$2.class
 presentacion\frmSeleccionPC$8.class

@@ -21,28 +21,14 @@ public class EstudianteBO implements IEstudianteBO {
 
     // Consultas
     @Override
-    public List<EstudianteDTO> obtenerEstudiantes(Tabla Filtro) {
+    public List<EstudianteDTO> obtenerEstudiantes(Tabla filtro) throws BOException {
         List<EstudianteDTO> estudiantesDTO = new ArrayList<>();
         List<Estudiante> estudiantes = null;
         try {
-            estudiantes = est.obtenerEstudiantes(Filtro);
+            estudiantes = est.obtenerEstudiantes(filtro);
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        for (Estudiante estudiante : estudiantes) {
-            estudiantesDTO.add(convertirAEstudianteDTO(estudiante));
-        }
-        return estudiantesDTO;
-    }
-
-    @Override
-    public List<EstudianteDTO> buscarporNombre(String nombre, Tabla Filtro) {
-        List<EstudianteDTO> estudiantesDTO = new ArrayList<>();
-        List<Estudiante> estudiantes = null;
-        try {
-            estudiantes = est.buscarporNombre(nombre, Filtro);
-        } catch (PersistenciaException ex) {
-            Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new BOException("Error al obtener estudiantes", ex);
         }
         if (estudiantes != null) {
             for (Estudiante estudiante : estudiantes) {
@@ -53,49 +39,89 @@ public class EstudianteBO implements IEstudianteBO {
     }
 
     @Override
-    public EstudianteDTO consultar(Long id) {
+    public List<EstudianteDTO> buscarporNombre(String nombre, Tabla filtro) throws BOException {
+        List<EstudianteDTO> estudiantesDTO = new ArrayList<>();
+        List<Estudiante> estudiantes = null;
+        try {
+            estudiantes = est.buscarporNombre(nombre, filtro);
+        } catch (PersistenciaException ex) {
+            Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new BOException("Error al buscar estudiantes por nombre", ex);
+        }
+        if (estudiantes != null) {
+            for (Estudiante estudiante : estudiantes) {
+                estudiantesDTO.add(convertirAEstudianteDTO(estudiante));
+            }
+        }
+        return estudiantesDTO;
+    }
+
+    @Override
+    public EstudianteDTO consultar(Long id) throws BOException {
         Estudiante estudiante = null;
         try {
             estudiante = est.consultar(id);
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new BOException("Error al consultar estudiante", ex);
         }
-        if (estudiante != null) {
-            return convertirAEstudianteDTO(estudiante);
-        } else {
-            return null;
-        }
+        return estudiante != null ? convertirAEstudianteDTO(estudiante) : null;
     }
+    
+    @Override
+    public EstudianteDTO buscarEstudiantePorNombre(String nombre) {
+    List<Estudiante> estudiantes = null;
+    try {
+        estudiantes = est.buscarporNombre(nombre, null);
+    } catch (PersistenciaException e) {
+        e.printStackTrace();
+        return null; // Manejo de errores
+    }
+
+    if (estudiantes != null && !estudiantes.isEmpty()) {
+        // Convertir la entidad a DTO y devolverlo
+        EstudianteDTO estudianteDTO = new EstudianteDTO();
+        Estudiante estudiante = estudiantes.get(0); // Tomar el primer estudiante
+        estudianteDTO.setEstudiante_ID(estudiante.getId());
+        estudianteDTO.setNombre(estudiante.getNombreCompleto().getNombre());
+        return estudianteDTO;
+    }
+
+    return null; // Si no se encuentra ningún estudiante
+}
 
     // Modificaciones
     @Override
-    public void guardar(EstudianteDTO estudiante) {
+    public void guardar(EstudianteDTO estudiante) throws BOException {
         Estudiante estent = convertirAEstudiante(estudiante);
         try {
             est.guardar(estent);
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new BOException("Error al guardar el estudiante", ex);
         }
     }
 
     @Override
-    public void editar(Long id, EstudianteDTO e) {
+    public void editar(Long id, EstudianteDTO e) throws BOException {
         Estudiante estudiante = convertirAEstudiante(e);
         estudiante.setId(id);
         try {
             est.editar(estudiante.getId(), estudiante);
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new BOException("Error al editar el estudiante", ex);
         }
     }
 
     @Override
-    public void eliminar(Long id) {
+    public void eliminar(Long id) throws BOException {
         Estudiante estudiante = null;
         try {
             estudiante = est.consultar(id);
         } catch (PersistenciaException ex) {
             Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
+            throw new BOException("Error al consultar estudiante para eliminar", ex);
         }
         if (estudiante != null) {
             estudiante.setEstaEgresado(true);
@@ -103,6 +129,7 @@ public class EstudianteBO implements IEstudianteBO {
                 est.eliminar(estudiante.getId());
             } catch (PersistenciaException ex) {
                 Logger.getLogger(EstudianteBO.class.getName()).log(Level.SEVERE, null, ex);
+                throw new BOException("Error al eliminar el estudiante", ex);
             }
         }
     }

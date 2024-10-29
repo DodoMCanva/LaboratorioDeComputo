@@ -1,8 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package presentacion;
+
+import BO.BOException;
+import BO.BloqueoBO;
+import BO.EstudianteBO;
+import DTOLabComputo.BloqueoDTO;
+import DTOLabComputo.EstudianteDTO;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import utilerias.Tabla;
 
 /**
  *
@@ -15,6 +24,7 @@ public class frmBloqueo extends javax.swing.JFrame {
      */
     public frmBloqueo() {
         initComponents();
+        cargarEstudiantes();
     }
 
     /**
@@ -74,8 +84,7 @@ public class frmBloqueo extends javax.swing.JFrame {
         jplBloquear.add(scpMotivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 150, 290, 80));
 
         cbxEstudiantes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        cbxEstudiantes.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jplBloquear.add(cbxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 240, 30));
+        jplBloquear.add(cbxEstudiantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 240, 290, 30));
 
         btnVolver.setBackground(new java.awt.Color(153, 153, 153));
         btnVolver.setForeground(new java.awt.Color(255, 255, 255));
@@ -100,46 +109,51 @@ public class frmBloqueo extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVolverActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       frmCatalogoBloqueos ir = new frmCatalogoBloqueos();
-        ir.setVisible(true);
-        this.dispose();
+        String motivo = txaMotivo.getText();
+        String selectedEstudiante = (String) cbxEstudiantes.getSelectedItem();
+
+        // Verificar que el motivo y el estudiante estén seleccionados
+        if (motivo.isEmpty() || selectedEstudiante == null || selectedEstudiante.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingrese un motivo y seleccione un estudiante.", "Error de validación", JOptionPane.WARNING_MESSAGE);
+            return; // No continúa si la validación falla
+        }
+
+        // Asumiendo que el formato es "Nombre Estudiante - ID"
+        String[] parts = selectedEstudiante.split(" - ");
+        Long estudianteId = Long.parseLong(parts[1]); // Extraer el ID
+
+        BloqueoDTO nuevoBloqueoDTO = new BloqueoDTO();
+        nuevoBloqueoDTO.setMotivo(motivo);
+        nuevoBloqueoDTO.setEstudianteId(estudianteId); // Asignar el ID al DTO
+
+        BloqueoBO bloqueoBO = new BloqueoBO();
+        try {
+            bloqueoBO.agregarBloqueo(nuevoBloqueoDTO);
+            JOptionPane.showMessageDialog(this, "Bloqueo registrado con éxito.");
+
+            // Redirigir a la pantalla de catálogo de bloqueos
+            frmCatalogoBloqueos volver = new frmCatalogoBloqueos();
+            volver.setVisible(true);
+            this.dispose(); // Cierra la ventana actual
+        } catch (BOException ex) {
+            JOptionPane.showMessageDialog(this, "Error al registrar el bloqueo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(frmBloqueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(frmBloqueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(frmBloqueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(frmBloqueo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new frmBloqueo().setVisible(true);
-//            }
-//        });
-//    }
+    private void cargarEstudiantes() {
+        EstudianteBO estudianteBO = new EstudianteBO();
+        Tabla filtro = new Tabla(); // Crear filtro según sea necesario
 
+        try {
+            List<EstudianteDTO> estudiantes = estudianteBO.obtenerEstudiantes(filtro); // Maneja la excepción de manera adecuada
+            for (EstudianteDTO estudiante : estudiantes) {
+                // Suponiendo que tu DTO tiene un método getNombreCompleto()
+                cbxEstudiantes.addItem(estudiante.getNombre() + " " + estudiante.getApellidoPaterno() + " " + estudiante.getApellidoMaterno() + " - " + estudiante.getEstudiante_ID());
+            }
+        } catch (BOException ex) {
+            JOptionPane.showMessageDialog(this, "Error al cargar los estudiantes: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGuardar;
     private javax.swing.JButton btnVolver;

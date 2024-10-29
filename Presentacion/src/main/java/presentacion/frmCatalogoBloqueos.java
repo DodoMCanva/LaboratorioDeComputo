@@ -1,16 +1,38 @@
 package presentacion;
 
+import BO.BOException;
+import BO.BloqueoBO;
+import DTOLabComputo.BloqueoDTO;
+import Persistencias.PersistenciaException;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import utilerias.JButtonCellEditor;
+import utilerias.JButtonRenderer;
+import utilerias.Tabla;
+
 /**
  *
  * @author Valeria
  */
 public class frmCatalogoBloqueos extends javax.swing.JFrame {
 
+    private int pag = 0;
+    private final static int LIMITE = 10;
+    private BloqueoBO bloqueoBO = new BloqueoBO();
+
     /**
      * Creates new form frmCatalogoBloqueos
      */
     public frmCatalogoBloqueos() {
         initComponents();
+        cargarTabla();
+        cargarConfiguracionInicialTabla();
     }
 
     /**
@@ -29,7 +51,7 @@ public class frmCatalogoBloqueos extends javax.swing.JFrame {
         txtBuscar = new javax.swing.JTextField();
         btnBuscar = new javax.swing.JButton();
         lblTitulo = new javax.swing.JLabel();
-        btnBloquear = new javax.swing.JButton();
+        btnBloquearEst = new javax.swing.JButton();
         btnAtras = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
         lblNumPagina = new javax.swing.JLabel();
@@ -54,23 +76,19 @@ public class frmCatalogoBloqueos extends javax.swing.JFrame {
 
         tblBloqueos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Folio", "Fecha inicio", "Fecha fin", "Motivo", "Estudiante", "Finalizar"
+                "Folio", "Fecha inicio", "Motivo", "Estudiante", "Finalizar"
             }
         ));
         jScrollPane1.setViewportView(tblBloqueos);
@@ -80,30 +98,45 @@ public class frmCatalogoBloqueos extends javax.swing.JFrame {
 
         btnBuscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
         jplCatalogoBloqueos.add(btnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 90, -1, 30));
 
         lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         lblTitulo.setText("Bloqueos");
         jplCatalogoBloqueos.add(lblTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
-        btnBloquear.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
-        btnBloquear.setText("Bloquear ordenador");
-        btnBloquear.setToolTipText("");
-        btnBloquear.addActionListener(new java.awt.event.ActionListener() {
+        btnBloquearEst.setFont(new java.awt.Font("Segoe UI", 0, 16)); // NOI18N
+        btnBloquearEst.setText("Bloquear");
+        btnBloquearEst.setToolTipText("");
+        btnBloquearEst.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBloquearActionPerformed(evt);
+                btnBloquearEstActionPerformed(evt);
             }
         });
-        jplCatalogoBloqueos.add(btnBloquear, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 180, 30));
+        jplCatalogoBloqueos.add(btnBloquearEst, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 400, 180, 30));
 
         btnAtras.setBackground(new java.awt.Color(153, 153, 153));
         btnAtras.setForeground(new java.awt.Color(255, 255, 255));
         btnAtras.setText("Atras");
+        btnAtras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAtrasActionPerformed(evt);
+            }
+        });
         jplCatalogoBloqueos.add(btnAtras, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 460, -1, 25));
 
         btnSiguiente.setBackground(new java.awt.Color(153, 153, 153));
         btnSiguiente.setForeground(new java.awt.Color(255, 255, 255));
         btnSiguiente.setText("Siguiente");
+        btnSiguiente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiguienteActionPerformed(evt);
+            }
+        });
         jplCatalogoBloqueos.add(btnSiguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 460, -1, 25));
 
         lblNumPagina.setText("numPagina");
@@ -115,56 +148,182 @@ public class frmCatalogoBloqueos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnBloquearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBloquearActionPerformed
+    private void btnBloquearEstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBloquearEstActionPerformed
         frmBloqueo ir = new frmBloqueo();
         ir.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_btnBloquearActionPerformed
+
+    }//GEN-LAST:event_btnBloquearEstActionPerformed
 
     private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-      frmMenuAdministrador ir = new frmMenuAdministrador();
+        frmMenuAdministrador ir = new frmMenuAdministrador();
         ir.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVolverActionPerformed
 
-//    /**
-//     * @param args the command line arguments
-//     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(frmCatalogoBloqueos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(frmCatalogoBloqueos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(frmCatalogoBloqueos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(frmCatalogoBloqueos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new frmCatalogoBloqueos().setVisible(true);
-//            }
-//        });
-//    }
+    private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
+        this.pag++;
+        int imp = pag + 1;
+        lblNumPagina.setText("Página " + imp);
+        this.cargarTabla();
+        btnAtras.setEnabled(true);
+    }//GEN-LAST:event_btnSiguienteActionPerformed
+
+    private void btnAtrasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtrasActionPerformed
+        if (pag == 0) {
+            btnAtras.setEnabled(false);
+        } else {
+            this.pag--;
+            int impresion = pag + 1;
+            lblNumPagina.setText("Página " + impresion);
+            this.cargarTabla();
+        }
+    }//GEN-LAST:event_btnAtrasActionPerformed
+
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+        String nombre = txtBuscar.getText();
+        if (!nombre.isEmpty()) {
+            this.cargarTablaBusqueda(nombre);
+        } else {
+            this.dispose();
+            frmCatalogoBloqueos buscar = new frmCatalogoBloqueos();
+            buscar.setVisible(true);
+        }
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    private void cargarTabla() {
+        try {
+            Tabla filtro = this.obtenerFiltrosTabla();
+            BorrarRegistrosTabla();
+            agregarRegistrosTabla(filtro);
+            lblNumPagina.setText("Página " + (pag + 1));
+            if (this.bloqueoBO.obtenerBloqueosTabla(filtro).isEmpty() && pag > 0) {
+                pag--;
+                cargarTabla();
+            }
+        } catch (BOException ex) {
+            BorrarRegistrosTabla();
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Información", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void agregarRegistrosTabla(Tabla filtro) throws BOException {
+        if (this.bloqueoBO.obtenerBloqueosTabla(filtro) == null) {
+            return;
+        }
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblBloqueos.getModel();
+        this.bloqueoBO.obtenerBloqueosTabla(filtro).forEach(row -> {
+            Object[] fila = new Object[6];
+            fila[0] = row.getFolio();
+            fila[1] = row.getFechaInicioBloqueo();
+            fila[2] = row.getMotivo();
+            fila[3] = row.getNombreEstudiante();
+            fila[4] = "Finalizar";
+            modeloTabla.addRow(fila);
+        });
+    }
+
+    private void cargarConfiguracionInicialTabla() {
+        TableColumnModel modeloColumnas = this.tblBloqueos.getColumnModel();
+
+        ActionListener onFinalizarClickListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int id = getIdSeleccionadoTabla();
+                finalizarBloqueo(Long.valueOf(id));
+            }
+        };
+
+        modeloColumnas.getColumn(4).setCellRenderer(new JButtonRenderer("Finalizar"));
+        modeloColumnas.getColumn(4).setCellEditor(new JButtonCellEditor("Finalizar", onFinalizarClickListener));
+    }
+
+    private int getIdSeleccionadoTabla() {
+        int idS = 0;
+        int indiceFilaSeleccionada = this.tblBloqueos.getSelectedRow();
+        if (indiceFilaSeleccionada != -1) {
+            DefaultTableModel modelo = (DefaultTableModel) this.tblBloqueos.getModel();
+            int indiceColumnaId = 0;
+            Object idSeleccionado = modelo.getValueAt(indiceFilaSeleccionada, indiceColumnaId);
+            try {
+                if (idSeleccionado instanceof Integer) {
+                    idS = (Integer) idSeleccionado;
+                } else if (idSeleccionado instanceof Long) {
+                    idS = ((Long) idSeleccionado).intValue(); // Convierte Long a int
+                } else if (idSeleccionado instanceof String) {
+                    idS = Integer.parseInt((String) idSeleccionado);
+                } else {
+                    System.out.println("Tipo de dato inesperado para el ID: " + idSeleccionado.getClass().getName());
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error al convertir ID: " + e.getMessage());
+            }
+        }
+        return idS;
+    }
+
+    private void cargarTablaBusqueda(String nombre) {
+        try {
+            Tabla filtro = this.obtenerFiltrosTabla(); // Si tienes filtros adicionales, mantenlos
+            BorrarRegistrosTabla(); // Limpia la tabla antes de agregar nuevos resultados
+            lblNumPagina.setText("Página " + (pag + 1)); // Actualiza la etiqueta de la página
+
+            // Realiza la búsqueda utilizando folio y nombre
+            List<BloqueoDTO> resultados = this.bloqueoBO.buscarBloqueosPorNombre(nombre, filtro);
+            if (resultados.isEmpty() && pag > 0) {
+                pag--;
+                cargarTabla();
+            } else {
+                agregarRegistrosTablaBusqueda(nombre, filtro);// Carga los resultados de la búsqueda
+            }
+        } catch (BOException ex) {
+            BorrarRegistrosTabla();
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Información", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void agregarRegistrosTablaBusqueda(String nombre, Tabla filtro) throws BOException {
+        if (this.bloqueoBO.buscarBloqueosPorNombre(nombre, filtro) == null) {
+            return;
+        }
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblBloqueos.getModel();
+        this.bloqueoBO.buscarBloqueosPorNombre(nombre, filtro).forEach(row -> {
+            Object[] fila = new Object[6];
+            fila[0] = row.getFolio();
+            fila[1] = row.getFechaInicioBloqueo();
+            fila[2] = row.getMotivo();
+            fila[3] = row.getNombreEstudiante();
+            fila[4] = "Finalizar";
+            modeloTabla.addRow(fila);
+        });
+    }
+
+    private void BorrarRegistrosTabla() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblBloqueos.getModel();
+        if (modeloTabla.getRowCount() > 0) {
+            for (int row = modeloTabla.getRowCount() - 1; row > -1; row--) {
+                modeloTabla.removeRow(row);
+            }
+        }
+    }
+
+    public void finalizarBloqueo(Long id) {
+        try {
+            bloqueoBO.desbloquearEstudiante(id); // Lógica para eliminar el bloqueo
+            cargarTabla(); // Recargar la tabla después de la eliminación
+        } catch (BOException ex) {
+            Logger.getLogger(frmCatalogoBloqueos.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Error al eliminar el bloqueo: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private Tabla obtenerFiltrosTabla() {
+        return new Tabla(this.LIMITE, this.pag, txtBuscar.getText());
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAtras;
-    private javax.swing.JButton btnBloquear;
+    private javax.swing.JButton btnBloquearEst;
     private javax.swing.JButton btnBuscar;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JButton btnVolver;

@@ -1,7 +1,7 @@
 package utilerias;
 
+public class Tabla {
 
-        public class Tabla {
     private int limite;
     private int pagina;
     private String textoBusqueda;

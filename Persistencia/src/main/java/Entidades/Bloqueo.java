@@ -22,26 +22,29 @@ public class Bloqueo implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "Folio", nullable = false)
+    @Column(name = "Folio")
     private Long id;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "FechaInicio", nullable = false)
+    @Column(name = "FechaInicio")
     private Date fechaInicio;
 
     @Temporal(TemporalType.DATE)
-    @Column(name = "FechaFin", nullable = false)
+    @Column(name = "FechaFin")
     private Date fechaFin;
 
-    @Column(name = "Motivo", length = 25, nullable = false)
+    @Column(name = "Motivo", length = 25)
     private String motivo;
 
+    @Column(name = "estBloqueado")
+    private Boolean estBloquedo;
+
     @ManyToOne
-    @JoinColumn(name = "Estudiante_ID", nullable = false)
+    @JoinColumn(name = "Estudiante_ID")
     private Estudiante estudiante;
 
     @ManyToOne
-    @JoinColumn(name = "Administrador_ID", nullable = false)
+    @JoinColumn(name = "Administrador_ID")
     private PersonalAutorizado administrador;
 
     public Long getId() {
@@ -90,6 +93,14 @@ public class Bloqueo implements Serializable {
 
     public void setAdministrador(PersonalAutorizado administrador) {
         this.administrador = administrador;
+    }
+
+    public Boolean getEstBloquedo() {
+        return estBloquedo;
+    }
+
+    public void setEstBloquedo(Boolean estBloquedo) {
+        this.estBloquedo = estBloquedo;
     }
 
     @Override

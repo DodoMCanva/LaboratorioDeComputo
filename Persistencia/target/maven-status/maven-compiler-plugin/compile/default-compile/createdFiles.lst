@@ -2,6 +2,7 @@ Interfaces\ISesionDAO.class
 Interfaces\IAdministradorDAO.class
 utilerias\Utilidades.class
 utilerias\Reportes.class
+Interfaces\IBloqueoDAO.class
 Entidades\Estudiante.class
 Interfaces\IComputadoraDAO.class
 Entidades\Bloqueo.class
@@ -16,6 +17,8 @@ Entidades\PersonalAutorizado.class
 Entidades\Computadora.class
 Interfaces\ICentroLaboratorioDAO.class
 Entidades\UnidadAcademica.class
+Persistencias\BloqueoDAO.class
+Interfaces\ISoftwareDAO.class
 Persistencias\CentroLaboratorioDAO.class
 Entidades\Carrera.class
 Persistencias\SesionDAO.class
@@ -23,6 +26,7 @@ utilerias\Tabla.class
 Entidades\CentroLaboratorio.class
 Interfaces\ICarreraDAO.class
 Entidades\NombreCompleto.class
+Persistencias\SoftwareDAO.class
 utilerias\Convertidor.class
 Entidades\Software.class
 Interfaces\IEstudianteDAO.class
