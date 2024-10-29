@@ -17,18 +17,18 @@ import javax.persistence.criteria.Root;
 public class SesionDAO {
 
     public List<Sesion> findSesionesByCentroComputoAndDateRange(Long centroComputoId, Date startDate, Date endDate) {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<Sesion> cq = cb.createQuery(Sesion.class);
-        Root<Sesion> sesion = cq.from(Sesion.class);
-        Join<Sesion, Computadora> computadora = sesion.join("computadora");
-
-        Predicate centroComputoPredicate = cb.equal(computadora.get("centroLab").get("id"), centroComputoId);
-        Predicate fechaInicioPredicate = cb.greaterThanOrEqualTo(sesion.get("fechaInicio"), startDate);
-        Predicate fechaFinPredicate = cb.lessThanOrEqualTo(sesion.get("fechaFin"), endDate);
-
-        cq.select(sesion).where(cb.and(centroComputoPredicate, fechaInicioPredicate, fechaFinPredicate));
-
-        return entityManager.createQuery(cq).getResultList();
+//        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+//        CriteriaQuery<Sesion> cq = cb.createQuery(Sesion.class);
+//        Root<Sesion> sesion = cq.from(Sesion.class);
+//        Join<Sesion, Computadora> computadora = sesion.join("computadora");
+//
+//        Predicate centroComputoPredicate = cb.equal(computadora.get("centroLab").get("id"), centroComputoId);
+//        Predicate fechaInicioPredicate = cb.greaterThanOrEqualTo(sesion.get("fechaInicio"), startDate);
+//        Predicate fechaFinPredicate = cb.lessThanOrEqualTo(sesion.get("fechaFin"), endDate);
+//
+//        cq.select(sesion).where(cb.and(centroComputoPredicate, fechaInicioPredicate, fechaFinPredicate));
+//
+//        return entityManager.createQuery(cq).getResultList();
     }
 }
 
