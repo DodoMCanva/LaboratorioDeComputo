@@ -2,8 +2,6 @@ package presentacion;
 
 import BO.BOException;
 import BO.CentroLaboratorioBO;
-import DTOLabComputo.centroLabDTO;
-import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.logging.Level;
