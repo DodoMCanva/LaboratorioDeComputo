@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package DTOLabComputo;
 
-import java.sql.Time;
+import java.util.Date;
 
 /**
  * Clase SesionDTO que representa un objeto de transferencia de datos para la
@@ -16,8 +12,10 @@ import java.sql.Time;
 public class SesionDTO {
 
     private int Sesion_ID;              // Identificador único de la sesión
-    private Time FechaInicioSesion;      // Marca de tiempo del inicio de la sesión
-    private Time FechaFinSesion;         // Marca de tiempo del fin de la sesión
+    private Date fechaInicio;           // Marca de tiempo del inicio de la sesión
+    private Date fechaFin;              // Marca de tiempo del fin de la sesión
+    private EstudianteDTO estudiante;
+    private computadoraDTO computadora;
 
     /**
      * Obtiene el identificador de la sesión.
@@ -42,8 +40,8 @@ public class SesionDTO {
      *
      * @return La fecha de inicio de la sesión.
      */
-    public Time getFechaInicioSesion() {
-        return FechaInicioSesion;
+    public Date getFechaInicioSesion() {
+        return fechaInicio;
     }
 
     /**
@@ -51,8 +49,8 @@ public class SesionDTO {
      *
      * @param FechaInicioSesion La fecha de inicio a establecer.
      */
-    public void setFechaInicioSesion(Time FechaInicioSesion) {
-        this.FechaInicioSesion = FechaInicioSesion;
+    public void setFechaInicioSesion(Date FechaInicioSesion) {
+        this.fechaInicio = FechaInicioSesion;
     }
 
     /**
@@ -60,8 +58,8 @@ public class SesionDTO {
      *
      * @return La fecha de fin de la sesión.
      */
-    public Time getFechaFinSesion() {
-        return FechaFinSesion;
+    public Date getFechaFinSesion() {
+        return fechaFin;
     }
 
     /**
@@ -69,7 +67,24 @@ public class SesionDTO {
      *
      * @param FechaFinSesion La fecha de fin a establecer.
      */
-    public void setFechaFinSesion(Time FechaFinSesion) {
-        this.FechaFinSesion = FechaFinSesion;
+    public void setFechaFinSesion(Date FechaFinSesion) {
+        this.fechaFin = FechaFinSesion;
     }
+
+    public EstudianteDTO getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(EstudianteDTO estudiante) {
+        this.estudiante = estudiante;
+    }
+
+    public computadoraDTO getComputadora() {
+        return computadora;
+    }
+
+    public void setComputadora(computadoraDTO computadora) {
+        this.computadora = computadora;
+    }
+
 }

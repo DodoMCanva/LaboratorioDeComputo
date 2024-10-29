@@ -4,6 +4,8 @@ import Entidades.Computadora;
 import Entidades.Sesion;
 import java.sql.Date;
 import java.util.List;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Join;
@@ -16,8 +18,10 @@ import javax.persistence.criteria.Root;
  */
 public class SesionDAO {
 
+    private final EntityManagerFactory emf = Persistence.createEntityManagerFactory("EntidadLaboratorio");
+
     public List<Sesion> findSesionesByCentroComputoAndDateRange(Long centroComputoId, Date startDate, Date endDate) {
-        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaBuilder cb = emf.getCriteriaBuilder();
         CriteriaQuery<Sesion> cq = cb.createQuery(Sesion.class);
         Root<Sesion> sesion = cq.from(Sesion.class);
         Join<Sesion, Computadora> computadora = sesion.join("computadora");
@@ -27,8 +31,7 @@ public class SesionDAO {
         Predicate fechaFinPredicate = cb.lessThanOrEqualTo(sesion.get("fechaFin"), endDate);
 
         cq.select(sesion).where(cb.and(centroComputoPredicate, fechaInicioPredicate, fechaFinPredicate));
-
-        return entityManager.createQuery(cq).getResultList();
+        return null;
+        //return emf.createQuery(cq).getResultList();
     }
 }
-

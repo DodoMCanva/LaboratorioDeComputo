@@ -112,7 +112,7 @@ public class frmSeleccionPC extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalirActionPerformed
 
     private void cargarTabla() {
-        /*try {
+        try {
             Tabla filtro = this.obtenerFiltrosTabla();
             BorrarRegistrosTabla();
             agregarRegistrosTabla(filtro);
@@ -123,7 +123,7 @@ public class frmSeleccionPC extends javax.swing.JFrame {
         } catch (BOException ex) {
             BorrarRegistrosTabla();
             JOptionPane.showMessageDialog(this, ex.getMessage(), "Información", JOptionPane.ERROR_MESSAGE);
-        }*/
+        }
     }
 
     private void agregarRegistrosTabla(Tabla filtro) throws BOException {
