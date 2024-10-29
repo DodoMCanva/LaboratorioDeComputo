@@ -109,9 +109,10 @@ public class BloqueoDAO implements IBloqueoDAO {
         EntityManager em = null;
         try {
             em = emf.createEntityManager();
-            String jpql = "SELECT b FROM Bloqueo b JOIN b.estudiante e WHERE e.nombre LIKE :nombre AND b.estBloquedo = true";
+            String jpql = "SELECT b FROM Bloqueo b JOIN b.estudiante e JOIN e.nombreCompleto nc "
+                    + "WHERE nc.nombre LIKE :nombre AND b.estBloquedo = true";
             TypedQuery<Bloqueo> query = em.createQuery(jpql, Bloqueo.class);
-            query.setParameter("nombre", "%" + nombre + "%"); // Usa LIKE para la búsqueda
+            query.setParameter("nombre", "%" + nombre + "%"); 
             query.setMaxResults(filtro.getLimite());
             query.setFirstResult(filtro.getPagina() * filtro.getLimite());
 
