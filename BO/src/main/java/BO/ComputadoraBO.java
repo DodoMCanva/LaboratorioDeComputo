@@ -21,7 +21,7 @@ import utilerias.Tabla;
 public class ComputadoraBO implements IComputadoraBO {
 
     // Inicializa la instancia del DAO para manejar operaciones de base de datos relacionadas con computadoras
-    private IComputadoraDAO cdao = new ComputadoraDAO();
+    private ComputadoraDAO cdao = new ComputadoraDAO();
 
     @Override
     public List<computadoraDTO> obtenerComputadorasTabla(Long id, Tabla Filtro) throws BOException {
@@ -45,8 +45,10 @@ public class ComputadoraBO implements IComputadoraBO {
     public List<computadoraDTO> obtenerComputadorasTablaSeleccion(Long id, Tabla Filtro) throws BOException {
         List<computadoraDTO> computadorasDTO = new ArrayList<>();
         try {
+            System.out.println("Tabla BO"+id);
             // Obtiene la lista de entidades Computadora desde el DAO, considerando una selección
             List<Computadora> compENT = cdao.obtenerComputadorasTablaSeleccion(id, Filtro);
+            
             for (Computadora entidad : compENT) {
                 // Convierte cada entidad a su respectivo DTO
                 computadoraDTO clDTO = convertirEntidadaDTO(entidad);
@@ -144,6 +146,7 @@ public class ComputadoraBO implements IComputadoraBO {
 
     private computadoraDTO convertirEntidadaDTO(Computadora entidad) {
         computadoraDTO dto = new computadoraDTO();
+        dto.setComputadora_ID(dto.getComputadora_ID()); // awas
         dto.setEstatus(entidad.getEstatus()); // Establece el estatus en el DTO
         dto.setComputadora_ID(entidad.getId()); // Establece el ID en el DTO
         dto.setEstatus(entidad.getEstatus()); // Establece el estatus en el DTO (repetido)

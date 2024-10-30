@@ -1,29 +1,45 @@
 package presentacion;
 
+import BO.BOException;
 import BO.ComputadoraBO;
 import BO.EstudianteBO;
+import DTOLabComputo.computadoraDTO;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import utilerias.JButtonCellEditor;
+import utilerias.JButtonRenderer;
+import utilerias.Tabla;
 
 /**
  *
  * @author Equipo 3
  */
-
 public class frmSeleccionPC extends javax.swing.JFrame {
-    private Long ide, idcen;
-    private Long idc = null;
+
+    private Long idE, idC, idCentro;
     private int pag = 0;
     private final static int LIMITE = 10;
     private ComputadoraBO cBO = new ComputadoraBO();
     private EstudianteBO eBO = new EstudianteBO();
-    /**
-     * Creates new form frmSeleccionPC
-     */
-    public frmSeleccionPC(Long ide, Long idcen) {
+
+    public frmSeleccionPC(Long idE, Long idCentro) {
         initComponents();
+        setSize(603, 500);
         setLocationRelativeTo(null);
         setResizable(false);
+        this.idE = idE;
+        this.idCentro = idCentro;
+        cargarConfiguracionInicialTabla();
+        cargarTabla();
+        
+        System.out.println("Selecion"+this.idCentro);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -48,7 +64,7 @@ public class frmSeleccionPC extends javax.swing.JFrame {
                 btnSalirActionPerformed(evt);
             }
         });
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 340, -1, -1));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 420, -1, -1));
 
         lblLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logotipoazul.png"))); // NOI18N
         lblLogo.setText("jLabel8");
@@ -70,12 +86,12 @@ public class frmSeleccionPC extends javax.swing.JFrame {
                 {null, null, null}
             },
             new String [] {
-                "ID", "Numero", "Seleccionar"
+                "ID", "Computadora", "Seleccionar"
             }
         ));
         jScrollPane1.setViewportView(tblCompus);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 110, 510, 210));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 540, 290));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -85,18 +101,105 @@ public class frmSeleccionPC extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 461, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSalirActionPerformed
-        frmInicioSesionEstudiante ini=new frmInicioSesionEstudiante();
+        frmInicioSesionEstudiante ini = new frmInicioSesionEstudiante();
         ini.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnSalirActionPerformed
 
+    private void cargarTabla() {
+        try {
+            Tabla filtro = this.obtenerFiltrosTabla();
+            BorrarRegistrosTabla();
+            agregarRegistrosTabla(filtro);
+            if (this.cBO.obtenerComputadorasTablaSeleccion(idCentro, filtro).isEmpty() && pag > 0) {
+                pag--;
+                cargarTabla();
+            }
+        } catch (BOException ex) {
+            BorrarRegistrosTabla();
+            JOptionPane.showMessageDialog(this, ex.getMessage(), "Información", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
+    private void agregarRegistrosTabla(Tabla filtro) throws BOException {
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblCompus.getModel();
+        this.cBO.obtenerComputadorasTablaSeleccion(idCentro, filtro).forEach(row -> {
+            Object[] fila = new Object[3];
+            fila[0] = row.getComputadora_ID();
+            fila[1] = row.getNumeroPC();
+            fila[2] = "Seleccionar";
+            modeloTabla.addRow(fila);
+        });
+    }
+
+    private void cargarConfiguracionInicialTabla() {
+        TableColumnModel modeloColumnas = this.tblCompus.getColumnModel();
+        ActionListener onEliminarClickListener = new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int id = getIdSeleccionadoTabla();
+                seleccionar(Long.valueOf(id));
+            }
+        };
+        modeloColumnas.getColumn(2).setCellRenderer(new JButtonRenderer("Seleccionar"));
+        modeloColumnas.getColumn(2).setCellEditor(new JButtonCellEditor("Seleccionar", onEliminarClickListener));
+    }
+
+    private int getIdSeleccionadoTabla() {
+        int idS = 0;
+        int indiceFilaSeleccionada = this.tblCompus.getSelectedRow();
+        if (indiceFilaSeleccionada != -1) {
+            DefaultTableModel modelo = (DefaultTableModel) this.tblCompus.getModel();
+            int indiceColumnaId = 0;
+            Object idSeleccionado = modelo.getValueAt(indiceFilaSeleccionada, indiceColumnaId);
+            try {
+                if (idSeleccionado instanceof Integer) {
+                    idS = (Integer) idSeleccionado;
+                } else if (idSeleccionado instanceof Long) {
+                    idS = ((Long) idSeleccionado).intValue(); // Convierte Long a int
+                } else if (idSeleccionado instanceof String) {
+                    idS = Integer.parseInt((String) idSeleccionado);
+                } else {
+                    System.out.println("Tipo de dato inesperado para el ID: " + idSeleccionado.getClass().getName());
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Error al convertir ID: " + e.getMessage());
+            }
+        }
+        return idS;
+    }
+
+    private void BorrarRegistrosTabla() {
+        DefaultTableModel modeloTabla = (DefaultTableModel) this.tblCompus.getModel();
+        if (modeloTabla.getRowCount() > 0) {
+            for (int row = modeloTabla.getRowCount() - 1; row > -1; row--) {
+                modeloTabla.removeRow(row);
+            }
+        }
+    }
+
+    public void seleccionar(Long idc) {
+        frmConfirmacion ir = null;
+        try {
+            ir = new frmConfirmacion(idE, idc, idCentro);
+        } catch (BOException ex) {
+            Logger.getLogger(frmSeleccionPC.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        ir.setVisible(true);
+        this.dispose();
+    }
+
+    private Tabla obtenerFiltrosTabla() {
+        return new Tabla(this.LIMITE, this.pag, null);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnSalir;

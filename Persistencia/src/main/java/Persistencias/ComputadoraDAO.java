@@ -50,6 +50,7 @@ public class ComputadoraDAO implements IComputadoraDAO {
             em = emf.createEntityManager(); // Crear un EntityManager
             // Consulta JPQL para obtener computadoras estudiantiles no eliminadas
             String jpql = "SELECT c FROM Computadora c WHERE c.centroLab.id = :centroLabId AND c.estEliminado = false AND c.tipoUsuario = 'Estudiantil'";
+            System.out.println("Llego a dao esto "+CentroLab);
             TypedQuery<Computadora> query = em.createQuery(jpql, Computadora.class);
             query.setParameter("centroLabId", CentroLab); // Establecer el parámetro del centro de laboratorio
             query.setMaxResults(filtro.getLimite()); // Limitar resultados

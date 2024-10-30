@@ -4,7 +4,8 @@
  */
 package DTOLabComputo;
 
-import java.sql.Time;
+import java.util.Date;
+
 
 /**
  *
@@ -12,12 +13,11 @@ import java.sql.Time;
  */
 public class SesionDTO {
     private int Sesion_ID;
-    private Time FechaInicioSesion;
-    private Time FechaFinSesion;
+    private Date FechaInicioSesion;
+    private Date FechaFinSesion;
+    private computadoraDTO computadora;
+    private EstudianteDTO estudiante;
 
-    
-    
-    
     public int getSesion_ID() {
         return Sesion_ID;
     }
@@ -26,22 +26,40 @@ public class SesionDTO {
         this.Sesion_ID = Sesion_ID;
     }
 
-    public Time getFechaInicioSesion() {
+    public Date getFechaInicioSesion() {
         return FechaInicioSesion;
     }
 
-    public void setFechaInicioSesion(Time FechaInicioSesion) {
+    public void setFechaInicioSesion(Date FechaInicioSesion) {
         this.FechaInicioSesion = FechaInicioSesion;
     }
 
-    public Time getFechaFinSesion() {
+    public Date getFechaFinSesion() {
         return FechaFinSesion;
     }
 
-    public void setFechaFinSesion(Time FechaFinSesion) {
+    public void setFechaFinSesion(Date FechaFinSesion) {
         this.FechaFinSesion = FechaFinSesion;
     }
+
+    public computadoraDTO getComputadora() {
+        return computadora;
+    }
+
+    public void setComputadora(computadoraDTO computadora) {
+        this.computadora = computadora;
+    }
+
+    public EstudianteDTO getEstudiante() {
+        return estudiante;
+    }
+
+    public void setEstudiante(EstudianteDTO estudiante) {
+        this.estudiante = estudiante;
+    }
+
     
+   
     
     
     

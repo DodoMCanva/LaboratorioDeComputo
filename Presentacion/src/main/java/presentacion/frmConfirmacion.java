@@ -1,7 +1,10 @@
 package presentacion;
+import BO.BOException;
 import BO.ComputadoraBO;
 import BO.EstudianteBO;
 import BO.SesionBO;
+import DTOLabComputo.EstudianteDTO;
+import DTOLabComputo.computadoraDTO;
 
 /**
  *
@@ -12,10 +15,12 @@ public class frmConfirmacion extends javax.swing.JFrame {
     private ComputadoraBO cBO = new ComputadoraBO();
     private EstudianteBO eBO = new EstudianteBO();
     private SesionBO sBO = new SesionBO();
+    private EstudianteDTO estudiante= new EstudianteDTO();
+    private computadoraDTO computadora = new computadoraDTO();
     /**
      * Creates new form frmConfirmacion
      */
-    public frmConfirmacion(Long ide, Long idc, Long idcen) {
+    public frmConfirmacion(Long ide, Long idc, Long idcen) throws BOException {
         initComponents();
         setSize(603, 500);
         setLocationRelativeTo(null);
@@ -23,6 +28,10 @@ public class frmConfirmacion extends javax.swing.JFrame {
         this.ide = ide;
         this.idc = idc;
         this.idcen = idcen;
+        computadora = cBO.consultar(idc);
+        estudiante = eBO.consultar(ide);
+        this.lblNumPC.setText(String.valueOf(idc));
+        
     }
 
     @SuppressWarnings("unchecked")
@@ -131,6 +140,7 @@ public class frmConfirmacion extends javax.swing.JFrame {
 
     private void btnConfirmacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmacionActionPerformed
         crearSesion();
+        sBO.guardar(computadora, estudiante);
         frmApartadaExito ex = new frmApartadaExito();
         ex.setVisible(true);
         this.dispose();
